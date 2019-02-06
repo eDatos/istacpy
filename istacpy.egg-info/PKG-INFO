@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: istacpy
+Version: 0.1
+Summary: Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)
+Home-page: https://www.gobiernodecanarias.org/istac/api/
+Author: Instituto Canario de Estadistica (ISTAC)
+Author-email: consultas.istac@gobiernodecanarias.org
+License: GPLv3
+Description: UNKNOWN
+Platform: UNKNOWN
