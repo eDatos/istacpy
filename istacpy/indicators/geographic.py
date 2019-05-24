@@ -1,13 +1,15 @@
 from istacpy.resources import *
 
 
-# @title Get geographic granularities
-# @description This function returns a list of geographic granularities treated
-#  in the ISTAC-indicators database. For example provincial, insular or
-#  municipal granularity.
-# @examples
-# get_geographic_granularities()
-def get_geographic_granularities():
+def get_indicators_geographic_granularities():
+    """Get geographic granularities
+
+    This function returns a list of geographic granularities treated in the ISTAC-indicators database.
+    For example provincial, insular or municipal granularity.
+
+    Examples:
+        >>> get_indicators_geographic_granularities()
+    """
     # Build URL
     api = "indicators"
     path = "geographicGranularities"
@@ -19,16 +21,21 @@ def get_geographic_granularities():
     return content
 
 
-# @title Get geographical values
-# @description This function returns values of a geographical granularity that
-#  in turn are part of a specific theme or system of indicators.
-# @param geographicalGranularityCode (string) geographical granularity code
-# @param subjectCode (string) subject code
-# @param systemCode (string) system code
-# @examples
-# get_geographical_values("REGIONS")
-# get_geographical_values("REGIONS", subjectCode = "051", systemCode = "C00067A")
-def get_geographical_values(geographicalgranularitycode, subjectcode="", systemcode=""):
+def get_indicators_geographical_values(geographicalgranularitycode, subjectcode=None, systemcode=None):
+    """Get geographical values
+
+    This function returns values of a geographical granularity that in turn are part of a specific theme or system of
+    indicators.
+
+    Args:
+        geographicalgranularitycode (string): geographical granularity code
+        subjectcode (string): subject code
+        systemcode (string): system code
+
+    Examples:
+        >>> get_indicators_geographical_values("REGIONS")
+        >>> get_indicators_geographical_values("REGIONS", subjectcode = "051", systemcode = "C00067A")
+    """
     # Build URL
     api = "indicators"
     path = "geographicalValues"
@@ -52,12 +59,14 @@ def get_geographical_values(geographicalgranularitycode, subjectcode="", systemc
     return content
 
 
-# @title Get subjects
-# @description This function returns all subjects which the ISTAC classifies
-#  its statistical operations.
-# @examples
-# get_subjects()
-def get_subjects():
+def get_indicators_subjects():
+    """Get subjects
+
+    This function returns all subjects which the ISTAC classifies its statistical operations.
+
+    Examples:
+        >>> get_indicators_subjects()
+    """
     # Build URL
     api = "indicators"
     path = "subjects"
@@ -69,13 +78,15 @@ def get_subjects():
     return content
 
 
-# @title Get time granularities
-# @description This function returns a list of temporary granularity treated
-#  in the ISTAC data bank-indicators ordered from highest to lowest granularity.
-#  For example annual, quarterly or monthly granularity.
-# @examples
-# get_time_granularities()
-def get_time_granularities():
+def get_indicators_time_granularities():
+    """Get time granularities
+
+    This function returns a list of temporary granularity treated in the ISTAC data bank-indicators ordered from
+    highest to lowest granularity. For example annual, quarterly or monthly granularity.
+
+    Examples:
+        >>> get_indicators_time_granularities()
+    """
     # Build URL
     api = "indicators"
     path = "timeGranularities"

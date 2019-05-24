@@ -1,5 +1,4 @@
 import requests
-import sys
 
 
 # Build API URL

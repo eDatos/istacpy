@@ -1,17 +1,20 @@
 from istacpy.resources import *
 
 
-# Instituto Canario de Estadística (ISTAC)
+def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, query=None):
+    """Get codelist families
 
-# @title Get codelist families
-# @description This function returns the list of families of classifications
-# @param limit (int) Results limit. By default \code{limit=25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset=0}.
-# @param orderby (string) Field by which to sort the results.
-# @param query (string) Query to filter the results.
-# @examples
-# get_codelist_families()
-def get_codelist_families(limit=25, offset=0, orderby="", query=""):
+    This function returns the list of families of classifications
+
+    Args:
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        orderby (string): Field by which to sort the results.
+        query (string): Query to filter the results.
+
+    Examples:
+        >>> get_structuralresources_codelist_families()
+    """
     # Parse orderby
     if orderby is not None:
         orderby = parse_param(orderby)
@@ -33,12 +36,17 @@ def get_codelist_families(limit=25, offset=0, orderby="", query=""):
     return content
 
 
-# @title Get codelist families
-# @description This function allows to obtain a family of classifications in particular.
-# @param id (string) codelist family identificator
-# @examples
-# get_codelist_families_id()
-def get_codelist_families_id(id=""):
+def get_structuralresources_codelist_families_id(id=None):
+    """Get codelist families
+
+    This function allows to obtain a family of classifications in particular.
+
+    Args:
+        id (string): codelist family identificator
+
+    Examples:
+        >>> get_structuralresources_codelist_families_id()
+    """
     # Build URL
     api = "structural-resources"
     path = "codelistfamilies"
@@ -51,15 +59,20 @@ def get_codelist_families_id(id=""):
     return content
 
 
-# @title Get codelists
-# @description This function allows to obtain the list of classifications.
-# @param limit (int) Results limit. By default \code{limit=25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset=0}.
-# @param query (string) Query to filter the results.
-# @param orderby (string) Field by which to sort the results.
-# @examples
-# get_codelists()
-def get_codelists(limit=25, offset=0, query="", orderby=""):
+def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=None):
+    """Get codelists
+
+    This function allows to obtain the list of classifications.
+
+    Args:
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        query (string): Query to filter the results.
+        orderby (string): Field by which to sort the results.
+
+    Examples:
+         >>> get_structuralresources_codelists()
+    """
     # Parse query
     if query is not None:
         query = parse_param(query)
@@ -81,18 +94,22 @@ def get_codelists(limit=25, offset=0, query="", orderby=""):
     return content
 
 
-# @title Get codelists agency
-# @description This function allows obtaining the list of all the classifications
-#  maintained by a certain organization.
-# @param agencyid (string) Agency identificator.
-# @param limit (int) Results limit. By default \code{limit=25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset=0}.
-# @param query (string) Query to filter the results.
-# @param orderby (string) Field by which to sort the results.
-# @examples
-# get_codelists_agency("ISTAC")
-# get_codelists_agency("ESTAT")
-def get_codelists_agency(agencyid, limit=25, offset=0, query="", orderby=""):
+def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query=None, orderby=None):
+    """Get codelists agency
+
+    This function allows obtaining the list of all the classifications maintained by a certain organization.
+
+    Args:
+        agencyid (string): Agency identificator.
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        query (string): Query to filter the results.
+        orderby (string): Field by which to sort the results.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency("ISTAC")
+        >>> get_structuralresources_codelists_agency("ESTAT")
+    """
     # Parse query
     if query is not None:
         query = parse_param(query)
@@ -115,19 +132,24 @@ def get_codelists_agency(agencyid, limit=25, offset=0, query="", orderby=""):
     return content
 
 
-# @title Get codelists agency resource
-# @description This function allows to obtain all the versions of a
-#  classification with a certain identifier and that is also kept by a
-#  certain organization.
-# @param agencyid (string) Agency identificator.
-# @param resourceid (string) Resource identificator.
-# @param limit (int) Results limit. By default \code{limit=25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset=0}.
-# @param query (string) Query to filter the results.
-# @param orderby (string) Field by which to sort the results.
-# @examples
-# get_codelists_agency_resource("ISTAC", "CL_AREA_ES")
-def get_codelists_agency_resource(agencyid, resourceid, limit=25, offset=0, query="", orderby=""):
+def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limit=25, offset=0, query=None,
+                                                      orderby=None):
+    """Get codelists agency resource
+
+    This function allows to obtain all the versions of a classification with a certain identifier and that is also kept
+    by a certain organization.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        query (string): Query to filter the results.
+        orderby (string): Field by which to sort the results.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource("ISTAC", "CL_AREA_ES")
+    """
     # Parse query
     if query is not None:
         query = parse_param(query)
@@ -150,14 +172,19 @@ def get_codelists_agency_resource(agencyid, resourceid, limit=25, offset=0, quer
     return content
 
 
-# @title Get codelists agency resource version
-# @description This function allows you to consult a particular version of a classification.
-# @param agencyid (string) Agency identificator.
-# @param resourceid (string) Resource identificator.
-# @param version (string) Specific resource version.
-# @examples
-# get_codelists_agency_resource_version("ISTAC", "CL_AREA_ES", "01.000")
-def get_codelists_agency_resource_version(agencyid, resourceid, version):
+def get_structuralresources_codelists_agency_resource_version(agencyid, resourceid, version):
+    """Get codelists agency resource version
+
+    This function allows you to consult a particular version of a classification.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        version (string): Specific resource version.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource_version("ISTAC", "CL_AREA_ES", "01.000")
+    """
     # Build URL
     api = "structural-resources"
     path = "codelists"
@@ -170,25 +197,30 @@ def get_codelists_agency_resource_version(agencyid, resourceid, version):
     return content
 
 
-# @title Get codelists agency resource version codes
-# @description This function allows to consult the codes of a version of a
-#  classification. Note that if wildcards are used as \code{~all} or one of the
-#  \code{limit}, \code{offset}, \code{query} or \code{orderby} parameters,
-#  the list will be automatically paginated.
-# @param agencyid (string) Agency identificator.
-# @param resourceid (string) Resource identificator.
-# @param version (string) Specific resource version.
-# @param limit (int) Results limit. By default \code{limit=25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset=0}.
-# @param query (string) Query to filter the results.
-# @param orderby (string) Field by which to sort the results.
-# @param openness (string) Opening established for viewing.
-# @param order (string) Order established for visualization.
-# @param fields (string) Additional fields that you want to show in the answer.
-# @examples
-# get_codelists_agency_resource_version_codes("ISTAC", "CL_AREA_ES", "01.000")
-def get_codelists_agency_resource_version_codes(agencyid, resourceid, version, limit=25, offset=0, query="", orderby="",
-                                                openness="", order="", fields=""):
+def get_structuralresources_codelists_agency_resource_version_codes(agencyid, resourceid, version, limit=25, offset=0,
+                                                                    query=None, orderby=None, openness=None, order=None,
+                                                                    fields=None):
+    """Get codelists agency resource version codes
+
+    This function allows to consult the codes of a version of a classification. Note that if wildcards are used
+    as ``~all`` or one of the ``limit``, ``offset``, ``query`` or ``orderBy`` parameters,
+    the list will be automatically paginated.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        version (string): Specific resource version.
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        query (string): Query to filter the results.
+        orderby (string): Field by which to sort the results.
+        openness (string): Opening established for viewing.
+        order (string): Order established for visualization.
+        fields (string): Additional fields that you want to show in the answer.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource_version_codes("ISTAC", "CL_AREA_ES", "01.000")
+    """
     # Parse query
     if query is not None:
         query = parse_param(query)
@@ -216,15 +248,21 @@ def get_codelists_agency_resource_version_codes(agencyid, resourceid, version, l
     return content
 
 
-# @title Get codelists agency resource version codes (codeid)
-# @description This function allows to consult a specific code of a version of a classification.
-# @param agencyid (string) Agency identificator.
-# @param resourceid (string) Resource identificator.
-# @param version (string) Specific resource version.
-# @param codeid (string) Code identificator.
-# @examples
-# get_codelists_agency_resource_version_codes_codeid("ISTAC", "CL_AREA_ES", "01.000", "ES706A01")
-def get_codelists_agency_resource_version_codes_codeid(agencyid, resourceid, version, codeid):
+def get_structuralresources_codelists_agency_resource_version_codes_codeid(agencyid, resourceid, version, codeid):
+    """Get codelists agency resource version codes (codeID)
+
+    This function allows to consult a specific code of a version of a classification.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        version (string): Specific resource version.
+        codeid (string): Code identificator.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource_version_codes_codeid(
+            "ISTAC", "CL_AREA_ES", "01.000", "ES706A01")
+    """
     # Build URL
     api = "structural-resources"
     path = "codelists"

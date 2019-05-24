@@ -1,37 +1,29 @@
 from istacpy.resources import *
 
 
-# @title Get indicators
-# @description This function returns a list of indicators published in the
-#  ISTAC-indicators database. An indicator is a measure used to know the
-#  intensity of a phenomenon in spacetime. This measure can refer to
-#  different spatial or temporal granularities.
-# @title Get indicators
-# @description This function returns a list of indicators published in the
-#  ISTAC-indicators database. An indicator is a measure used to know the
-#  intensity of a phenomenon in spacetime. This measure can refer to
-#  different spatial or temporal granularities.
-# @param q (string) Metadata query on which the searches can be built using:
-#   \code{id}, \code{subjectCode} or \code{geographicValue}.
-# @param order (string) Order. Possible values are: \code{update} and
-#   \code{id} and order criteria are \code{ASC} and \code{DESC}.
-# @param limit (int) Results limit. By default \code{limit = 25}.
-# @param offset (int) Displacement. Result from which it is returned.  By default \code{offset = 0}.
-# @param fields (string) Use of the answer by adding new fields.
-#  Possible values are: \code{+metadata}, \code{+data} and \code{+observationsMetadata}.
-# @param representation (string) Allows filtering the observations by their value.
-#  Its use only makes sense when \code{+data} and/or \code{+observationsMetadata} has been included.
-# @examples
-# get_indicators()
-# get_indicators(q = 'subjectCode EQ 051')
-# get_indicators(q = 'id EQ "PARO_REGISTRADO"')
-# get_indicators(q = 'id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")')
-# get_indicators(q = 'id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")', order = "id ASC")
-# get_indicators(q = 'id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")', order = "id ASC",
-#  fields = "+metadata")
-# get_indicators(q = 'id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")', order = "id ASC",
-#  fields = "+data", representation = "GEOGRAPHICAL[35003|35005],MEASURE[ABSOLUTE]")
-def get_indicators(q="", order="", limit=25, offset=0, fields="", representation=""):
+def get_indicators(q="", order="", limit=25, offset=0, fields=None, representation=None):
+    """Get indicators
+
+    This function returns a list of indicators published in the ISTAC-indicators database. An indicator is a measure
+    used to know the intensity of a phenomenon in spacetime. This measure can refer to different spatial or temporal
+    granularities.
+
+    Args:
+        q (string): Metadata query on which the searches can be built using ``id``, ``subjectCode`` or
+            ``geographicValue``.
+        order (string): Order. Possible values are: ``update`` and ``id``. Order criteria are ``ASC`` and ``DESC``.
+        limit (int): Results limit. By default ``limit = 25``.
+        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        fields (string): Use of the answer by adding new fields. Possible values are: ``+metadata``, ``+data`` and
+            ``+observationsMetadata``.
+        representation (string): Allows filtering the observations by their value. Its use only makes sense when
+            ``+data`` and/or ``+observationsMetadata`` has been included.
+
+    Examples:
+        >>> get_indicators(q = 'id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")', order = "id ASC",
+                fields = "+data", representation ="GEOGRAPHICAL[35003|35005],MEASURE[ABSOLUTE]")
+
+    """
     # URL params
     api = "indicators"
     path = "indicators"
@@ -68,16 +60,20 @@ def get_indicators(q="", order="", limit=25, offset=0, fields="", representation
     return content
 
 
-# @title Get indicators code
-# @description This function returns the metadata that describe the characteristics
-#  of a specific indicator, allowing the compression of the measured fact;
-#  also through the data request the complete data (for all spacetime) of the
-#  indicator is provided.
-# @param indicatorcode (string) an indicator code
-# @examples
-# get_indicators_code("AFILIACIONES")
-# get_indicators_code("PARO_REGISTRADO")
 def get_indicators_code(indicatorcode):
+    """Get indicators code
+
+    This function returns the metadata that describe the characteristics of a specific indicator,
+    allowing the compression of the measured fact; also through the data request the complete data (for all spacetime)
+    of the indicator is provided.
+
+    Args:
+        indicatorcode (string): an indicator code
+
+    Examples:
+        >>> get_indicators_code("AFILIACIONES")
+        >>> get_indicators_code("PARO_REGISTRADO")
+    """
     # URL params
     api = "indicators"
     path = "indicators"
@@ -91,25 +87,24 @@ def get_indicators_code(indicatorcode):
     return content
 
 
-# @title Get indicators code data
-# @description This function returns complete data (for all spacetime) of the indicator.
-#  On the other hand, metadata describing the characteristics of a specific
-#  indicator are offered through the metadata request, allowing the compression
-#  of the measured fact.
-# @param indicatorCode (string) an indicator code
-# @param representation (string) Allows filtering the observations by their value.
-# @param granularity (string) Allows to filter the observations through the granularities of the same.
-# @param fields (string) Allows you to customize the response by excluding fields.
-#  The possible values are: \code{-observationsMetadata}.
-# @examples
-# get_indicators_code_data("AFILIACIONES")
-# get_indicators_code_data("AFILIACIONES", representation =
-#  "GEOGRAPHICAL[35003|35005],MEASURE[ABSOLUTE]")
-# get_indicators_code_data("AFILIACIONES", granularity =
-#  "GEOGRAPHICAL[MUNICIPALITIES]")
-# get_indicators_code_data("AFILIACIONES", granularity =
-#  "GEOGRAPHICAL[MUNICIPALITIES]", fields = "-observationsMetadata")
-def get_indicators_code_data(indicatorcode, representation="", granularity="", fields=""):
+def get_indicators_code_data(indicatorcode, representation=None, granularity="", fields=None):
+    """Get indicators code data
+
+    This function returns complete data (for all spacetime) of the indicator.
+    On the other hand, metadata describing the characteristics of a specific
+    indicator are offered through the metadata request, allowing the compression
+    of the measured fact.
+
+    Args:
+        indicatorcode (string): an indicator code
+        representation (string): Allows filtering the observations by their value.
+        granularity (string): Allows to filter the observations through the granularities of the same.
+        fields (string): Allows you to customize the response by excluding fields. The possible values are:
+            ``-observationsMetadata``.
+
+    Examples:
+        >>> get_indicators_code_data("AFILIACIONES")
+    """
     # Parse representation
     if representation is not None:
         representation = parse_param(representation)
@@ -125,8 +120,8 @@ def get_indicators_code_data(indicatorcode, representation="", granularity="", f
     # Build URL
     api = "indicators"
     path = "indicators"
-    resource = indicatorcode + "/data" + "?representation=" + representation + "&granularity=" + granularity + \
-               "&fields=" + fields
+    resource = indicatorcode + "/data" + "?representation=" + representation + "&granularity="\
+        + granularity + "&fields=" + fields
     url = get_url(api, path, resource=resource)
 
     # Get content
