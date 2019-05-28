@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, query=None):
@@ -16,22 +16,20 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
         >>> get_structuralresources_codelist_families()
     """
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Build URL
     api = "structural-resources"
     path = "codelistfamilies" + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -51,10 +49,10 @@ def get_structuralresources_codelist_families_id(id=None):
     api = "structural-resources"
     path = "codelistfamilies"
     resource = id + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -74,22 +72,20 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
          >>> get_structuralresources_codelists()
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "codelists" + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -111,12 +107,10 @@ def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query
         >>> get_structuralresources_codelists_agency("ESTAT")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -124,10 +118,10 @@ def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query
     resource = agencyid + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -151,12 +145,10 @@ def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limi
         >>> get_structuralresources_codelists_agency_resource("ISTAC", "CL_AREA_ES")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -164,10 +156,10 @@ def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limi
     resource = agencyid + "/" + resourceid + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get Content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -189,10 +181,10 @@ def get_structuralresources_codelists_agency_resource_version(agencyid, resource
     api = "structural-resources"
     path = "codelists"
     resource = agencyid + "/" + resourceid + "/" + version + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -222,16 +214,13 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
         >>> get_structuralresources_codelists_agency_resource_version_codes("ISTAC", "CL_AREA_ES", "01.000")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Build URL
     api = "structural-resources"
@@ -240,10 +229,10 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby + \
              "&openness=" + openness + "&order=" + order + "&fields=" + fields
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -267,9 +256,9 @@ def get_structuralresources_codelists_agency_resource_version_codes_codeid(agenc
     api = "structural-resources"
     path = "codelists"
     resource = agencyid + "/" + resourceid + "/" + version + "/codes/" + codeid + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content

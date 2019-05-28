@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_structuralresources_concept_types():
@@ -12,10 +12,10 @@ def get_structuralresources_concept_types():
     # Build URL
     api = "structural-resources"
     path = "conceptTypes"
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -36,22 +36,20 @@ def get_structuralresources_concept_schemes(limit=25, offset=0, query=None, orde
         >>> get_structuralresources_concept_schemes(query = "ID EQ 2090", orderby = "ID ASC") 
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
     
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
     
     # Build URL
     api = "structural-resources"
     path = "conceptschemes"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -73,12 +71,10 @@ def get_structuralresources_concept_schemes_agency(agencyid, limit=25, offset=0,
         >>> get_structuralresources_concept_schemes_agency("ESTAT", query = "ID EQ 2090", orderby = "ID ASC")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -86,10 +82,10 @@ def get_structuralresources_concept_schemes_agency(agencyid, limit=25, offset=0,
     resource = agencyid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -112,12 +108,10 @@ def get_structuralresources_concept_schemes_agency_resource(agencyid, resourceid
         >>> get_structuralresources_concept_schemes_agency_resource(agencyid = "ISTAC", resourceid = "CL_AREA_ES") 
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -125,10 +119,10 @@ def get_structuralresources_concept_schemes_agency_resource(agencyid, resourceid
     resource = agencyid + "/" + resourceid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -151,10 +145,10 @@ def get_structuralresources_concept_schemes_agency_resource_version(agencyid, re
     api = "structural-resources"
     path = "conceptschemes"
     resource = agencyid + "/" + resourceid + "/" + version
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = get_content(url)
+    # content = resources.get_content(url)
 
     return url
 
@@ -180,21 +174,19 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(age
                 resourceid = "CL_AREA_ES", version = "01.000")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "conceptschemes"
     resource = agencyid + "/" + resourceid + "/" + version + "/concepts"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = get_content(url)
+    # content = resources.get_content(url)
 
     return url
 
@@ -219,9 +211,9 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
     api = "structural-resources"
     path = "conceptschemes"
     resource = agencyid + "/" + resourceid + "/" + version + "/concepts/" + conceptid
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = get_content(url)
+    # content = resources.get_content(url)
 
     return url

@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_structuralresources_categorisations(limit=25, offset=0, query=None, orderby=None):
@@ -17,22 +17,20 @@ def get_structuralresources_categorisations(limit=25, offset=0, query=None, orde
         >>> get_structuralresources_categorisations(query = "ID EQ 2090", orderby = "ID ASC")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
     
     # Build URL
     api = "structural-resources"
     path = "categorisations"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -53,12 +51,10 @@ def get_structuralresources_categorisations_agency(agencyid, limit=25, offset=0,
         >>> get_structuralresources_categorisations_agency("ISTAC")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
     
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
     
     # Build URL
     api = "structural-resources"
@@ -66,10 +62,10 @@ def get_structuralresources_categorisations_agency(agencyid, limit=25, offset=0,
     resource = agencyid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -92,12 +88,10 @@ def get_structuralresources_categorisations_agency_resource(agencyid, resourceid
         >>> get_structuralresources_categorisations_agency_resource("ISTAC", "cat2")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -105,10 +99,10 @@ def get_structuralresources_categorisations_agency_resource(agencyid, resourceid
     resource = agencyid + "/" + resourceid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -130,10 +124,10 @@ def get_structuralresources_categorisations_agency_resource_version(agencyid, re
     api = "structural-resources"
     path = "categorisations"
     resource = agencyid + "/" + resourceid + "/" + version
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -154,22 +148,20 @@ def get_structuralresources_category_schemes(limit=25, offset=0, query=None, ord
         >>> get_structuralresources_category_schemes(query = "ID EQ 2090", orderby = "ID ASC")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "categoryschemes"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -190,12 +182,10 @@ def get_structuralresources_category_schemes_agency(agencyid, limit=25, offset=0
         >>> get_structuralresources_category_schemes_agency("ISTAC", query = "ID EQ 2090", orderby = "ID ASC")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -203,10 +193,10 @@ def get_structuralresources_category_schemes_agency(agencyid, limit=25, offset=0
     resource = agencyid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -229,12 +219,10 @@ def get_structuralresources_category_schemes_agency_resource(agencyid, resourcei
         >>> get_structuralresources_category_schemes_agency_resource("ISTAC", "TEMAS_CANARIAS")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -242,10 +230,10 @@ def get_structuralresources_category_schemes_agency_resource(agencyid, resourcei
     resource = agencyid + "/" + resourceid
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -267,10 +255,10 @@ def get_structuralresources_category_schemes_agency_resource_version(agencyid, r
     api = "structural-resources"
     path = "categoryschemes"
     resource = agencyid + "/" + resourceid + "/" + version
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -296,21 +284,19 @@ def get_structuralresources_category_schemes_agency_resource_version_categories(
             "01.000")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.resources.get_content(query)
 
     # Parse orderby
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "categoryschemes"
     resource = agencyid + "/" + resourceid + "/" + version + "/categories"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -338,9 +324,9 @@ def get_structuralresources_category_schemes_agency_resource_version_categories_
     api = "structural-resources"
     path = "categoryschemes"
     resource = agencyid + "/" + resourceid + "/" + version + "/categories/" + categoryid
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content

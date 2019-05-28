@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_structuralresources_variable_families(limit=25, offset=0, query=None, orderby=None):
@@ -16,22 +16,20 @@ def get_structuralresources_variable_families(limit=25, offset=0, query=None, or
         >>> get_structuralresources_variable_families()
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderBy
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "variablefamilies" + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -51,10 +49,10 @@ def get_structuralresources_variable_families_id(id):
     api = "structural-resources"
     path = "variablefamilies"
     resource = id + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -75,12 +73,10 @@ def get_structuralresources_variable_families_id_variables(id, limit=25, offset=
         >>> get_structuralresources_variable_families_id_variables("VRF_DEMOGRAFICAS")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderBy
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -88,10 +84,10 @@ def get_structuralresources_variable_families_id_variables(id, limit=25, offset=
     resource = id + "/variables" + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -111,20 +107,18 @@ def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=No
         >>> get_structuralresources_variables()
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderBy
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
     path = "variables" + ".json"
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -144,10 +138,10 @@ def get_structuralresources_variables_id(id):
     api = "structural-resources"
     path = "variables"
     resource = id + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -168,12 +162,10 @@ def get_structuralresources_variableelements(variableid, limit=25, offset=0, que
         >>> get_structuralresources_variableelements("VR_SEXO")
     """
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderBy
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -181,10 +173,10 @@ def get_structuralresources_variableelements(variableid, limit=25, offset=0, que
     resource = variableid + "/variableelements" + ".json"
     params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -205,10 +197,10 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     api = "structural-resources"
     path = "variables"
     resource = variableid + "/variableelements/" + resourceid + ".json"
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -231,16 +223,13 @@ def get_structuralresources_geoinfo(variableid, resourceid, fields="", limit=25,
       >>> get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
     """
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Parse orderBy
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -249,9 +238,9 @@ def get_structuralresources_geoinfo(variableid, resourceid, fields="", limit=25,
     params = "?fields=" + fields + "&limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" \
              + orderby
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content

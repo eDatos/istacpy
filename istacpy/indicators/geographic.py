@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_indicators_geographic_granularities():
@@ -13,10 +13,10 @@ def get_indicators_geographic_granularities():
     # Build URL
     api = "indicators"
     path = "geographicGranularities"
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -51,10 +51,10 @@ def get_indicators_geographical_values(geographicalgranularitycode, subjectcode=
         else:
             path = path + "?geographicalGranularityCode=" + geographicalgranularitycode
 
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -72,8 +72,8 @@ def get_indicators_subjects():
     path = "subjects"
 
     # Get content
-    url = get_url(api, path)
-    content = get_content(url)
+    url = resources.get_url(api, path)
+    content = resources.get_content(url)
 
     return content
 
@@ -92,7 +92,7 @@ def get_indicators_time_granularities():
     path = "timeGranularities"
 
     # Get content
-    url = get_url(api, path)
-    content = get_content(url)
+    url = resources.get_url(api, path)
+    content = resources.get_content(url)
 
     return content

@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_statisticalresources_datasets(lang="es", limit=25, offset=0, orderby=None, query=None):
@@ -18,24 +18,22 @@ def get_statisticalresources_datasets(lang="es", limit=25, offset=0, orderby=Non
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets"
+    path = "datasets" + ".json"
 
     # Parse order
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
 
     # Build URL
     params = "?lang=" + lang + "&limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + \
              "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -58,24 +56,22 @@ def get_statisticalresources_datasets_agency(agencyid, lang="es", limit=25, offs
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets"
+    path = "datasets" + ".json"
     
     # Parse order
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
     
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
     
     # Build URL
     params = "?agencyid=" + agencyid + "&lang=" + lang + "&limit=" + str(limit) + "&offset=" + str(offset) + \
              "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -102,24 +98,22 @@ def get_statisticalresources_datasets_agency_resource(agencyid, resourceid, lang
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets"
+    path = "datasets" + ".json"
     
     # Parse order
-    if orderby is not None:
-        orderby = parse_param(orderby)
+    orderby = resources.parse_param(orderby)
     
     # Parse query
-    if query is not None:
-        query = parse_param(query)
+    query = resources.parse_param(query)
     
     # Build URL
     params = "?agencyid=" + agencyid + "&resourceid=" + resourceid + "&lang=" + lang + "&limit=" + str(limit)\
              + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
     
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
     
     return content
 
@@ -146,23 +140,21 @@ def get_statisticalresources_datasets_agency_resource_version(agencyid, resource
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets"
+    path = "datasets" + ".json"
 
     # Parse dim
-    if dim is not None:
-        dim = parse_param(dim)
+    dim = resources.parse_param(dim)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Build URL
     params = "?agencyid=" + agencyid + "&resourceid=" + resourceid + "&version=" + version + "&dim=" + dim + \
              "&fields=" + fields + "&lang=" + lang
     path = path + params
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content

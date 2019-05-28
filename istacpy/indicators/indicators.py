@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_indicators(q="", order="", limit=25, offset=0, fields=None, representation=None):
@@ -29,20 +29,17 @@ def get_indicators(q="", order="", limit=25, offset=0, fields=None, representati
     path = "indicators"
 
     # Parse order
-    if order is not None:
-        order = parse_param(order)
+    order = resources.parse_param(order)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Parse representation
-    if representation is not None:
-        representation = parse_param(representation)
+    representation = resources.parse_param(representation)
 
     # Get indicators using query (q) parameter
     if q is not None:
-        q = parse_param(q)
+        q = resources.parse_param(q)
         params = "&order=" + order + "&limit=" + str(limit) + "&offset=" + str(
             offset) + "&fields=" + fields + "&representation=" + representation
         path = path + "?q=" + q + params
@@ -52,10 +49,10 @@ def get_indicators(q="", order="", limit=25, offset=0, fields=None, representati
         path = path + params
 
     # Get URL
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -79,10 +76,10 @@ def get_indicators_code(indicatorcode):
     path = "indicators"
 
     # Get URL
-    url = get_url(api, path, resource=indicatorcode)
+    url = resources.get_url(api, path, resource=indicatorcode)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -106,25 +103,22 @@ def get_indicators_code_data(indicatorcode, representation=None, granularity="",
         >>> get_indicators_code_data("AFILIACIONES")
     """
     # Parse representation
-    if representation is not None:
-        representation = parse_param(representation)
+    representation = resources.parse_param(representation)
 
     # Parse granularity
-    if granularity is not None:
-        granularity = parse_param(granularity)
+    granularity = resources.parse_param(granularity)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Build URL
     api = "indicators"
     path = "indicators"
     resource = indicatorcode + "/data" + "?representation=" + representation + "&granularity="\
         + granularity + "&fields=" + fields
-    url = get_url(api, path, resource=resource)
+    url = resources.get_url(api, path, resource=resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content

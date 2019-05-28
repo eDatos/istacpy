@@ -1,4 +1,4 @@
-from istacpy.resources import *
+from istacpy.resources import resources
 
 
 def get_indicators_systems(limit=25, offset=0):
@@ -24,10 +24,10 @@ def get_indicators_systems(limit=25, offset=0):
     path = "indicatorsSystems"
 
     path = path + "?limit=" + str(limit) + "&offset=" + str(offset)
-    url = get_url(api, path)
+    url = resources.get_url(api, path)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -49,10 +49,10 @@ def get_indicators_systems_code(indicatorsystemcode):
     api = "indicators"
     path = "indicatorsSystems"
     resource = indicatorsystemcode
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -83,27 +83,23 @@ def get_indicators_systems_code_instances(indicatorsystemcode, q=None, order=Non
         >>> get_indicators_systems_code_instances("C00075H", q = 'id EQ "INDICADORES_MUNICIPALES"')
     """
     # Parse order
-    if order is not None:
-        order = parse_param(order)
+    order = resources.parse_param(order)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Parse representation
-    if representation is not None:
-        representation = parse_param(representation)
+    representation = resources.parse_param(representation)
 
     # Parse granularity
-    if granularity is not None:
-        granularity = parse_param(granularity)
+    granularity = resources.parse_param(granularity)
 
     # Build URL
     api = "indicators"
     path = "indicatorsSystems"
     resource = indicatorsystemcode + "/indicatorsInstances"
     if q is not None:
-        q = parse_param(q)
+        q = resources.parse_param(q)
         params = "?q=" + q + "&order=" + order + "&limit=" + str(limit) + "&offset=" + str(
             offset) + "&fields=" + fields + "&representation=" + representation + "&granularity=" + granularity
     else:
@@ -111,10 +107,10 @@ def get_indicators_systems_code_instances(indicatorsystemcode, q=None, order=Non
             offset) + "&fields=" + fields + "&representation=" + representation + "&granularity=" + granularity
 
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -136,10 +132,10 @@ def get_indicators_systems_code_instances_code(indicatorsystemcode, indicatorins
     api = "indicators"
     path = "indicatorsSystems"
     resource = indicatorsystemcode + "/indicatorsInstances/" + indicatorinstancecode
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
 
@@ -164,16 +160,13 @@ def get_indicators_systems_code_instances_code_data(indicatorsystemcode, indicat
         >>> get_indicators_systems_code_instances_code_data("C00075H", "21af0477-d63b-493b-ad02-4ab181547223")
     """
     # Parse representation
-    if representation is not None:
-        representation = parse_param(representation)
+    representation = resources.parse_param(representation)
 
     # Parse granularity
-    if granularity is not None:
-        granularity = parse_param(granularity)
+    granularity = resources.parse_param(granularity)
 
     # Parse fields
-    if fields is not None:
-        fields = parse_param(fields)
+    fields = resources.parse_param(fields)
 
     # Build URL
     api = "indicators"
@@ -181,9 +174,9 @@ def get_indicators_systems_code_instances_code_data(indicatorsystemcode, indicat
     resource = indicatorsystemcode + "/indicatorsInstances/" + indicatorinstancecode + "/data"
     params = "?representation=" + representation + "&granularity=" + granularity + "&fields=" + fields
     resource = resource + params
-    url = get_url(api, path, resource)
+    url = resources.get_url(api, path, resource)
 
     # Get content
-    content = get_content(url)
+    content = resources.get_content(url)
 
     return content
