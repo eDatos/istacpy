@@ -52,12 +52,12 @@ def get_statisticalresources_datasets_agency(agencyid, lang="es", limit=25, offs
         query (string): Metadata query on which the searches can be built.
 
     Examples:
-        >>> get_statisticalresources_datasets_agency(agencyid = "ISTAC") 
+        >>> get_statisticalresources_datasets_agency(agencyid = "ISTAC")
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets" + ".json"
-    
+    path = "datasets"
+
     # Parse order
     orderby = resources.parse_param(orderby)
     
@@ -65,10 +65,10 @@ def get_statisticalresources_datasets_agency(agencyid, lang="es", limit=25, offs
     query = resources.parse_param(query)
     
     # Build URL
-    params = "?agencyid=" + agencyid + "&lang=" + lang + "&limit=" + str(limit) + "&offset=" + str(offset) + \
-             "&orderby=" + orderby + "&query=" + query
-    path = path + params
-    url = resources.get_url(api, path)
+    params = "?lang=" + lang + "&limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + \
+             "&query=" + query
+    resource = agencyid + ".json" + params
+    url = resources.get_url(api, path, resource)
     
     # Get content
     content = resources.get_content(url)
@@ -98,7 +98,7 @@ def get_statisticalresources_datasets_agency_resource(agencyid, resourceid, lang
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets" + ".json"
+    path = "datasets"
     
     # Parse order
     orderby = resources.parse_param(orderby)
@@ -107,10 +107,10 @@ def get_statisticalresources_datasets_agency_resource(agencyid, resourceid, lang
     query = resources.parse_param(query)
     
     # Build URL
-    params = "?agencyid=" + agencyid + "&resourceid=" + resourceid + "&lang=" + lang + "&limit=" + str(limit)\
-             + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
-    path = path + params
-    url = resources.get_url(api, path)
+    params = "?lang=" + lang + "&limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + \
+             "&query=" + query
+    resource = agencyid + "/" + resourceid + ".json" + params
+    url = resources.get_url(api, path, resource)
     
     # Get content
     content = resources.get_content(url)
@@ -140,7 +140,7 @@ def get_statisticalresources_datasets_agency_resource_version(agencyid, resource
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets" + ".json"
+    path = "datasets"
 
     # Parse dim
     dim = resources.parse_param(dim)
@@ -149,12 +149,12 @@ def get_statisticalresources_datasets_agency_resource_version(agencyid, resource
     fields = resources.parse_param(fields)
 
     # Build URL
-    params = "?agencyid=" + agencyid + "&resourceid=" + resourceid + "&version=" + version + "&dim=" + dim + \
-             "&fields=" + fields + "&lang=" + lang
-    path = path + params
-    url = resources.get_url(api, path)
+    params = "?dim=" + dim + "&fields=" + fields + "&lang=" + lang
+    resource = agencyid + "/" + resourceid + "/" + version + ".json" + params
+    url = resources.get_url(api, path, resource)
 
     # Get content
     content = resources.get_content(url)
 
     return content
+
