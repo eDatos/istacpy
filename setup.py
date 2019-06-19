@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="istacpy",
-    version="0.1",
+    version="0.2",
     packages=["istacpy.indicators", "istacpy.structuralresources", "istacpy.statisticalresources", "istacpy.resources"],
     url="https://www.gobiernodecanarias.org/istac/api/",
     download_url="https://github.com/eDatos/istacpy/raw/master/dist/istacpy-0.1.tar.gz",
