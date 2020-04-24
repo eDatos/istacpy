@@ -1,5 +1,8 @@
 from setuptools import setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
     name="istacpy",
     version="0.3",
@@ -10,6 +13,7 @@ setup(
     author="Instituto Canario de Estadistica (ISTAC)",
     author_email="consultas.istac@gobiernodecanarias.org",
     description="Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)",
+    long_description=long_description,
     keywords=["istacpy", "ISTAC", "Instituto Canario de Estadistica", "API", "JSON"],
     install_requires=['requests'],
     classifiers=[
