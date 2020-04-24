@@ -219,6 +219,12 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
     # Parse orderby
     orderby = resources.parse_param(orderby)
 
+    # Parse openness
+    openness = resources.parse_param(openness)
+
+    # Parse order
+    order = resources.parse_param(order)
+
     # Parse fields
     fields = resources.parse_param(fields)
 

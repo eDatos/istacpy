@@ -84,7 +84,7 @@ def get_indicators_code(indicatorcode):
     return content
 
 
-def get_indicators_code_data(indicatorcode, representation=None, granularity="", fields=None):
+def get_indicators_code_data(indicatorcode, representation=None, granularity=None, fields=None):
     """Get indicators code data
 
     This function returns complete data (for all spacetime) of the indicator.

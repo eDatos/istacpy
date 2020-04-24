@@ -1,2 +1,2 @@
 @echo off
-pip3 install dist/istacpy-0.1.tar.gz
+pip3 install dist/istacpy-0.3.tar.gz
