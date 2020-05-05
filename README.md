@@ -34,28 +34,6 @@
   </code>
 </div>
 
-<h3>Access to structural resources</h3>
-<p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/</a></p>
-<div>
-  <p><strong>Example 1</strong>: Get a list of classifications</p>
-  <code>
-    from istacpy.structuralresources import classifications
-  </code>
-  <br>
-  <code>
-    classifications.get_structuralresources_codelists()
-  </code>
-  <br><br>
-  <p><strong>Example 2</strong>: Get a list of geographic coordinate from Icod de los Vinos (Municipality)</p>
-  <code>
-    from istacpy.structuralresources import variables
-  </code>
-  <br>
-  <code>
-    variables.get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
-  </code>
-</div>
-
 <h3>Access to statistical resources</h3>
 <p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/</a></p>
 <div>
@@ -75,6 +53,28 @@
   <br>
   <code>
     cubes.get_statisticalresources_datasets_agency(agencyid = "ISTAC")
+  </code>
+</div>
+
+<h3>Access to structural resources</h3>
+<p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/</a></p>
+<div>
+  <p><strong>Example 1</strong>: Get a list of classifications</p>
+  <code>
+    from istacpy.structuralresources import classifications
+  </code>
+  <br>
+  <code>
+    classifications.get_structuralresources_codelists()
+  </code>
+  <br><br>
+  <p><strong>Example 2</strong>: Get a list of geographic coordinate from Icod de los Vinos (Municipality)</p>
+  <code>
+    from istacpy.structuralresources import variables
+  </code>
+  <br>
+  <code>
+    variables.get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
   </code>
 </div>
 
