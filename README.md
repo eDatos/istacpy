@@ -2,7 +2,7 @@
   <p align="center"><a href="https://pypi.org/project/istacpy/">istacpy</a> is a Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)</p>
 </span>
 
-<div>
+<div align="center">
   <div style="text-align: center;">
     <img src="https://www3.gobiernodecanarias.org/noticias/wp-content/themes/tema_gobcan_noticias/assets/istac_logo-380x94.png" align="center"/>
   </div>
@@ -11,8 +11,8 @@
 
 <span align="center">
 
-<h3>How to install</h3>
-<div>
+<h3 align="center">How to install</h3>
+<div align="center">
   <code>
     pip install istacpy
   </code>
