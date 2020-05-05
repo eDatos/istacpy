@@ -11,8 +11,8 @@
 
 <span align="center">
 
-<h3 align="center">How to install</h3>
-<div align="center">
+<h3>How to install</h3>
+<div>
   <code>
     pip install istacpy
   </code>
