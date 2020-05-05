@@ -1,10 +1,10 @@
 <span align="center">
-  <p><a href="https://pypi.org/project/istacpy/">istacpy</a> is a Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)</p>
+  <p align="center"><a href="https://pypi.org/project/istacpy/">istacpy</a> is a Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)</p>
 </span>
 
 <div>
   <div style="text-align: center;">
-    <img src="https://www3.gobiernodecanarias.org/noticias/wp-content/themes/tema_gobcan_noticias/assets/istac_logo-380x94.png"/>
+    <img src="https://www3.gobiernodecanarias.org/noticias/wp-content/themes/tema_gobcan_noticias/assets/istac_logo-380x94.png" align="center"/>
   </div>
 </div>
 
