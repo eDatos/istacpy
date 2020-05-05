@@ -4,7 +4,7 @@
 
 <div align="center">
   <div style="text-align: center;">
-    <a href="https://www3.gobiernodecanarias.org/aplicaciones/appsistac/api"><img src="https://www3.gobiernodecanarias.org/noticias/wp-content/themes/tema_gobcan_noticias/assets/istac_logo-380x94.png" align="center"/></a>
+    <a href="https://www3.gobiernodecanarias.org/istac/api"><img src="https://www3.gobiernodecanarias.org/noticias/wp-content/themes/tema_gobcan_noticias/assets/istac_logo-380x94.png" align="center"/></a>
   </div>
 </div>
 
