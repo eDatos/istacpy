@@ -23,7 +23,7 @@
 <div align="center">
   <p><strong>Example 1</strong>: Get a list of indicators published in the ISTAC-indicators database</p>
   <code>
-    from istacpy.indicators import geographic<br>
+    from istacpy.indicators import geographic<br><br>
     geographic.get_indicators_geographic_granularities()
   </code>
   <p><strong>Example 2</strong>: Get a list of geographic granularities treated in the ISTAC-indicators database. For example provincial, insular or municipal granularity</p>
