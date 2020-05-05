@@ -29,6 +29,7 @@
   <code>
     geographic.get_indicators_geographic_granularities()
   </code>
+  <br>
   <p><strong>Example 2</strong>: Get a list of geographic granularities treated in the ISTAC-indicators database. For example provincial, insular or municipal granularity</p>
   <code>
     from istacpy.indicators import indicators
@@ -50,6 +51,7 @@
   <code>
     classifications.get_structuralresources_codelists()
   </code>
+  <br>
   <p><strong>Example 2</strong>: Get a list of geographic coordinate from Icod de los Vinos (Municipality)</p>
   <code>
     from istacpy.structuralresources import variables
@@ -71,6 +73,7 @@
   <code>
     cubes.get_statisticalresources_datasets()
   </code>
+  <br>
   <p><strong>Example 2</strong>: Get all the data sets maintained by a certain organization</p>
   <code>
     from istacpy.statisticalresources import cubes
