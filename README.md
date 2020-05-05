@@ -11,16 +11,16 @@
 
 <span align="center">
 
-<h3>How to install</h3>
-<div>
+<h3 align="center">How to install</h3>
+<div align="center">
   <code>
     pip install istacpy
   </code>
 </div>
 
-<h3>Access to indicators</h3>
-<p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/indicators/v1.0/">https://www3.gobiernodecanarias.org/istac/api/indicators/v1.0/</a></p>
-<div>
+<h3 align="center">Access to indicators</h3>
+<p align="center"> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/indicators/v1.0/">https://www3.gobiernodecanarias.org/istac/api/indicators/v1.0/</a></p>
+<div align="center">
   <p><strong>Example 1</strong>: Get a list of indicators published in the ISTAC-indicators database</p>
   <code>
     from istacpy.indicators import geographic<br>
@@ -33,9 +33,9 @@
   </code>
 </div>
 
-<h3>Access to structural resources</h3>
-<p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/</a></p>
-<div>
+<h3 align="center">Access to structural resources</h3>
+<p align="center"> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/</a></p>
+<div align="center">
   <p><strong>Example 1</strong>: Get a list of classifications</p>
   <code>
     from istacpy.structuralresources import classifications<br>
@@ -48,9 +48,9 @@
   </code>
 </div>
 
-<h3>Access to statistical resources</h3>
-<p> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/</a></p>
-<div>
+<h3 align="center">Access to statistical resources</h3>
+<p align="center"> API URL: <a href="https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/">https://www3.gobiernodecanarias.org/istac/api/statistical-resources/v1.0/</a></p>
+<div align="center">
   <p><strong>Example 1</strong>: Get all existing statistical data cubes</p>
   <code>
     from istacpy.statisticalresources import cubes<br>
@@ -68,6 +68,6 @@
 
 
 <span align="center">
-  <p>Latest <strong>version</strong> is istacpy-<strong>0.3</strong></p>
-  <p>Contact us at <a href="mailto:edatos.istac@gobiernodecanarias.org">Instituto Canario de Estadística (ISTAC)</a>
+  <p align="center">Latest <strong>version</strong> is istacpy-<strong>0.3</strong></p>
+  <p align="center">Contact us at <a href="mailto:edatos.istac@gobiernodecanarias.org">Instituto Canario de Estadística (ISTAC)</a>
 </span>
