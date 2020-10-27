@@ -1,0 +1,6 @@
+flake8  # linter
+black   # autoformatter
+rope    # rename symbols
+sphinx
+rstcheck
+sphinx_rtd_theme
