@@ -6,13 +6,21 @@ with open("README.md", "r") as fh:
 setup(
     name="istacpy",
     version="0.3",
-    packages=["istacpy.indicators", "istacpy.structuralresources", "istacpy.statisticalresources", "istacpy.resources"],
+    packages=[
+        "istacpy.indicators",
+        "istacpy.structuralresources",
+        "istacpy.statisticalresources",
+        "istacpy.resources",
+    ],
     url="https://www.gobiernodecanarias.org/istac/api/",
     download_url="https://github.com/eDatos/istacpy/raw/master/dist/istacpy-0.3.tar.gz",
     license="gpl-3.0",
     author="Instituto Canario de Estadistica (ISTAC)",
     author_email="consultas.istac@gobiernodecanarias.org",
-    description="Python package for obtaining open data from Instituto Canario de Estadistica (ISTAC)",
+    description=(
+        "Python package for obtaining open data "
+        "from Instituto Canario de Estadística (ISTAC)"
+    ),
     long_description=long_description,
     keywords=["istacpy", "ISTAC", "Instituto Canario de Estadistica", "API", "JSON"],
     install_requires=['requests'],
@@ -26,6 +34,6 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8'
-    ]
+        'Programming Language :: Python :: 3.8',
+    ],
 )

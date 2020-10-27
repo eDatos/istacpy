@@ -4,11 +4,12 @@ from istacpy.resources import resources
 def get_structuralresources_variable_families(limit=25, offset=0, query=None, orderby=None):
     """Get variable families
 
-    This function returns data from /v1.0/variablefamilies
+    This function returns data from ``/v1.0/variablefamilies``
 
     Args:
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -24,7 +25,16 @@ def get_structuralresources_variable_families(limit=25, offset=0, query=None, or
     # Build URL
     api = "structural-resources"
     path = "variablefamilies" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderBy="
+        + orderby
+    )
     path = path + params
     url = resources.get_url(api, path)
 
@@ -37,7 +47,7 @@ def get_structuralresources_variable_families(limit=25, offset=0, query=None, or
 def get_structuralresources_variable_families_id(id):
     """Get variable families (id)
 
-    This function returns data from /v1.0/variablefamilies/{id}
+    This function returns data from ``/v1.0/variablefamilies/{id}``
 
     Args:
         id (string): Variable family identificator.
@@ -57,15 +67,18 @@ def get_structuralresources_variable_families_id(id):
     return content
 
 
-def get_structuralresources_variable_families_id_variables(id, limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_variable_families_id_variables(
+    id, limit=25, offset=0, query=None, orderby=None
+):
     """Get variable families (id) variables
 
-    This function returns data from /v1.0/variablefamilies/{id}/variables
+    This function returns data from ``/v1.0/variablefamilies/{id}/variables``
 
     Args:
         id (string): Variable family identificator.
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -82,7 +95,16 @@ def get_structuralresources_variable_families_id_variables(id, limit=25, offset=
     api = "structural-resources"
     path = "variablefamilies"
     resource = id + "/variables" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderBy="
+        + orderby
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 
@@ -95,11 +117,12 @@ def get_structuralresources_variable_families_id_variables(id, limit=25, offset=
 def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=None):
     """Get variables
 
-    This function returns data from /v1.0/variables
+    This function returns data from ``/v1.0/variables``
 
     Args:
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -126,7 +149,7 @@ def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=No
 def get_structuralresources_variables_id(id):
     """Get variables (id)
 
-    This function returns data from /v1.0/variables/{id}
+    This function returns data from ``/v1.0/variables/{id}``
 
     Args:
         id (string): Variable identifier.
@@ -146,15 +169,18 @@ def get_structuralresources_variables_id(id):
     return content
 
 
-def get_structuralresources_variableelements(variableid, limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_variableelements(
+    variableid, limit=25, offset=0, query=None, orderby=None
+):
     """Get variableelements
 
-    This function returns data from /v1.0/variables/{variableID}/variableelements
+    This function returns data from ``/v1.0/variables/{variableID}/variableelements``
 
     Args:
         variableid (string) Variable identificator.
         limit (int) Results limit. By default ``limit = 25``.
-        offset (int) Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int) Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string) Query to filter the results.
         orderby (string) Field by which to sort the results.
 
@@ -171,7 +197,16 @@ def get_structuralresources_variableelements(variableid, limit=25, offset=0, que
     api = "structural-resources"
     path = "variables"
     resource = variableid + "/variableelements" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderBy="
+        + orderby
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 
@@ -184,7 +219,8 @@ def get_structuralresources_variableelements(variableid, limit=25, offset=0, que
 def get_structuralresources_variableelements_resource(variableid, resourceid):
     """Get variableelements resource
 
-    This function returns data from /v1.0/variables/{variableID}/variableelements/{resourceID}
+    This function returns data from
+    ``/v1.0/variables/{variableID}/variableelements/{resourceID}``
 
     Args:
         variableid (string): Resource identificator.
@@ -205,17 +241,21 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     return content
 
 
-def get_structuralresources_geoinfo(variableid, resourceid, fields="", limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_geoinfo(
+    variableid, resourceid, fields="", limit=25, offset=0, query=None, orderby=None
+):
     """Get geoinfo
 
-    This function returns data from /v1.0/variables/{variableID}/variableelements/{resourceID}/geoinfo
+    This function returns data from
+    ``/v1.0/variables/{variableID}/variableelements/{resourceID}/geoinfo``
 
     Args:
         variableid (string): Variable identificator.
         resourceid (string): Resource identificator.
         fields (string): Additional fields that you want to show in the answer.
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -235,8 +275,18 @@ def get_structuralresources_geoinfo(variableid, resourceid, fields="", limit=25,
     api = "structural-resources"
     path = "variables"
     resource = variableid + "/variableelements/" + resourceid + "/geoinfo" + ".json"
-    params = "?fields=" + fields + "&limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderBy=" \
-             + orderby
+    params = (
+        "?fields="
+        + fields
+        + "&limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderBy="
+        + orderby
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 

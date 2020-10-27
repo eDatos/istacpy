@@ -8,7 +8,8 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
 
     Args:
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         orderby (string): Field by which to sort the results.
         query (string): Query to filter the results.
 
@@ -24,7 +25,16 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
     # Build URL
     api = "structural-resources"
     path = "codelistfamilies" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&orderby=" + orderby + "&query=" + query
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&orderby="
+        + orderby
+        + "&query="
+        + query
+    )
     path = path + params
     url = resources.get_url(api, path)
 
@@ -64,7 +74,8 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
 
     Args:
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -80,7 +91,16 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
     # Build URL
     api = "structural-resources"
     path = "codelists" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderby="
+        + orderby
+    )
     path = path + params
     url = resources.get_url(api, path)
 
@@ -90,15 +110,19 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
     return content
 
 
-def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_codelists_agency(
+    agencyid, limit=25, offset=0, query=None, orderby=None
+):
     """Get codelists agency
 
-    This function allows obtaining the list of all the classifications maintained by a certain organization.
+    This function allows obtaining the list of all the classifications maintained by a
+    certain organization.
 
     Args:
         agencyid (string): Agency identificator.
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -116,7 +140,16 @@ def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query
     api = "structural-resources"
     path = "codelists"
     resource = agencyid + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderby="
+        + orderby
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 
@@ -126,18 +159,20 @@ def get_structuralresources_codelists_agency(agencyid, limit=25, offset=0, query
     return content
 
 
-def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limit=25, offset=0, query=None,
-                                                      orderby=None):
+def get_structuralresources_codelists_agency_resource(
+    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+):
     """Get codelists agency resource
 
-    This function allows to obtain all the versions of a classification with a certain identifier and that is also kept
-    by a certain organization.
+    This function allows to obtain all the versions of a classification with a certain
+    identifier and that is also kept by a certain organization.
 
     Args:
         agencyid (string): Agency identificator.
         resourceid (string): Resource identificator.
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
 
@@ -154,7 +189,16 @@ def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limi
     api = "structural-resources"
     path = "codelists"
     resource = agencyid + "/" + resourceid + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderby="
+        + orderby
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 
@@ -164,7 +208,9 @@ def get_structuralresources_codelists_agency_resource(agencyid, resourceid, limi
     return content
 
 
-def get_structuralresources_codelists_agency_resource_version(agencyid, resourceid, version):
+def get_structuralresources_codelists_agency_resource_version(
+    agencyid, resourceid, version
+):
     """Get codelists agency resource version
 
     This function allows you to consult a particular version of a classification.
@@ -175,7 +221,11 @@ def get_structuralresources_codelists_agency_resource_version(agencyid, resource
         version (string): Specific resource version.
 
     Examples:
-        >>> get_structuralresources_codelists_agency_resource_version("ISTAC", "CL_AREA_ES", "01.000")
+        >>> get_structuralresources_codelists_agency_resource_version(
+        ...     "ISTAC",
+        ...     "CL_AREA_ES",
+        ...     "01.000"
+        ... )
     """
     # Build URL
     api = "structural-resources"
@@ -189,21 +239,31 @@ def get_structuralresources_codelists_agency_resource_version(agencyid, resource
     return content
 
 
-def get_structuralresources_codelists_agency_resource_version_codes(agencyid, resourceid, version, limit=25, offset=0,
-                                                                    query=None, orderby=None, openness=None, order=None,
-                                                                    fields=None):
+def get_structuralresources_codelists_agency_resource_version_codes(
+    agencyid,
+    resourceid,
+    version,
+    limit=25,
+    offset=0,
+    query=None,
+    orderby=None,
+    openness=None,
+    order=None,
+    fields=None,
+):
     """Get codelists agency resource version codes
 
-    This function allows to consult the codes of a version of a classification. Note that if wildcards are used
-    as ``~all`` or one of the ``limit``, ``offset``, ``query`` or ``orderBy`` parameters,
-    the list will be automatically paginated.
+    This function allows to consult the codes of a version of a classification. Note that
+    if wildcards are used as ``~all`` or one of the ``limit``, ``offset``, ``query`` or
+    ``orderBy`` parameters, the list will be automatically paginated.
 
     Args:
         agencyid (string): Agency identificator.
         resourceid (string): Resource identificator.
         version (string): Specific resource version.
         limit (int): Results limit. By default ``limit = 25``.
-        offset (int): Displacement. Result from which it is returned.  By default ``offset = 0``.
+        offset (int): Displacement. Result from which it is returned. By default
+            ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
         openness (string): Opening established for viewing.
@@ -211,7 +271,11 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
         fields (string): Additional fields that you want to show in the answer.
 
     Examples:
-        >>> get_structuralresources_codelists_agency_resource_version_codes("ISTAC", "CL_AREA_ES", "01.000")
+        >>> get_structuralresources_codelists_agency_resource_version_codes(
+        ...     "ISTAC",
+        ...     "CL_AREA_ES",
+        ...     "01.000"
+        ... )
     """
     # Parse query
     query = resources.parse_param(query)
@@ -232,8 +296,22 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
     api = "structural-resources"
     path = "codelists"
     resource = agencyid + "/" + resourceid + "/" + version + "/codes" + ".json"
-    params = "?limit=" + str(limit) + "&offset=" + str(offset) + "&query=" + query + "&orderby=" + orderby + \
-             "&openness=" + openness + "&order=" + order + "&fields=" + fields
+    params = (
+        "?limit="
+        + str(limit)
+        + "&offset="
+        + str(offset)
+        + "&query="
+        + query
+        + "&orderby="
+        + orderby
+        + "&openness="
+        + openness
+        + "&order="
+        + order
+        + "&fields="
+        + fields
+    )
     resource = resource + params
     url = resources.get_url(api, path, resource)
 
@@ -243,7 +321,9 @@ def get_structuralresources_codelists_agency_resource_version_codes(agencyid, re
     return content
 
 
-def get_structuralresources_codelists_agency_resource_version_codes_codeid(agencyid, resourceid, version, codeid):
+def get_structuralresources_codelists_agency_resource_version_codes_codeid(
+    agencyid, resourceid, version, codeid
+):
     """Get codelists agency resource version codes (codeID)
 
     This function allows to consult a specific code of a version of a classification.

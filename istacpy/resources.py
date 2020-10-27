@@ -28,7 +28,10 @@ def parse_param(param):
 
 def get_content(url):
 
-    headers = {'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'}
+    headers = {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+    }
     try:
         # Get content
         r = requests.get(url, headers=headers)
