@@ -1,4 +1,7 @@
-*.pyc
 .vscode
 .DS_Store
-dist
+
+*.pyc
+dist/
+build/
+*.egg-info/
