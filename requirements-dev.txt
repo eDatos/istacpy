@@ -4,3 +4,4 @@ rope    # rename symbols
 sphinx
 rstcheck
 sphinx_rtd_theme
+sphinx-autobuild
