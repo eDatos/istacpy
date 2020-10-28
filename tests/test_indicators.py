@@ -13,6 +13,16 @@ def test_get_indicators():
     assert_valid_response(response)
 
 
+def test_get_indicators_with_args():
+    response = indicators.get_indicators(
+        q='id IN ("AFILIACIONES", "EMPLEO_REGISTRADO_AGRICULTURA")',
+        order='id ASC',
+        fields='+data',
+        representation='GEOGRAPHICAL[35003|35005], MEASURE[ABSOLUTE]',
+    )
+    assert_valid_response(response)
+
+
 def test_get_indicators_code():
     response = indicators.get_indicators_code('AFILIACIONES')
     assert_valid_response(response)
@@ -65,6 +75,17 @@ def test_get_systems_code():
 
 def test_get_indicators_systems_code_instances():
     response = systems.get_indicators_systems_code_instances('C00075H')
+    assert_valid_response(response)
+
+
+def test_get_indicators_systems_code_instances_with_args():
+    response = systems.get_indicators_systems_code_instances(
+        indicatorsystemcode='C00075H',
+        q='id EQ "INDICADORES_MUNICIPALES"',
+        order='id ASC',
+        fields='+data',
+        representation='GEOGRAPHICAL[35003|35005], MEASURE[ABSOLUTE]',
+    )
     assert_valid_response(response)
 
 
