@@ -1,8 +1,10 @@
+.PHONY: test
+
 init:
 	pip install -r requirements.txt
 
 test:
-	nosetests tests
+	pytest
 
 build:
 	python setup.py sdist bdist_wheel
