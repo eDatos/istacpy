@@ -35,7 +35,7 @@ def parse_param(param):
 def get_content(url):
 
     headers = {
-        'Content-Type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
     }
     content = None

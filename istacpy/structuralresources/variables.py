@@ -24,7 +24,7 @@ def get_structuralresources_variable_families(limit=25, offset=0, query=None, or
 
     # Build URL
     api = "structural-resources"
-    path = "variablefamilies" + ".json"
+    path = "variablefamilies"
     params = (
         "?limit="
         + str(limit)
@@ -58,7 +58,7 @@ def get_structuralresources_variable_families_id(id):
     # Build URL
     api = "structural-resources"
     path = "variablefamilies"
-    resource = id + ".json"
+    resource = id
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -94,7 +94,7 @@ def get_structuralresources_variable_families_id_variables(
     # Build URL
     api = "structural-resources"
     path = "variablefamilies"
-    resource = id + "/variables" + ".json"
+    resource = id + "/variables"
     params = (
         "?limit="
         + str(limit)
@@ -137,7 +137,7 @@ def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=No
 
     # Build URL
     api = "structural-resources"
-    path = "variables" + ".json"
+    path = "variables"
     url = resources.get_url(api, path)
 
     # Get content
@@ -160,7 +160,7 @@ def get_structuralresources_variables_id(id):
     # Build URL
     api = "structural-resources"
     path = "variables"
-    resource = id + ".json"
+    resource = id
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -196,7 +196,7 @@ def get_structuralresources_variableelements(
     # Build URL
     api = "structural-resources"
     path = "variables"
-    resource = variableid + "/variableelements" + ".json"
+    resource = variableid + "/variableelements"
     params = (
         "?limit="
         + str(limit)
@@ -232,7 +232,7 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     # Build URL
     api = "structural-resources"
     path = "variables"
-    resource = variableid + "/variableelements/" + resourceid + ".json"
+    resource = variableid + "/variableelements/" + resourceid
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -274,7 +274,7 @@ def get_structuralresources_geoinfo(
     # Build URL
     api = "structural-resources"
     path = "variables"
-    resource = variableid + "/variableelements/" + resourceid + "/geoinfo" + ".json"
+    resource = variableid + "/variableelements/" + resourceid + "/geoinfo"
     params = (
         "?fields="
         + fields

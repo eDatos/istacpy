@@ -24,7 +24,7 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
 
     # Build URL
     api = "structural-resources"
-    path = "codelistfamilies" + ".json"
+    path = "codelistfamilies"
     params = (
         "?limit="
         + str(limit)
@@ -44,7 +44,7 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
     return content
 
 
-def get_structuralresources_codelist_families_id(id=None):
+def get_structuralresources_codelist_families_id(id):
     """Get codelist families
 
     This function allows to obtain a family of classifications in particular.
@@ -53,12 +53,12 @@ def get_structuralresources_codelist_families_id(id=None):
         id (string): codelist family identificator
 
     Examples:
-        >>> get_structuralresources_codelist_families_id()
+        >>> get_structuralresources_codelist_families_id('CODELIST_ID')
     """
     # Build URL
     api = "structural-resources"
     path = "codelistfamilies"
-    resource = id + ".json"
+    resource = id
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -90,7 +90,7 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
 
     # Build URL
     api = "structural-resources"
-    path = "codelists" + ".json"
+    path = "codelists"
     params = (
         "?limit="
         + str(limit)
@@ -139,7 +139,7 @@ def get_structuralresources_codelists_agency(
     # Build URL
     api = "structural-resources"
     path = "codelists"
-    resource = agencyid + ".json"
+    resource = agencyid
     params = (
         "?limit="
         + str(limit)
@@ -188,7 +188,7 @@ def get_structuralresources_codelists_agency_resource(
     # Build URL
     api = "structural-resources"
     path = "codelists"
-    resource = agencyid + "/" + resourceid + ".json"
+    resource = agencyid + "/" + resourceid
     params = (
         "?limit="
         + str(limit)
@@ -230,7 +230,7 @@ def get_structuralresources_codelists_agency_resource_version(
     # Build URL
     api = "structural-resources"
     path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version + ".json"
+    resource = agencyid + "/" + resourceid + "/" + version
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -295,7 +295,7 @@ def get_structuralresources_codelists_agency_resource_version_codes(
     # Build URL
     api = "structural-resources"
     path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version + "/codes" + ".json"
+    resource = agencyid + "/" + resourceid + "/" + version + "/codes"
     params = (
         "?limit="
         + str(limit)
@@ -341,7 +341,7 @@ def get_structuralresources_codelists_agency_resource_version_codes_codeid(
     # Build URL
     api = "structural-resources"
     path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version + "/codes/" + codeid + ".json"
+    resource = agencyid + "/" + resourceid + "/" + version + "/codes/" + codeid
     url = resources.get_url(api, path, resource)
 
     # Get content

@@ -115,7 +115,10 @@ def get_structuralresources_content_constraints_agency_resource(
         orderby (string): Field by which to sort the results.
 
     Examples:
-        >>> get_structuralresources_content_constraints_agency_resource("ISTAC", "CL_AREA")
+        >>> get_structuralresources_content_constraints_agency_resource(
+        ...     "ISTAC",
+        ...     "CSM_C00010A_SIE"
+        ... )
     """
     # Parse query
     query = resources.parse_param(query)
@@ -162,7 +165,7 @@ def get_structuralresources_content_constraints_agency_resource_version(
     Examples:
         >>> get_structuralresources_content_constraints_agency_resource_version(
         ...     "ISTAC",
-        ...     "CL_AREA",
+        ...     "CSM_C00010A_SIE",
         ...     "01.000"
         ... )
     """
@@ -173,9 +176,9 @@ def get_structuralresources_content_constraints_agency_resource_version(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content
 
 
 def get_structuralresources_content_constraints_agency_resource_version_regions(
@@ -197,7 +200,7 @@ def get_structuralresources_content_constraints_agency_resource_version_regions(
         >>> get_structuralresources_content_constraints_agency_resource_version_regions(
         ...     "0001",
         ...     "ISTAC",
-        ...     "CL_AREA",
+        ...     "CSM_C00010A_SIE",
         ...     "01.000"
         ... )
     """
@@ -208,9 +211,9 @@ def get_structuralresources_content_constraints_agency_resource_version_regions(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content
 
 
 def get_structuralresources_data_structures(limit=25, offset=0, query=None, orderby=None):
@@ -324,7 +327,10 @@ def get_structuralresources_data_structures_agency_resource(
         orderby (string): Field by which to sort the results.
 
     Examples:
-        >>> get_structuralresources_data_structures_agency_resource("ISTAC", "CL_AREA")
+        >>> get_structuralresources_data_structures_agency_resource(
+        ...     "ISTAC",
+        ...     "DSD_C00010A_00001"
+        ... )
     """
 
     # Parse query
@@ -372,8 +378,8 @@ def get_structuralresources_data_structures_agency_resource_version(
     Examples:
         >>> get_structuralresources_data_structures_agency_resource_version(
         ...     "ISTAC",
-        ...     "CL_AREA",
-        ...     "01.000"
+        ...     "DSD_C00010A_00001",
+        ...     "01.001"
         ... )
     """
     # Build URL
@@ -383,6 +389,6 @@ def get_structuralresources_data_structures_agency_resource_version(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content

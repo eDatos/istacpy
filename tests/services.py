@@ -1,2 +1,4 @@
-def is_valid_response(response):
-    return all((isinstance(response, dict), 'kind' in response, 'selfLink' in response))
+def assert_valid_response(response):
+    assert isinstance(response, dict)
+    assert 'kind' in response
+    assert 'selfLink' in response

@@ -21,7 +21,7 @@ def get_statisticalresources_datasets(
     """
     # URL params
     api = "statistical-resources"
-    path = "datasets" + ".json"
+    path = "datasets"
 
     # Parse order
     orderby = resources.parse_param(orderby)
@@ -94,7 +94,7 @@ def get_statisticalresources_datasets_agency(
         + "&query="
         + query
     )
-    resource = agencyid + ".json" + params
+    resource = agencyid + params
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -152,7 +152,7 @@ def get_statisticalresources_datasets_agency_resource(
         + "&query="
         + query
     )
-    resource = agencyid + "/" + resourceid + ".json" + params
+    resource = agencyid + "/" + resourceid + params
     url = resources.get_url(api, path, resource)
 
     # Get content
@@ -199,7 +199,7 @@ def get_statisticalresources_datasets_agency_resource_version(
 
     # Build URL
     params = "?dim=" + dim + "&fields=" + fields + "&lang=" + lang
-    resource = agencyid + "/" + resourceid + "/" + version + ".json" + params
+    resource = agencyid + "/" + resourceid + "/" + version + params
     url = resources.get_url(api, path, resource)
 
     # Get content

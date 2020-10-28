@@ -138,7 +138,7 @@ def get_structuralresources_concept_schemes_agency_resource(
     Examples:
         >>> get_structuralresources_concept_schemes_agency_resource(
         ...     agencyid="ISTAC",
-        ...     resourceid="CL_AREA_ES"
+        ...     resourceid="CSM_C00010A_SIE"
         ... )
     """
     # Parse query
@@ -186,7 +186,7 @@ def get_structuralresources_concept_schemes_agency_resource_version(
     Examples:
         >>> get_structuralresources_concept_schemes_agency_resource_version(
         ...     gencyid="ISTAC",
-        ...     resourceid="CL_AREA",
+        ...     resourceid="CSM_C00010A_SIE",
         ...     version="01.000"
         ... )
     """
@@ -197,9 +197,9 @@ def get_structuralresources_concept_schemes_agency_resource_version(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content
 
 
 def get_structuralresources_concept_schemes_agency_resource_version_concepts(
@@ -223,7 +223,7 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
     Examples:
         >>> get_structuralresources_concept_schemes_agency_resource_version_concepts(
         ...     agencyid="ISTAC",
-        ...     resourceid="CL_AREA_ES",
+        ...     resourceid="CSM_C00010A_SIE",
         ...     version="01.000"
         ... )
     """
@@ -240,9 +240,9 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content
 
 
 def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
@@ -262,9 +262,9 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
     Examples:
         >>> get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
         ...     agencyid="ISTAC",
-        ...     resourceid="CL_AREA_ES",
+        ...     resourceid="CSM_C00010A_SIE",
         ...     version="01.000",
-        ...     conceptID = 0
+        ...     conceptID="ELECTORES"
         ... )
     """
     # Build URL
@@ -274,6 +274,6 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
     url = resources.get_url(api, path, resource)
 
     # Get content
-    # content = resources.get_content(url)
+    content = resources.get_content(url)
 
-    return url
+    return content

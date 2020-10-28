@@ -21,10 +21,10 @@ def get_structuralresources_categorisations(limit=25, offset=0, query=None, orde
         ... )
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -67,10 +67,10 @@ def get_structuralresources_categorisations_agency(
         >>> get_structuralresources_categorisations_agency("ISTAC")
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -115,10 +115,10 @@ def get_structuralresources_categorisations_agency_resource(
         >>> get_structuralresources_categorisations_agency_resource("ISTAC", "cat2")
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -195,10 +195,10 @@ def get_structuralresources_category_schemes(limit=25, offset=0, query=None, ord
         ... )
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -245,10 +245,10 @@ def get_structuralresources_category_schemes_agency(
         ...)
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -296,10 +296,10 @@ def get_structuralresources_category_schemes_agency_resource(
         ... )
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.parse_param(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.parse_param(orderby)
 
     # Build URL
     api = "structural-resources"
@@ -382,10 +382,10 @@ def get_structuralresources_category_schemes_agency_resource_version_categories(
         ... )
     """
     # Parse query
-    query = resources.resources.get_content(query)
+    query = resources.get_content(query)
 
     # Parse orderby
-    orderby = resources.resources.get_content(orderby)
+    orderby = resources.get_content(orderby)
 
     # Build URL
     api = "structural-resources"
