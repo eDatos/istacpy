@@ -6,7 +6,7 @@ import os
 from . import config
 
 
-def build_entrypoint_url(api, path, query={}):
+def build_entrypoint_url(api, path, **query):
     api_version = f'v{config.API_VERSION}'
     encoded_query = urllib.parse.urlencode(query)
     urlpath = os.path.join(api, api_version, path) + '?' + encoded_query
