@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'indicators'
+
 
 def get_indicators(q='', order='', limit=25, offset=0, fields='', representation=''):
     """Get indicators
@@ -33,10 +35,9 @@ def get_indicators(q='', order='', limit=25, offset=0, fields='', representation
         ... )
 
     """
-    api = 'indicators'
     path = 'indicators'
     url = services.build_entrypoint_url(
-        api,
+        API,
         path,
         q=q,
         order=order,
@@ -62,9 +63,8 @@ def get_indicators_code(indicatorcode):
         >>> get_indicators_code("AFILIACIONES")
         >>> get_indicators_code("PARO_REGISTRADO")
     """
-    api = 'indicators'
     path = os.path.join('indicators', indicatorcode)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -88,9 +88,8 @@ def get_indicators_code_data(indicatorcode, representation='', granularity='', f
     Examples:
         >>> get_indicators_code_data("AFILIACIONES")
     """
-    api = 'indicators'
     path = os.path.join('indicators', indicatorcode, 'data')
     url = services.build_entrypoint_url(
-        api, path, representation=representation, granularity=granularity, fields=fields
+        API, path, representation=representation, granularity=granularity, fields=fields
     )
     return services.get_content(url)

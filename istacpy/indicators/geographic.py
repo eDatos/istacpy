@@ -1,5 +1,7 @@
 from istacpy import services
 
+API = 'indicators'
+
 
 def get_indicators_geographic_granularities():
     """Get geographic granularities
@@ -10,10 +12,8 @@ def get_indicators_geographic_granularities():
     Examples:
         >>> get_indicators_geographic_granularities()
     """
-    # Build URL
-    api = 'indicators'
     path = 'geographicGranularities'
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -38,10 +38,9 @@ def get_indicators_geographical_values(
         ... systemcode="C00067A"
         )
     """
-    api = 'indicators'
     path = 'geographicalValues'
     url = services.build_entrypoint_url(
-        api,
+        API,
         path,
         geographicalGranularityCode=geographicalgranularitycode,
         subjectCode=subjectcode,
@@ -59,9 +58,8 @@ def get_indicators_subjects():
     Examples:
         >>> get_indicators_subjects()
     """
-    api = 'indicators'
     path = 'subjects'
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -75,7 +73,6 @@ def get_indicators_time_granularities():
     Examples:
         >>> get_indicators_time_granularities()
     """
-    api = 'indicators'
     path = 'timeGranularities'
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

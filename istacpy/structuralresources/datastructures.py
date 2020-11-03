@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'structural-resources'
+
 
 def get_structuralresources_content_constraints(limit=25, offset=0, query='', orderby=''):
     """Get content constraints
@@ -22,10 +24,9 @@ def get_structuralresources_content_constraints(limit=25, offset=0, query='', or
         ...     orderby="ID ASC"
         ... )
     """
-    api = 'structural-resources'
     path = 'contentConstraints'
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -48,10 +49,9 @@ def get_structuralresources_content_constraints_agency(
     Examples:
         >>> get_structuralresources_content_constraints_agency("ISTAC")
     """
-    api = 'structural-resources'
     path = os.path.join('contentConstraints', agencyid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -79,10 +79,9 @@ def get_structuralresources_content_constraints_agency_resource(
         ...     "CSM_C00010A_SIE"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('contentConstraints', agencyid, resourceid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -107,9 +106,8 @@ def get_structuralresources_content_constraints_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('contentConstraints', agencyid, resourceid, version)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -136,12 +134,11 @@ def get_structuralresources_content_constraints_agency_resource_version_regions(
         ...     "01.000"
         ... )
     """
-    api = 'structural-resources'
     path = "contentConstraints"
     path = os.path.join(
         'contentConstraints', agencyid, resourceid, version, 'regions', regioncode
     )
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -164,10 +161,9 @@ def get_structuralresources_data_structures(limit=25, offset=0, query='', orderb
         ...     orderby="ID ASC"
         ... )
     """
-    api = 'structural-resources'
     path = 'datastructures'
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -190,10 +186,9 @@ def get_structuralresources_data_structures_agency(
     Examples:
         >>> get_structuralresources_data_structures_agency("ISTAC")
     """
-    api = 'structural-resources'
     path = os.path.join('datastructures', agencyid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -220,10 +215,9 @@ def get_structuralresources_data_structures_agency_resource(
         ...     "DSD_C00010A_00001"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('datastructures', agencyid, resourceid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -248,7 +242,6 @@ def get_structuralresources_data_structures_agency_resource_version(
         ...     "01.001"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('datastructures', agencyid, resourceid, version)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'statistical-resources'
+
 
 def get_statisticalresources_datasets(lang='es', limit=25, offset=0, orderby='', query=''):
     """Get datasets
@@ -19,10 +21,9 @@ def get_statisticalresources_datasets(lang='es', limit=25, offset=0, orderby='',
     Examples:
         >>> get_statisticalresources_datasets()
     """
-    api = 'statistical-resources'
     path = 'datasets'
     url = services.build_entrypoint_url(
-        api, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
+        API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
     return services.get_content(url)
 
@@ -47,10 +48,9 @@ def get_statisticalresources_datasets_agency(
     Examples:
         >>> get_statisticalresources_datasets_agency(agencyid="ISTAC")
     """
-    api = 'statistical-resources'
     path = os.path.join('datasets', agencyid)
     url = services.build_entrypoint_url(
-        api, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
+        API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
     return services.get_content(url)
 
@@ -81,10 +81,9 @@ def get_statisticalresources_datasets_agency_resource(
         ... )
 
     """
-    api = 'statistical-resources'
     path = os.path.join('datasets', agencyid, resourceid)
     url = services.build_entrypoint_url(
-        api, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
+        API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
     return services.get_content(url)
 
@@ -115,8 +114,6 @@ def get_statisticalresources_datasets_agency_resource_version(
         ...     version="001.000"
         ... )
     """
-    # URL params
-    api = 'statistical-resources'
     path = os.path.join('datasets', agencyid, resourceid, version)
-    url = services.build_entrypoint_url(api, path, dim=dim, fields=fields, lang=lang)
+    url = services.build_entrypoint_url(API, path, dim=dim, fields=fields, lang=lang)
     return services.get_content(url)

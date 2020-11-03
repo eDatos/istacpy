@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'structural-resources'
+
 
 def get_structuralresources_concept_types():
     """Get concept types
@@ -11,9 +13,8 @@ def get_structuralresources_concept_types():
     Examples:
         >>> get_structuralresources_concept_types()
     """
-    api = 'structural-resources'
     path = 'conceptTypes'
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -36,10 +37,9 @@ def get_structuralresources_concept_schemes(limit=25, offset=0, query='', orderb
         ...     orderby="ID ASC"
         ... )
     """
-    api = 'structural-resources'
     path = 'conceptschemes'
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -67,10 +67,9 @@ def get_structuralresources_concept_schemes_agency(
         ...     orderby="ID ASC"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('conceptschemes', agencyid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -97,10 +96,9 @@ def get_structuralresources_concept_schemes_agency_resource(
         ...     resourceid="CSM_C00010A_SIE"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('conceptschemes', agencyid, resourceid)
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -125,10 +123,8 @@ def get_structuralresources_concept_schemes_agency_resource_version(
         ...     version="01.000"
         ... )
     """
-    # Build URL
-    api = 'structural-resources'
     path = os.path.join('conceptschemes', agencyid, resourceid, version)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -158,10 +154,9 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
         ...     version="01.000"
         ... )
     """
-    api = 'structural-resources'
     path = os.path.join('conceptschemes', agencyid, resourceid, version, 'concepts')
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby, fields=fields
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby, fields=fields
     )
     return services.get_content(url)
 
@@ -188,10 +183,8 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
         ...     conceptID="ELECTORES"
         ... )
     """
-    # Build URL
-    api = 'structural-resources'
     path = os.path.join(
         'conceptschemes', agencyid, resourceid, version, 'concepts', conceptid
     )
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

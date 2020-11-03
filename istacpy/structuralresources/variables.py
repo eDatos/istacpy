@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'structural-resources'
+
 
 def get_structuralresources_variable_families(limit=25, offset=0, query='', orderby=''):
     """Get variable families
@@ -18,10 +20,9 @@ def get_structuralresources_variable_families(limit=25, offset=0, query='', orde
     Examples:
         >>> get_structuralresources_variable_families()
     """
-    api = 'structural-resources'
     path = 'variablefamilies'
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -37,9 +38,8 @@ def get_structuralresources_variable_families_id(id):
     Examples:
         >>> get_structuralresources_variable_families_id("VRF_DEMOGRAFICAS")
     """
-    api = 'structural-resources'
     path = os.path.join('variablefamilies', id)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -61,10 +61,9 @@ def get_structuralresources_variable_families_id_variables(
     Examples:
         >>> get_structuralresources_variable_families_id_variables("VRF_DEMOGRAFICAS")
     """
-    api = 'structural-resources'
     path = os.path.join('variablefamilies', id, 'variables')
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -84,10 +83,9 @@ def get_structuralresources_variables(limit=25, offset=0, query='', orderby=''):
     Examples:
         >>> get_structuralresources_variables()
     """
-    api = 'structural-resources'
     path = 'variables'
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -103,9 +101,8 @@ def get_structuralresources_variables_id(id):
     Examples:
       >>> get_structuralresources_variables_id("VR_SEXO")
     """
-    api = 'structural-resources'
     path = os.path.join('variables', id)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -127,10 +124,9 @@ def get_structuralresources_variableelements(
     Examples:
         >>> get_structuralresources_variableelements("VR_SEXO")
     """
-    api = 'structural-resources'
     path = os.path.join('variables', variableid, 'variableelements')
     url = services.build_entrypoint_url(
-        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)
 
@@ -148,9 +144,8 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     Examples:
         >>> get_structuralresources_variableelements_resource("VR_SEXO", "FEMALE")
     """
-    api = 'structural-resources'
     path = os.path.join('variables', variableid, 'variableelements', resourceid)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -175,9 +170,8 @@ def get_structuralresources_geoinfo(
     Examples:
       >>> get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
     """
-    api = 'structural-resources'
     path = os.path.join('variables', variableid, 'variableelements', resourceid, 'geoinfo')
     url = services.build_entrypoint_url(
-        api, path, fields=fields, limit=limit, offset=offset, query=query, orderBy=orderby
+        API, path, fields=fields, limit=limit, offset=offset, query=query, orderBy=orderby
     )
     return services.get_content(url)

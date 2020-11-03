@@ -2,6 +2,8 @@ import os
 
 from istacpy import services
 
+API = 'indicators'
+
 
 def get_indicators_systems(limit=25, offset=0):
     """Get indicators systems
@@ -23,9 +25,8 @@ def get_indicators_systems(limit=25, offset=0):
         >>> get_indicators_systems()
 
     """
-    api = 'indicators'
     path = 'indicatorsSystems'
-    url = services.build_entrypoint_url(api, path, limit=limit, offset=offset)
+    url = services.build_entrypoint_url(API, path, limit=limit, offset=offset)
     return services.get_content(url)
 
 
@@ -43,9 +44,8 @@ def get_indicators_systems_code(indicatorsystemcode):
     Examples:
         >>> get_indicators_systems_code("C00075H")
     """
-    api = 'indicators'
     path = os.path.join('indicatorsSystems', indicatorsystemcode)
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -90,10 +90,9 @@ def get_indicators_systems_code_instances(
         ...     q='id EQ "INDICADORES_MUNICIPALES"'
         ... )
     """
-    api = 'indicators'
     path = os.path.join('indicatorsSystems', indicatorsystemcode, 'indicatorsInstances')
     url = services.build_entrypoint_url(
-        api,
+        API,
         path,
         q=q,
         order=order,
@@ -122,14 +121,13 @@ def get_indicators_systems_code_instances_code(indicatorsystemcode, indicatorins
         ...     "21af0477-d63b-493b-ad02-4ab181547223"
         ... )
     """
-    api = 'indicators'
     path = os.path.join(
         'indicatorsSystems',
         indicatorsystemcode,
         'indicatorsInstances',
         indicatorinstancecode,
     )
-    url = services.build_entrypoint_url(api, path)
+    url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
 
@@ -161,7 +159,6 @@ def get_indicators_systems_code_instances_code_data(
         ...     "21af0477-d63b-493b-ad02-4ab181547223"
         ... )
     """
-    api = 'indicators'
     path = os.path.join(
         'indicatorsSystems',
         indicatorsystemcode,
@@ -170,6 +167,6 @@ def get_indicators_systems_code_instances_code_data(
         'data',
     )
     url = services.build_entrypoint_url(
-        api, path, representation=representation, granularity=granularity, fields=fields
+        API, path, representation=representation, granularity=granularity, fields=fields
     )
     return services.get_content(url)
