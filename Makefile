@@ -11,3 +11,9 @@ build:
 
 clean:
 	rm -fr build istacpy.egg-info dist
+	rm -fr .coverage htmlcov/
+
+coverage:
+	coverage run -m pytest
+	coverage html
+	open htmlcov/index.html

@@ -1,0 +1,6 @@
+[run]
+source = .
+
+[report]
+skip_covered = True
+omit = setup.py

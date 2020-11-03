@@ -6,3 +6,4 @@ rstcheck
 sphinx_rtd_theme
 sphinx-autobuild
 pytest
+coverage
