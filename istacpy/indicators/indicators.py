@@ -1,7 +1,9 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
-def get_indicators(q="", order="", limit=25, offset=0, fields=None, representation=None):
+def get_indicators(q='', order='', limit=25, offset=0, fields='', representation=''):
     """Get indicators
 
     This function returns a list of indicators published in the ISTAC-indicators database.
@@ -31,57 +33,19 @@ def get_indicators(q="", order="", limit=25, offset=0, fields=None, representati
         ... )
 
     """
-    # URL params
-    api = "indicators"
-    path = "indicators"
-
-    # Parse order
-    order = resources.parse_param(order)
-
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Parse representation
-    representation = resources.parse_param(representation)
-
-    # Get indicators using query (q) parameter
-    if q is not None:
-        q = resources.parse_param(q)
-        params = (
-            "&order="
-            + order
-            + "&limit="
-            + str(limit)
-            + "&offset="
-            + str(offset)
-            + "&fields="
-            + fields
-            + "&representation="
-            + representation
-        )
-        path = path + "?q=" + q + params
-    else:
-        params = (
-            "?order="
-            + order
-            + "&limit="
-            + str(limit)
-            + "&offset="
-            + str(offset)
-            + "&fields="
-            + fields
-            + "&representation="
-            + representation
-        )
-        path = path + params
-
-    # Get URL
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'indicators'
+    url = services.build_entrypoint_url(
+        api,
+        path,
+        q=q,
+        order=order,
+        limit=limit,
+        offset=offset,
+        fields=fields,
+        representation=representation,
+    )
+    return services.get_content(url)
 
 
 def get_indicators_code(indicatorcode):
@@ -98,22 +62,13 @@ def get_indicators_code(indicatorcode):
         >>> get_indicators_code("AFILIACIONES")
         >>> get_indicators_code("PARO_REGISTRADO")
     """
-    # URL params
-    api = "indicators"
-    path = "indicators"
-
-    # Get URL
-    url = resources.get_url(api, path, resource=indicatorcode)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = os.path.join('indicators', indicatorcode)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
-def get_indicators_code_data(
-    indicatorcode, representation=None, granularity=None, fields=None
-):
+def get_indicators_code_data(indicatorcode, representation='', granularity='', fields=''):
     """Get indicators code data
 
     This function returns complete data (for all spacetime) of the indicator.
@@ -133,31 +88,9 @@ def get_indicators_code_data(
     Examples:
         >>> get_indicators_code_data("AFILIACIONES")
     """
-    # Parse representation
-    representation = resources.parse_param(representation)
-
-    # Parse granularity
-    granularity = resources.parse_param(granularity)
-
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Build URL
-    api = "indicators"
-    path = "indicators"
-    resource = (
-        indicatorcode
-        + "/data"
-        + "?representation="
-        + representation
-        + "&granularity="
-        + granularity
-        + "&fields="
-        + fields
+    api = 'indicators'
+    path = os.path.join('indicators', indicatorcode, 'data')
+    url = services.build_entrypoint_url(
+        api, path, representation=representation, granularity=granularity, fields=fields
     )
-    url = resources.get_url(api, path, resource=resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)

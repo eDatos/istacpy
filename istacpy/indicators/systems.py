@@ -1,4 +1,6 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
 def get_indicators_systems(limit=25, offset=0):
@@ -21,17 +23,10 @@ def get_indicators_systems(limit=25, offset=0):
         >>> get_indicators_systems()
 
     """
-    # Build URL
-    api = "indicators"
-    path = "indicatorsSystems"
-
-    path = path + "?limit=" + str(limit) + "&offset=" + str(offset)
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'indicatorsSystems'
+    url = services.build_entrypoint_url(api, path, limit=limit, offset=offset)
+    return services.get_content(url)
 
 
 def get_indicators_systems_code(indicatorsystemcode):
@@ -48,27 +43,21 @@ def get_indicators_systems_code(indicatorsystemcode):
     Examples:
         >>> get_indicators_systems_code("C00075H")
     """
-    # Build URL
-    api = "indicators"
-    path = "indicatorsSystems"
-    resource = indicatorsystemcode
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = os.path.join('indicatorsSystems', indicatorsystemcode)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_indicators_systems_code_instances(
     indicatorsystemcode,
-    q=None,
-    order=None,
+    q='',
+    order='',
     limit=25,
     offset=0,
-    fields=None,
-    representation=None,
-    granularity=None,
+    fields='',
+    representation='',
+    granularity='',
 ):
     """Get indicators system code instances
 
@@ -101,63 +90,20 @@ def get_indicators_systems_code_instances(
         ...     q='id EQ "INDICADORES_MUNICIPALES"'
         ... )
     """
-    # Parse order
-    order = resources.parse_param(order)
-
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Parse representation
-    representation = resources.parse_param(representation)
-
-    # Parse granularity
-    granularity = resources.parse_param(granularity)
-
-    # Build URL
-    api = "indicators"
-    path = "indicatorsSystems"
-    resource = indicatorsystemcode + "/indicatorsInstances"
-    if q is not None:
-        q = resources.parse_param(q)
-        params = (
-            "?q="
-            + q
-            + "&order="
-            + order
-            + "&limit="
-            + str(limit)
-            + "&offset="
-            + str(offset)
-            + "&fields="
-            + fields
-            + "&representation="
-            + representation
-            + "&granularity="
-            + granularity
-        )
-    else:
-        params = (
-            "?order="
-            + order
-            + "&limit="
-            + str(limit)
-            + "&offset="
-            + str(offset)
-            + "&fields="
-            + fields
-            + "&representation="
-            + representation
-            + "&granularity="
-            + granularity
-        )
-
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = os.path.join('indicatorsSystems', indicatorsystemcode, 'indicatorsInstances')
+    url = services.build_entrypoint_url(
+        api,
+        path,
+        q=q,
+        order=order,
+        limit=limit,
+        offset=offset,
+        fields=fields,
+        representation=representation,
+        granularity=granularity,
+    )
+    return services.get_content(url)
 
 
 def get_indicators_systems_code_instances_code(indicatorsystemcode, indicatorinstancecode):
@@ -176,24 +122,23 @@ def get_indicators_systems_code_instances_code(indicatorsystemcode, indicatorins
         ...     "21af0477-d63b-493b-ad02-4ab181547223"
         ... )
     """
-    # Build URL
-    api = "indicators"
-    path = "indicatorsSystems"
-    resource = indicatorsystemcode + "/indicatorsInstances/" + indicatorinstancecode
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = os.path.join(
+        'indicatorsSystems',
+        indicatorsystemcode,
+        'indicatorsInstances',
+        indicatorinstancecode,
+    )
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_indicators_systems_code_instances_code_data(
     indicatorsystemcode,
     indicatorinstancecode,
-    representation=None,
-    granularity=None,
-    fields=None,
+    representation='',
+    granularity='',
+    fields='',
 ):
     """Get indicators system code instances code data
 
@@ -216,33 +161,15 @@ def get_indicators_systems_code_instances_code_data(
         ...     "21af0477-d63b-493b-ad02-4ab181547223"
         ... )
     """
-    # Parse representation
-    representation = resources.parse_param(representation)
-
-    # Parse granularity
-    granularity = resources.parse_param(granularity)
-
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Build URL
-    api = "indicators"
-    path = "indicatorsSystems"
-    resource = (
-        indicatorsystemcode + "/indicatorsInstances/" + indicatorinstancecode + "/data"
+    api = 'indicators'
+    path = os.path.join(
+        'indicatorsSystems',
+        indicatorsystemcode,
+        'indicatorsInstances',
+        indicatorinstancecode,
+        'data',
     )
-    params = (
-        "?representation="
-        + representation
-        + "&granularity="
-        + granularity
-        + "&fields="
-        + fields
+    url = services.build_entrypoint_url(
+        api, path, representation=representation, granularity=granularity, fields=fields
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)

@@ -1,7 +1,9 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
-def get_structuralresources_categorisations(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_categorisations(limit=25, offset=0, query='', orderby=''):
     """Get categorisations
 
     This function returns the content from ``/v1.0/categorisations``
@@ -20,36 +22,16 @@ def get_structuralresources_categorisations(limit=25, offset=0, query=None, orde
         ...     orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categorisations"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'categorisations'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_categorisations_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get categorisations agency
 
@@ -66,37 +48,16 @@ def get_structuralresources_categorisations_agency(
     Examples:
         >>> get_structuralresources_categorisations_agency("ISTAC")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categorisations"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('categorisations', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_categorisations_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get categorisations agency resource
 
@@ -114,33 +75,12 @@ def get_structuralresources_categorisations_agency_resource(
     Examples:
         >>> get_structuralresources_categorisations_agency_resource("ISTAC", "cat2")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categorisations"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('categorisations', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_categorisations_agency_resource_version(
@@ -163,19 +103,13 @@ def get_structuralresources_categorisations_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
-    path = "categorisations"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('categorisations', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
-def get_structuralresources_category_schemes(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_category_schemes(limit=25, offset=0, query='', orderby=''):
     """Get category schemes
 
     This function returns the content from ``/v1.0/categoryschemes``
@@ -194,36 +128,16 @@ def get_structuralresources_category_schemes(limit=25, offset=0, query=None, ord
         ...    orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'categoryschemes'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_category_schemes_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get category schemes agency
 
@@ -244,37 +158,16 @@ def get_structuralresources_category_schemes_agency(
         ...     orderby="ID ASC"
         ...)
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('categoryschemes', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_category_schemes_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get category schemes agency resource
 
@@ -295,33 +188,12 @@ def get_structuralresources_category_schemes_agency_resource(
         ...     "TEMAS_CANARIAS"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('categoryschemes', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_category_schemes_agency_resource_version(
@@ -345,19 +217,14 @@ def get_structuralresources_category_schemes_agency_resource_version(
         ... )
     """
     # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('categoryschemes', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_category_schemes_agency_resource_version_categories(
-    agencyid, resourceid, version, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, version, limit=25, offset=0, query='', orderby=''
 ):
     """Get category schemes agency resource version categories
 
@@ -381,22 +248,12 @@ def get_structuralresources_category_schemes_agency_resource_version_categories(
         ...     "01.000"
         ... )
     """
-    # Parse query
-    query = resources.get_content(query)
-
-    # Parse orderby
-    orderby = resources.get_content(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    resource = agencyid + "/" + resourceid + "/" + version + "/categories"
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('categoryschemes', agencyid, resourceid, version, 'categories')
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+    )
+    return services.get_content(url)
 
 
 def get_structuralresources_category_schemes_agency_resource_version_categories_id(
@@ -427,13 +284,9 @@ def get_structuralresources_category_schemes_agency_resource_version_categories_
         ...     "060.060_010.060_010_010"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
-    path = "categoryschemes"
-    resource = agencyid + "/" + resourceid + "/" + version + "/categories/" + categoryid
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join(
+        'categoryschemes', agencyid, resourceid, version, 'categories', categoryid
+    )
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)

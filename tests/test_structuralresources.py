@@ -16,63 +16,82 @@ from .services import assert_valid_response
 
 
 def test_get_structuralresources_categorisations():
-    response = category.get_structuralresources_categorisations()
+    response = category.get_structuralresources_categorisations(
+        query='name LIKE "CAT"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_categorisations_agency():
-    response = category.get_structuralresources_categorisations_agency('ISTAC')
+    response = category.get_structuralresources_categorisations_agency(
+        agencyid='ISTAC', query='name LIKE "CAT"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_categorisations_agency_resource():
     response = category.get_structuralresources_categorisations_agency_resource(
-        'ISTAC', 'cat2'
+        agencyid='ISTAC', resourceid='cat2', query='name LIKE "CAT"', orderby='id ASC'
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_categorisations_agency_resource_version():
     response = category.get_structuralresources_categorisations_agency_resource_version(
-        'ISTAC', 'cat2', '01.000'
+        agencyid='ISTAC', resourceid='cat2', version='01.000'
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes():
-    response = category.get_structuralresources_category_schemes()
+    response = category.get_structuralresources_category_schemes(
+        query='name ILIKE "OPERACIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes_agency():
-    response = category.get_structuralresources_category_schemes_agency('ISTAC')
+    response = category.get_structuralresources_category_schemes_agency(
+        agencyid='ISTAC', query='name ILIKE "OPERACIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes_agency_resource():
     response = category.get_structuralresources_category_schemes_agency_resource(
-        'ISTAC', 'TEMAS_CANARIAS'
+        agencyid='ISTAC',
+        resourceid='TEMAS_CANARIAS',
+        query='name ILIKE "OPERACIONES"',
+        orderby='id ASC',
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes_agency_resource_version():
     response = category.get_structuralresources_category_schemes_agency_resource_version(
-        'ISTAC', 'TEMAS_CANARIAS', '01.000'
+        agencyid='ISTAC', resourceid='TEMAS_CANARIAS', version='01.000'
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes_agency_resource_version_categories():
     g = category.get_structuralresources_category_schemes_agency_resource_version_categories
-    response = g('ISTAC', 'TEMAS_CANARIAS', '01.000')
+    response = g(
+        agencyid='ISTAC',
+        resourceid='TEMAS_CANARIAS',
+        version='01.000',
+        query='name ILIKE "COMERCIO"',
+        orderby='id ASC',
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_category_schemes_agency_resource_version_categories_id():
     c = category
     g = c.get_structuralresources_category_schemes_agency_resource_version_categories_id
-    response = g('ISTAC', 'TEMAS_CANARIAS', '01.000', '060')
+    response = g(
+        agencyid='ISTAC', resourceid='TEMAS_CANARIAS', version='01.000', categoryid='060'
+    )
     assert_valid_response(response)
 
 
@@ -82,7 +101,9 @@ def test_get_structuralresources_category_schemes_agency_resource_version_catego
 
 
 def test_get_structuralresources_codelist_families():
-    response = classifications.get_structuralresources_codelist_families()
+    response = classifications.get_structuralresources_codelist_families(
+        orderby='id ASC', query='id EQ 2090'
+    )
     assert_valid_response(response)
 
 
@@ -93,25 +114,32 @@ def test_get_structuralresources_codelist_families_id():
 
 
 def test_get_structuralresources_codelists():
-    response = classifications.get_structuralresources_codelists()
+    response = classifications.get_structuralresources_codelists(
+        query='name ILIKE "AEROPUERTOS"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_codelists_agency():
-    response = classifications.get_structuralresources_codelists_agency('ISTAC')
+    response = classifications.get_structuralresources_codelists_agency(
+        agencyid='ISTAC', query='name ILIKE "AEROPUERTOS"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_codelists_agency_resource():
     response = classifications.get_structuralresources_codelists_agency_resource(
-        'ISTAC', 'CL_AREA_ES'
+        agencyid='ISTAC',
+        resourceid='CL_AEROPUERTOS',
+        query='name ILIKE "AEROPUERTOS"',
+        orderby='id ASC',
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_codelists_agency_resource_version():
     response = classifications.get_structuralresources_codelists_agency_resource_version(
-        'ISTAC', 'CL_AREA_ES', '01.000'
+        agencyid='ISTAC', resourceid='CL_AEROPUERTOS', version='01.002'
     )
     assert_valid_response(response)
 
@@ -119,7 +147,12 @@ def test_get_structuralresources_codelists_agency_resource_version():
 def test_get_structuralresources_codelists_agency_resource_version_codes():
     response = (
         classifications.get_structuralresources_codelists_agency_resource_version_codes(
-            'ISTAC', 'CL_AREA_ES', '01.000'
+            agencyid='ISTAC',
+            resourceid='CL_AEROPUERTOS',
+            version='01.002',
+            query='name ILIKE "AEROPUERTOS"',
+            orderby='id ASC',
+            fields='+open',
         )
     )
     assert_valid_response(response)
@@ -128,7 +161,7 @@ def test_get_structuralresources_codelists_agency_resource_version_codes():
 def test_get_structuralresources_codelists_agency_resource_version_codes_codeid():
     c = classifications
     response = c.get_structuralresources_codelists_agency_resource_version_codes_codeid(
-        'ISTAC', 'CL_AREA_ES', '01.000', 'ES706A01'
+        agencyid='ISTAC', resourceid='CL_AEROPUERTOS', version='01.002', codeid='ES_GCFV'
     )
     assert_valid_response(response)
 
@@ -145,25 +178,34 @@ def test_get_structuralresources_concept_types():
 
 
 def test_get_structuralresources_concept_schemes():
-    response = concepts.get_structuralresources_concept_schemes()
+    response = concepts.get_structuralresources_concept_schemes(
+        query='name ILIKE "TRANSPORTE"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_concept_schemes_agency():
-    response = concepts.get_structuralresources_concept_schemes_agency('ISTAC')
+    response = concepts.get_structuralresources_concept_schemes_agency(
+        agencyid='ISTAC', query='name ILIKE "TRANSPORTE"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_concept_schemes_agency_resource():
     response = concepts.get_structuralresources_concept_schemes_agency_resource(
-        'ISTAC', 'CSM_C00010A_SIE'
+        agencyid='ISTAC',
+        resourceid='CSM_C00017A',
+        query='name ILIKE "TRANSPORTE"',
+        orderby='id ASC',
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_concept_schemes_agency_resource_version():
     response = concepts.get_structuralresources_concept_schemes_agency_resource_version(
-        'ISTAC', 'CSM_C00010A_SIE', '01.000'
+        agencyid='ISTAC',
+        resourceid='CSM_C00017A',
+        version='01.000',
     )
     assert_valid_response(response)
 
@@ -171,7 +213,12 @@ def test_get_structuralresources_concept_schemes_agency_resource_version():
 def test_get_structuralresources_concept_schemes_agency_resource_version_concepts():
     response = (
         concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts(
-            'ISTAC', 'CSM_C00010A_SIE', '01.000'
+            agencyid='ISTAC',
+            resourceid='CSM_C00010A_SIE',
+            version='01.000',
+            query='name ILIKE "TASA"',
+            orderby='id ASC',
+            fields='+description',
         )
     )
     assert_valid_response(response)
@@ -180,7 +227,10 @@ def test_get_structuralresources_concept_schemes_agency_resource_version_concept
 def test_get_structuralresources_concept_schemes_agency_resource_version_concepts_id():
     c = concepts
     r = c.get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
-        'ISTAC', 'CSM_C00010A_SIE', '01.000', 'ELECTORES'
+        agencyid='ISTAC',
+        resourceid='CSM_C00010A_SIE',
+        version='01.000',
+        conceptid='ELECTORES',
     )
     assert_valid_response(r)
 
@@ -191,18 +241,25 @@ def test_get_structuralresources_concept_schemes_agency_resource_version_concept
 
 
 def test_get_structuralresources_content_constraints():
-    response = datastructures.get_structuralresources_content_constraints()
+    response = datastructures.get_structuralresources_content_constraints(
+        query='name ILIKE "AFILIACIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_content_constraints_agency():
-    response = datastructures.get_structuralresources_content_constraints_agency('ISTAC')
+    response = datastructures.get_structuralresources_content_constraints_agency(
+        agencyid='ISTAC', query='name ILIKE "AFILIACIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_content_constraints_agency_resource():
     response = datastructures.get_structuralresources_content_constraints_agency_resource(
-        'ISTAC', 'CSM_C00010A_SIE'
+        agencyid='ISTAC',
+        resourceid='CSM_C00010A_SIE',
+        query='name ILIKE "AFILIACIONES"',
+        orderby='id ASC',
     )
     assert_valid_response(response)
 
@@ -211,7 +268,7 @@ def test_get_structuralresources_content_constraints_agency_resource():
 def test_get_structuralresources_content_constraints_agency_resource_version():
     response = (
         datastructures.get_structuralresources_content_constraints_agency_resource_version(
-            'ISTAC', 'CSM_C00010A_SIE', '01.000'
+            agencyid='ISTAC', resourceid='CSM_C00010A_SIE', version='01.000'
         )
     )
     assert_valid_response(response)
@@ -222,25 +279,35 @@ def test_get_structuralresources_content_constraints_agency_resource_version_reg
     ds = datastructures
     response = (
         ds.get_structuralresources_content_constraints_agency_resource_version_regions(
-            '0001', 'ISTAC', 'CSM_C00010A_SIE', '01.000'
+            regioncode='0001',
+            agencyid='ISTAC',
+            resourceid='CSM_C00010A_SIE',
+            version='01.000',
         )
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_data_structures():
-    response = datastructures.get_structuralresources_data_structures()
+    response = datastructures.get_structuralresources_data_structures(
+        query='name ILIKE "ELECCIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_data_structures_agency():
-    response = datastructures.get_structuralresources_data_structures_agency('ISTAC')
+    response = datastructures.get_structuralresources_data_structures_agency(
+        agencyid='ISTAC', query='name ILIKE "ELECCIONES"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_data_structures_agency_resource():
     response = datastructures.get_structuralresources_data_structures_agency_resource(
-        'ISTAC', 'DSD_C00010A_00001'
+        agencyid='ISTAC',
+        resourceid='DSD_C00010A_00001',
+        query='name ILIKE "ELECCIONES"',
+        orderby='id ASC',
     )
     assert_valid_response(response)
 
@@ -248,7 +315,7 @@ def test_get_structuralresources_data_structures_agency_resource():
 def test_get_structuralresources_data_structures_agency_resource_version():
     response = (
         datastructures.get_structuralresources_data_structures_agency_resource_version(
-            'ISTAC', 'DSD_C00010A_00001', '01.001'
+            agencyid='ISTAC', resourceid='DSD_C00010A_00001', version='01.001'
         )
     )
     assert_valid_response(response)
@@ -260,46 +327,57 @@ def test_get_structuralresources_data_structures_agency_resource_version():
 
 
 def test_get_structuralresources_variable_families():
-    response = variables.get_structuralresources_variable_families()
+    response = variables.get_structuralresources_variable_families(
+        query='name ILIKE "SALUD"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variable_families_id():
-    response = variables.get_structuralresources_variable_families_id('VRF_DEMOGRAFICAS')
+    response = variables.get_structuralresources_variable_families_id(id='VRF_DEMOGRAFICAS')
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variable_families_id_variables():
     response = variables.get_structuralresources_variable_families_id_variables(
-        'VRF_DEMOGRAFICAS'
+        id='VRF_DEMOGRAFICAS', query='name ILIKE "EDAD"', orderby='id ASC'
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variables():
-    response = variables.get_structuralresources_variables()
+    response = variables.get_structuralresources_variables(
+        query='name ILIKE "IDIOMA"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variables_id():
-    response = variables.get_structuralresources_variables_id('VR_SEXO')
+    response = variables.get_structuralresources_variables_id(id='VR_IDIOMA')
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variableelements():
-    response = variables.get_structuralresources_variableelements('VR_SEXO')
+    response = variables.get_structuralresources_variableelements(
+        variableid='VR_SEXO', query='name ILIKE "MUJER"', orderby='id ASC'
+    )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_variableelements_resource():
     response = variables.get_structuralresources_variableelements_resource(
-        'VR_SEXO', 'FEMALE'
+        variableid='VR_SEXO', resourceid='FEMALE'
     )
     assert_valid_response(response)
 
 
 def test_get_structuralresources_geoinfo():
-    response = variables.get_structuralresources_geoinfo('VR_TERRITORIO', 'MUN_ICOD_VINOS')
+    response = variables.get_structuralresources_geoinfo(
+        variableid='VR_TERRITORIO',
+        resourceid='MUN_ICOD_VINOS',
+        fields='-geometry',
+        orderby='id ASC',
+    )
     assert isinstance(response, dict) is True
     assert 'type' in response
     assert 'features' in response

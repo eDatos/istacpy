@@ -4,24 +4,35 @@ from .services import assert_valid_response
 
 
 def test_get_statisticalresources_datasets():
-    response = cubes.get_statisticalresources_datasets()
+    response = cubes.get_statisticalresources_datasets(
+        orderby='id ASC', query='name ILIKE "PASAJEROS"'
+    )
     assert_valid_response(response)
 
 
 def test_get_statisticalresources_datasets_agency():
-    response = cubes.get_statisticalresources_datasets_agency('ISTAC')
+    response = cubes.get_statisticalresources_datasets_agency(
+        agencyid='ISTAC', orderby='id ASC', query='name ILIKE "PASAJEROS"'
+    )
     assert_valid_response(response)
 
 
 def test_get_statisticalresources_datasets_agency_resource():
     response = cubes.get_statisticalresources_datasets_agency_resource(
-        'ISTAC', 'C00010A_000002'
+        agencyid='ISTAC',
+        resourceid='C00017A_000001',
+        orderby='id ASC',
+        query='name ILIKE "PASAJEROS"',
     )
     assert_valid_response(response)
 
 
 def test_get_statisticalresources_datasets_agency_resource_version():
     response = cubes.get_statisticalresources_datasets_agency_resource_version(
-        'ISTAC', 'C00010A_000002', '001.000', 'TIME_PERIOD:2010'
+        agencyid='ISTAC',
+        resourceid='C00017A_000001',
+        version='2.2',
+        dim='TIME_PERIOD:2010',
+        fields='-metadata',
     )
     assert_valid_response(response)

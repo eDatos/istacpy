@@ -1,4 +1,6 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
 def get_structuralresources_concept_types():
@@ -9,18 +11,13 @@ def get_structuralresources_concept_types():
     Examples:
         >>> get_structuralresources_concept_types()
     """
-    # Build URL
-    api = "structural-resources"
-    path = "conceptTypes"
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = 'conceptTypes'
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
-def get_structuralresources_concept_schemes(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_concept_schemes(limit=25, offset=0, query='', orderby=''):
     """Get concept schemes
 
     This function returns the content from ``/v1.0/conceptschemes``
@@ -39,36 +36,16 @@ def get_structuralresources_concept_schemes(limit=25, offset=0, query=None, orde
         ...     orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'conceptschemes'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_concept_schemes_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get concept schemes agency
 
@@ -90,37 +67,16 @@ def get_structuralresources_concept_schemes_agency(
         ...     orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('conceptschemes', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_concept_schemes_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get concept schemes agency resource
 
@@ -141,33 +97,12 @@ def get_structuralresources_concept_schemes_agency_resource(
         ...     resourceid="CSM_C00010A_SIE"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('conceptschemes', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_concept_schemes_agency_resource_version(
@@ -191,19 +126,14 @@ def get_structuralresources_concept_schemes_agency_resource_version(
         ... )
     """
     # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('conceptschemes', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_concept_schemes_agency_resource_version_concepts(
-    agencyid, resourceid, version, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, version, limit=25, offset=0, query='', orderby='', fields=''
 ):
     """Get concept schemes agency resource version concepts
 
@@ -219,6 +149,7 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
             ``offset = 0``.
         query (string): Query to filter the results.
         orderby (string): Field by which to sort the results.
+        fields (string): Additional fields that you want to show in the answer.
 
     Examples:
         >>> get_structuralresources_concept_schemes_agency_resource_version_concepts(
@@ -227,22 +158,12 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
         ...     version="01.000"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    resource = agencyid + "/" + resourceid + "/" + version + "/concepts"
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('conceptschemes', agencyid, resourceid, version, 'concepts')
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby, fields=fields
+    )
+    return services.get_content(url)
 
 
 def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
@@ -268,12 +189,9 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
         ... )
     """
     # Build URL
-    api = "structural-resources"
-    path = "conceptschemes"
-    resource = agencyid + "/" + resourceid + "/" + version + "/concepts/" + conceptid
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join(
+        'conceptschemes', agencyid, resourceid, version, 'concepts', conceptid
+    )
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)

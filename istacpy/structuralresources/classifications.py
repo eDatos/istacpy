@@ -1,7 +1,9 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
-def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, query=None):
+def get_structuralresources_codelist_families(limit=25, offset=0, orderby='', query=''):
     """Get codelist families
 
     This function returns the list of families of classifications
@@ -16,32 +18,12 @@ def get_structuralresources_codelist_families(limit=25, offset=0, orderby=None, 
     Examples:
         >>> get_structuralresources_codelist_families()
     """
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Build URL
-    api = "structural-resources"
-    path = "codelistfamilies"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'codelistfamilies'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, orderBy=orderby, query=query
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_codelist_families_id(id):
@@ -56,18 +38,13 @@ def get_structuralresources_codelist_families_id(id):
         >>> get_structuralresources_codelist_families_id('CODELIST_ID')
     """
     # Build URL
-    api = "structural-resources"
-    path = "codelistfamilies"
-    resource = id
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('codelistfamilies', id)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
-def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_codelists(limit=25, offset=0, query='', orderby=''):
     """Get codelists
 
     This function allows to obtain the list of classifications.
@@ -82,36 +59,16 @@ def get_structuralresources_codelists(limit=25, offset=0, query=None, orderby=No
     Examples:
          >>> get_structuralresources_codelists()
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderby="
-        + orderby
+    api = 'structural-resources'
+    path = 'codelists'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_codelists_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get codelists agency
 
@@ -130,37 +87,16 @@ def get_structuralresources_codelists_agency(
         >>> get_structuralresources_codelists_agency("ISTAC")
         >>> get_structuralresources_codelists_agency("ESTAT")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderby="
-        + orderby
+    api = 'structural-resources'
+    path = os.path.join('codelists', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_codelists_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get codelists agency resource
 
@@ -179,33 +115,12 @@ def get_structuralresources_codelists_agency_resource(
     Examples:
         >>> get_structuralresources_codelists_agency_resource("ISTAC", "CL_AREA_ES")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderby="
-        + orderby
+    api = 'structural-resources'
+    path = os.path.join('codelists', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get Content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_codelists_agency_resource_version(
@@ -227,16 +142,10 @@ def get_structuralresources_codelists_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('codelists', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_codelists_agency_resource_version_codes(
@@ -245,11 +154,11 @@ def get_structuralresources_codelists_agency_resource_version_codes(
     version,
     limit=25,
     offset=0,
-    query=None,
-    orderby=None,
-    openness=None,
-    order=None,
-    fields=None,
+    query='',
+    orderby='',
+    openness='',
+    order='',
+    fields='',
 ):
     """Get codelists agency resource version codes
 
@@ -277,48 +186,20 @@ def get_structuralresources_codelists_agency_resource_version_codes(
         ...     "01.000"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Parse openness
-    openness = resources.parse_param(openness)
-
-    # Parse order
-    order = resources.parse_param(order)
-
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version + "/codes"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderby="
-        + orderby
-        + "&openness="
-        + openness
-        + "&order="
-        + order
-        + "&fields="
-        + fields
+    api = 'structural-resources'
+    path = os.path.join('codelists', agencyid, resourceid, version, 'codes')
+    url = services.build_entrypoint_url(
+        api,
+        path,
+        limit=limit,
+        offset=offset,
+        query=query,
+        orderBy=orderby,
+        openness=openness,
+        order=order,
+        fields=fields,
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_codelists_agency_resource_version_codes_codeid(
@@ -339,12 +220,7 @@ def get_structuralresources_codelists_agency_resource_version_codes_codeid(
             "ISTAC", "CL_AREA_ES", "01.000", "ES706A01")
     """
     # Build URL
-    api = "structural-resources"
-    path = "codelists"
-    resource = agencyid + "/" + resourceid + "/" + version + "/codes/" + codeid
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('codelists', agencyid, resourceid, version, 'codes', codeid)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)

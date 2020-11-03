@@ -1,28 +1,24 @@
-from istacpy.resources import resources
+from istacpy import services
 
 
 def get_indicators_geographic_granularities():
     """Get geographic granularities
 
-    This function returns a list of geographic granularities treated in the ISTAC-indicators
-    database. For example provincial, insular or municipal granularity.
+    This function returns a list of geographic granularities treated in the
+    ISTAC-indicators database. For example provincial, insular or municipal granularity.
 
     Examples:
         >>> get_indicators_geographic_granularities()
     """
     # Build URL
-    api = "indicators"
-    path = "geographicGranularities"
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'geographicGranularities'
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_indicators_geographical_values(
-    geographicalgranularitycode, subjectcode=None, systemcode=None
+    geographicalgranularitycode, subjectcode='', systemcode=''
 ):
     """Get geographical values
 
@@ -42,46 +38,16 @@ def get_indicators_geographical_values(
         ... systemcode="C00067A"
         )
     """
-    # Build URL
-    api = "indicators"
-    path = "geographicalValues"
-    if subjectcode is not None:
-        if systemcode is not None:
-            path = (
-                path
-                + "?subjectCode="
-                + subjectcode
-                + "&systemCode="
-                + systemcode
-                + "&geographicalGranularityCode="
-                + geographicalgranularitycode
-            )
-        else:
-            path = (
-                path
-                + "?subjectCode="
-                + subjectcode
-                + "&geographicalGranularityCode="
-                + geographicalgranularitycode
-            )
-    else:
-        if systemcode is not None:
-            path = (
-                path
-                + "?systemCode="
-                + systemcode
-                + "&geographicalGranularityCode="
-                + geographicalgranularitycode
-            )
-        else:
-            path = path + "?geographicalGranularityCode=" + geographicalgranularitycode
-
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'geographicalValues'
+    url = services.build_entrypoint_url(
+        api,
+        path,
+        geographicalGranularityCode=geographicalgranularitycode,
+        subjectCode=subjectcode,
+        systemCode=systemcode,
+    )
+    return services.get_content(url)
 
 
 def get_indicators_subjects():
@@ -93,15 +59,10 @@ def get_indicators_subjects():
     Examples:
         >>> get_indicators_subjects()
     """
-    # Build URL
-    api = "indicators"
-    path = "subjects"
-
-    # Get content
-    url = resources.get_url(api, path)
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'subjects'
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_indicators_time_granularities():
@@ -114,12 +75,7 @@ def get_indicators_time_granularities():
     Examples:
         >>> get_indicators_time_granularities()
     """
-    # Build URL
-    api = "indicators"
-    path = "timeGranularities"
-
-    # Get content
-    url = resources.get_url(api, path)
-    content = resources.get_content(url)
-
-    return content
+    api = 'indicators'
+    path = 'timeGranularities'
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)

@@ -1,9 +1,9 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
-def get_structuralresources_content_constraints(
-    limit=25, offset=0, query=None, orderby=None
-):
+def get_structuralresources_content_constraints(limit=25, offset=0, query='', orderby=''):
     """Get content constraints
 
     This function returns the content from ``/v1.0/contentConstraints``
@@ -22,36 +22,16 @@ def get_structuralresources_content_constraints(
         ...     orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "contentConstraints"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'contentConstraints'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_content_constraints_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get content constraints agency
 
@@ -68,37 +48,16 @@ def get_structuralresources_content_constraints_agency(
     Examples:
         >>> get_structuralresources_content_constraints_agency("ISTAC")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "contentConstraints"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('contentConstraints', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_content_constraints_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get content constraints agency resource
 
@@ -120,33 +79,12 @@ def get_structuralresources_content_constraints_agency_resource(
         ...     "CSM_C00010A_SIE"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "contentConstraints"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('contentConstraints', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_content_constraints_agency_resource_version(
@@ -169,16 +107,10 @@ def get_structuralresources_content_constraints_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
-    path = "contentConstraints"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('contentConstraints', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_content_constraints_agency_resource_version_regions(
@@ -204,19 +136,16 @@ def get_structuralresources_content_constraints_agency_resource_version_regions(
         ...     "01.000"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
+    api = 'structural-resources'
     path = "contentConstraints"
-    resource = agencyid + "/" + resourceid + "/" + version + "/regions/" + regioncode
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    path = os.path.join(
+        'contentConstraints', agencyid, resourceid, version, 'regions', regioncode
+    )
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
-def get_structuralresources_data_structures(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_data_structures(limit=25, offset=0, query='', orderby=''):
     """Get data structures
 
     This function returns the content from ``/v1.0/datastructures``
@@ -235,36 +164,16 @@ def get_structuralresources_data_structures(limit=25, offset=0, query=None, orde
         ...     orderby="ID ASC"
         ... )
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "datastructures"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = 'datastructures'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_data_structures_agency(
-    agencyid, limit=25, offset=0, query=None, orderby=None
+    agencyid, limit=25, offset=0, query='', orderby=''
 ):
     """Get data structures agency
 
@@ -281,37 +190,16 @@ def get_structuralresources_data_structures_agency(
     Examples:
         >>> get_structuralresources_data_structures_agency("ISTAC")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "datastructures"
-    resource = agencyid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('datastructures', agencyid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_data_structures_agency_resource(
-    agencyid, resourceid, limit=25, offset=0, query=None, orderby=None
+    agencyid, resourceid, limit=25, offset=0, query='', orderby=''
 ):
     """Get data structures agency resource
 
@@ -332,34 +220,12 @@ def get_structuralresources_data_structures_agency_resource(
         ...     "DSD_C00010A_00001"
         ... )
     """
-
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderby
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "datastructures"
-    resource = agencyid + "/" + resourceid
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&orderby="
-        + orderby
-        + "&query="
-        + query
+    api = 'structural-resources'
+    path = os.path.join('datastructures', agencyid, resourceid)
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_data_structures_agency_resource_version(
@@ -382,13 +248,7 @@ def get_structuralresources_data_structures_agency_resource_version(
         ...     "01.001"
         ... )
     """
-    # Build URL
-    api = "structural-resources"
-    path = "datastructures"
-    resource = agencyid + "/" + resourceid + "/" + version
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('datastructures', agencyid, resourceid, version)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)

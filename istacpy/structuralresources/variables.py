@@ -1,7 +1,9 @@
-from istacpy.resources import resources
+import os
+
+from istacpy import services
 
 
-def get_structuralresources_variable_families(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_variable_families(limit=25, offset=0, query='', orderby=''):
     """Get variable families
 
     This function returns data from ``/v1.0/variablefamilies``
@@ -16,32 +18,12 @@ def get_structuralresources_variable_families(limit=25, offset=0, query=None, or
     Examples:
         >>> get_structuralresources_variable_families()
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderBy
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "variablefamilies"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderBy="
-        + orderby
+    api = 'structural-resources'
+    path = 'variablefamilies'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    path = path + params
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_variable_families_id(id):
@@ -55,20 +37,14 @@ def get_structuralresources_variable_families_id(id):
     Examples:
         >>> get_structuralresources_variable_families_id("VRF_DEMOGRAFICAS")
     """
-    # Build URL
-    api = "structural-resources"
-    path = "variablefamilies"
-    resource = id
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('variablefamilies', id)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_variable_families_id_variables(
-    id, limit=25, offset=0, query=None, orderby=None
+    id, limit=25, offset=0, query='', orderby=''
 ):
     """Get variable families (id) variables
 
@@ -85,36 +61,15 @@ def get_structuralresources_variable_families_id_variables(
     Examples:
         >>> get_structuralresources_variable_families_id_variables("VRF_DEMOGRAFICAS")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderBy
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "variablefamilies"
-    resource = id + "/variables"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderBy="
-        + orderby
+    api = 'structural-resources'
+    path = os.path.join('variablefamilies', id, 'variables')
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
-def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=None):
+def get_structuralresources_variables(limit=25, offset=0, query='', orderby=''):
     """Get variables
 
     This function returns data from ``/v1.0/variables``
@@ -129,21 +84,12 @@ def get_structuralresources_variables(limit=25, offset=0, query=None, orderby=No
     Examples:
         >>> get_structuralresources_variables()
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderBy
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "variables"
-    url = resources.get_url(api, path)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = 'variables'
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
+    )
+    return services.get_content(url)
 
 
 def get_structuralresources_variables_id(id):
@@ -157,20 +103,14 @@ def get_structuralresources_variables_id(id):
     Examples:
       >>> get_structuralresources_variables_id("VR_SEXO")
     """
-    # Build URL
-    api = "structural-resources"
-    path = "variables"
-    resource = id
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('variables', id)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_variableelements(
-    variableid, limit=25, offset=0, query=None, orderby=None
+    variableid, limit=25, offset=0, query='', orderby=''
 ):
     """Get variableelements
 
@@ -187,33 +127,12 @@ def get_structuralresources_variableelements(
     Examples:
         >>> get_structuralresources_variableelements("VR_SEXO")
     """
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderBy
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "variables"
-    resource = variableid + "/variableelements"
-    params = (
-        "?limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderBy="
-        + orderby
+    api = 'structural-resources'
+    path = os.path.join('variables', variableid, 'variableelements')
+    url = services.build_entrypoint_url(
+        api, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
 
 
 def get_structuralresources_variableelements_resource(variableid, resourceid):
@@ -229,20 +148,14 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     Examples:
         >>> get_structuralresources_variableelements_resource("VR_SEXO", "FEMALE")
     """
-    # Build URL
-    api = "structural-resources"
-    path = "variables"
-    resource = variableid + "/variableelements/" + resourceid
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    api = 'structural-resources'
+    path = os.path.join('variables', variableid, 'variableelements', resourceid)
+    url = services.build_entrypoint_url(api, path)
+    return services.get_content(url)
 
 
 def get_structuralresources_geoinfo(
-    variableid, resourceid, fields="", limit=25, offset=0, query=None, orderby=None
+    variableid, resourceid, fields='', limit=25, offset=0, query='', orderby=''
 ):
     """Get geoinfo
 
@@ -262,35 +175,9 @@ def get_structuralresources_geoinfo(
     Examples:
       >>> get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
     """
-    # Parse fields
-    fields = resources.parse_param(fields)
-
-    # Parse query
-    query = resources.parse_param(query)
-
-    # Parse orderBy
-    orderby = resources.parse_param(orderby)
-
-    # Build URL
-    api = "structural-resources"
-    path = "variables"
-    resource = variableid + "/variableelements/" + resourceid + "/geoinfo"
-    params = (
-        "?fields="
-        + fields
-        + "&limit="
-        + str(limit)
-        + "&offset="
-        + str(offset)
-        + "&query="
-        + query
-        + "&orderBy="
-        + orderby
+    api = 'structural-resources'
+    path = os.path.join('variables', variableid, 'variableelements', resourceid, 'geoinfo')
+    url = services.build_entrypoint_url(
+        api, path, fields=fields, limit=limit, offset=offset, query=query, orderBy=orderby
     )
-    resource = resource + params
-    url = resources.get_url(api, path, resource)
-
-    # Get content
-    content = resources.get_content(url)
-
-    return content
+    return services.get_content(url)
