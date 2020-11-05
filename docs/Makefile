@@ -2,11 +2,11 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-SOURCEDIR     = source
-BUILDDIR      = build
-ALLSPHINXOPTS = --watch ../indicators --watch ../resources --watch ../statisticalresources --watch ../structuralresources
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
+SOURCEDIR     = .
+BUILDDIR      = _build
+ALLSPHINXOPTS = --watch ../istacpy/indicators --watch ../istacpy/statisticalresources --watch ../istacpy/structuralresources
 
 # Put it first so that "make" without argument is like "make help".
 help:

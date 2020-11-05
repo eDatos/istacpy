@@ -4,6 +4,7 @@
 *.pyc
 dist/
 build/
+_build/
 *.egg-info/
 .coverage
 htmlcov
