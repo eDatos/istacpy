@@ -16,6 +16,7 @@ setup(
         'from Instituto Canario de Estadística (ISTAC)'
     ),
     long_description=long_description,
+    long_description_content_type='text/markdown',
     keywords=['istacpy', 'ISTAC', 'Instituto Canario de Estadistica', 'API', 'JSON'],
     install_requires=['requests'],
     python_requires='>=3.6',
