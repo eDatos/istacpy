@@ -2,6 +2,18 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.4.0 (2020-11-09)
+
+- Refactor functions.
+- Improve makefile.
+- Restructure documentation.
+- Add tests.
+- Add coverage.
+- Fix code to pass Flake8.
+- Add changelog.
+- Add logo.
+- Improve README.
+
 ## istacpy 0.3.0 (2020-04-24)
 
 - Fix parameters on some indicators functions.
