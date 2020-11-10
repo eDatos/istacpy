@@ -1,4 +1,4 @@
-![Logo istacpy](istacpy-logo.svg)
+![Logo istacpy](https://raw.githubusercontent.com/eDatos/istacpy/master/istacpy-logo.svg)
 
 `istacpy` is a Python package for obtaining open data from [Instituto Canario de Estadística (ISTAC)](http://www.gobiernodecanarias.org/istac/). It provides a wrapper to the [open API catalog](https://www3.gobiernodecanarias.org/aplicaciones/appsistac/api).
 
