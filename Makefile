@@ -17,3 +17,9 @@ coverage:
 	coverage run -m pytest
 	coverage html
 	open htmlcov/index.html
+
+test-publish:
+	twine upload --repository testpypi dist/*
+
+publish:
+	twine upload dist/*
