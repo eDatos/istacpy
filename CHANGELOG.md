@@ -2,6 +2,11 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.4.1 (2020-11-10)
+
+- Improve documentation.
+- Add twine for publishing purposes.
+
 ## istacpy 0.4.0 (2020-11-09)
 
 - Refactor functions.
