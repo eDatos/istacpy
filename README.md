@@ -41,7 +41,7 @@ cubes.get_statisticalresources_datasets()
 
 ```python
 from istacpy.statisticalresources import cubes
-cubes.get_statisticalresources_datasets_agency(agencyid = 'ISTAC')
+cubes.get_statisticalresources_datasets_agency(agencyid='ISTAC')
 ```
 
 ### Structural resources
