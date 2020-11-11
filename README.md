@@ -62,7 +62,7 @@ variables.get_structuralresources_geoinfo('VR_TERRITORIO', 'MUN_ICOD_VINOS')
 
 ## Documentation
 
-For a full documentation of all available functions within the package, please see [index.rst](docs/index.rst).
+For a full documentation of all available functions within the package, please see http://istacpy.readthedocs.io/
 
 ## Bugs/Requests
 
