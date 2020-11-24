@@ -14,7 +14,7 @@ def parse_geographical_query(query):
             items_geocodes.extend(geocodes)
     else:
         items_geocodes = []
-    return geographical_granularity, ','.join(items_geocodes)
+    return geographical_granularity, '|'.join(items_geocodes)
 
 
 def parse_time_query(query):
@@ -24,7 +24,7 @@ def parse_time_query(query):
         time_codes = re.split(r'\s*,\s*', parts[1])
     else:
         time_codes = []
-    return time_granularity, ','.join(time_codes)
+    return time_granularity, '|'.join(time_codes)
 
 
 def parse_measure_query(query):
