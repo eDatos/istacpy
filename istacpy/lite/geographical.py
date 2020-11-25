@@ -1,5 +1,8 @@
-ISLANDS = {
+GEOCODES = {
     'GRAN CANARIA': {
+        'ISLANDS': {
+            'ES705': 'GRAN CANARIA',
+        },
         'COUNTIES': {
             'ES705A11': 'GRAN CANARIA - ÁREA METROPOLITANA',
             'ES705A21': 'GRAN CANARIA NORTE - CENTRO NORTE',
@@ -33,6 +36,9 @@ ISLANDS = {
         },
     },
     'TENERIFE': {
+        'ISLANDS': {
+            'ES709': 'TENERIFE',
+        },
         'COUNTIES': {
             'ES709A11': 'TENERIFE - ÁREA METROPOLITANA',
             'ES709A21': 'TENERIFE NORTE - ACENTEJO',
@@ -78,6 +84,9 @@ ISLANDS = {
         },
     },
     'EL HIERRO': {
+        'ISLANDS': {
+            'ES703': 'EL HIERRO',
+        },
         'COUNTIES': {'ES703A00': 'EL HIERRO - EL HIERRO'},
         'MUNICIPALITIES': {
             '38013': 'FRONTERA',
@@ -86,6 +95,9 @@ ISLANDS = {
         },
     },
     'LA GOMERA': {
+        'ISLANDS': {
+            'ES706': 'LA GOMERA',
+        },
         'COUNTIES': {'ES706A01': 'LA GOMERA - NORTE', 'ES706A02': 'LA GOMERA - SUR'},
         'MUNICIPALITIES': {
             '38002': 'AGULO',
@@ -97,6 +109,9 @@ ISLANDS = {
         },
     },
     'LA PALMA': {
+        'ISLANDS': {
+            'ES707': 'LA PALMA',
+        },
         'COUNTIES': {
             'ES707A01': 'LA PALMA - CAPITALINA',
             'ES707A02': 'LA PALMA - NORESTE',
@@ -121,6 +136,9 @@ ISLANDS = {
         },
     },
     'FUERTEVENTURA': {
+        'ISLANDS': {
+            'ES704': 'FUERTEVENTURA',
+        },
         'COUNTIES': {
             'ES704A01': 'FUERTEVENTURA - CENTRO',
             'ES704A02': 'FUERTEVENTURA - NORTE',
@@ -136,6 +154,9 @@ ISLANDS = {
         },
     },
     'LANZAROTE': {
+        'ISLANDS': {
+            'ES708': 'LANZAROTE',
+        },
         'COUNTIES': {
             'ES708A01': 'Lanzarote - Este',
             'ES708A02': 'Lanzarote - Norte',
@@ -153,7 +174,24 @@ ISLANDS = {
     },
 }
 
+FLATTENED_GEOCODES = {}
+for granularity in GEOCODES.values():
+    for items in granularity.values():
+        FLATTENED_GEOCODES.update(items)
+
+FLATTENED_GEOCODES_BY_TITLE = {}
+for geocode, title in FLATTENED_GEOCODES.items():
+    FLATTENED_GEOCODES_BY_TITLE[title] = geocode
+
 
 def get_codes(island, scope):
-    locations = ISLANDS[island][scope]
+    locations = GEOCODES[island][scope]
     return locations.keys()
+
+
+def get_title(geocode):
+    return FLATTENED_GEOCODES[geocode]
+
+
+def get_code(title):
+    return FLATTENED_GEOCODES_BY_TITLE[title]
