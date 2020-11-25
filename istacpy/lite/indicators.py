@@ -11,9 +11,11 @@ def get_data(indicator, *, geo='M', time='Y', measure='A'):
     representation = services.build_api_representation(geo_codes, time_codes, measure_code)
     granularity = services.build_api_granularity(geographical_granularity, time_granularity)
 
-    return get_indicators_code_data(
+    response = get_indicators_code_data(
         indicator,
         representation=representation,
         granularity=granularity,
         fields='-observationsMetadata',
     )
+
+    return services.build_custom_response(response)
