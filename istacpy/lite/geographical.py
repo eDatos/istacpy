@@ -3,6 +3,9 @@ GEOCODES = {
         'ISLANDS': {
             'ES705': 'GRAN CANARIA',
         },
+        'PROVINCES': {
+            'ES701': 'LAS PALMAS',
+        },
         'COUNTIES': {
             'ES705A11': 'GRAN CANARIA - ÁREA METROPOLITANA',
             'ES705A21': 'GRAN CANARIA NORTE - CENTRO NORTE',
@@ -38,6 +41,9 @@ GEOCODES = {
     'TENERIFE': {
         'ISLANDS': {
             'ES709': 'TENERIFE',
+        },
+        'PROVINCES': {
+            'ES702': 'SANTA CRUZ DE TENERIFE',
         },
         'COUNTIES': {
             'ES709A11': 'TENERIFE - ÁREA METROPOLITANA',
@@ -87,6 +93,9 @@ GEOCODES = {
         'ISLANDS': {
             'ES703': 'EL HIERRO',
         },
+        'PROVINCES': {
+            'ES702': 'SANTA CRUZ DE TENERIFE',
+        },
         'COUNTIES': {'ES703A00': 'EL HIERRO - EL HIERRO'},
         'MUNICIPALITIES': {
             '38013': 'FRONTERA',
@@ -97,6 +106,9 @@ GEOCODES = {
     'LA GOMERA': {
         'ISLANDS': {
             'ES706': 'LA GOMERA',
+        },
+        'PROVINCES': {
+            'ES702': 'SANTA CRUZ DE TENERIFE',
         },
         'COUNTIES': {'ES706A01': 'LA GOMERA - NORTE', 'ES706A02': 'LA GOMERA - SUR'},
         'MUNICIPALITIES': {
@@ -111,6 +123,9 @@ GEOCODES = {
     'LA PALMA': {
         'ISLANDS': {
             'ES707': 'LA PALMA',
+        },
+        'PROVINCES': {
+            'ES702': 'SANTA CRUZ DE TENERIFE',
         },
         'COUNTIES': {
             'ES707A01': 'LA PALMA - CAPITALINA',
@@ -139,6 +154,9 @@ GEOCODES = {
         'ISLANDS': {
             'ES704': 'FUERTEVENTURA',
         },
+        'PROVINCES': {
+            'ES701': 'LAS PALMAS',
+        },
         'COUNTIES': {
             'ES704A01': 'FUERTEVENTURA - CENTRO',
             'ES704A02': 'FUERTEVENTURA - NORTE',
@@ -156,6 +174,9 @@ GEOCODES = {
     'LANZAROTE': {
         'ISLANDS': {
             'ES708': 'LANZAROTE',
+        },
+        'PROVINCES': {
+            'ES701': 'LAS PALMAS',
         },
         'COUNTIES': {
             'ES708A01': 'Lanzarote - Este',
@@ -190,8 +211,8 @@ def get_codes(island, scope):
 
 
 def get_title(geocode):
-    return FLATTENED_GEOCODES[geocode]
+    return FLATTENED_GEOCODES.get(geocode, geocode)
 
 
 def get_code(title):
-    return FLATTENED_GEOCODES_BY_TITLE[title]
+    return FLATTENED_GEOCODES_BY_TITLE.get(title, title)
