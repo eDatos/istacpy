@@ -1,4 +1,6 @@
-from istacpy.indicators.indicators import get_indicators_code_data, get_indicators_code
+import re
+
+from istacpy.indicators import indicators as api_indicators
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureGranularity
 from istacpy.lite.dimensions.time import TimeGranularity
@@ -6,7 +8,7 @@ from istacpy.lite.dimensions.time import TimeGranularity
 from . import services
 
 
-def get_data(
+def get_indicator(
     indicator,
     *,
     geo=GeographicalGranularity.MUNICIPALITIES_ID,
@@ -20,7 +22,7 @@ def get_data(
     representation = services.build_api_representation(geo_codes, time_codes, measure_code)
     granularity = services.build_api_granularity(geographical_granularity, time_granularity)
 
-    response = get_indicators_code_data(
+    response = api_indicators.get_indicators_code_data(
         indicator,
         representation=representation,
         granularity=granularity,
@@ -31,7 +33,7 @@ def get_data(
 
 
 def get_granularities(indicator):
-    response = get_indicators_code(indicator)
+    response = api_indicators.get_indicators_code(indicator)
 
     geographical_granularities = services.build_custom_granularity(
         response, 'GEOGRAPHICAL', GeographicalGranularity
@@ -40,4 +42,22 @@ def get_granularities(indicator):
         response, 'TIME', TimeGranularity
     )
 
-    return dict(geo=geographical_granularities, time=time_granularities)
+    return dict(
+        geo=geographical_granularities,
+        time=time_granularities,
+    )
+
+
+def get_indicators(search_query=''):
+    response = api_indicators.get_indicators(limit=1000)
+
+    indicators = []
+    for item in response['items']:
+        code = item['code']
+        title_es = item['title'].get('es', 'No disponible')
+        title_en = item['title'].get('en', 'Not available')
+        subject_title = item['subjectTitle'].get('es', 'No disponible')
+        full_text = code + title_en + title_es + subject_title
+        if re.search(search_query, full_text, flags=re.I):
+            indicators.append((code, title_es, title_en))
+    return indicators
