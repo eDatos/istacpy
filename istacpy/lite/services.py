@@ -1,34 +1,43 @@
 import re
 
-from . import geographical, granularities
+from istacpy.lite.dimensions.geographical import (
+    GeographicalGranularity,
+    GeographicalRepresentation,
+)
+from istacpy.lite.dimensions.measure import MeasureGranularity
+from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
 
 
 def parse_geographical_query(query):
     parts = re.split(r'\s*\|\s*', query.strip().upper())
-    geographical_granularity = granularities.GEOGRAPHICAL[parts[0]]
+    granularity = GeographicalGranularity.get_code(parts[0])
     if len(parts) > 1:
         islands = re.split(r'\s*,\s*', parts[1])
-        items_geocodes = []
+        items_codes = []
         for island in islands:
-            geocodes = geographical.get_codes(island, geographical_granularity)
-            items_geocodes.extend(geocodes)
+            codes = GeographicalRepresentation.get_codes(island, granularity)
+            items_codes.extend(codes)
     else:
-        items_geocodes = []
-    return geographical_granularity, '|'.join(items_geocodes)
+        items_codes = []
+    return granularity, '|'.join(items_codes)
 
 
 def parse_time_query(query):
     parts = re.split(r'\s*\|\s*', query.strip().upper())
-    time_granularity = granularities.TIME[parts[0]]
+    granularity = TimeGranularity.get_code(parts[0])
     if len(parts) > 1:
-        time_codes = re.split(r'\s*,\s*', parts[1])
+        years = re.split(r'\s*,\s*', parts[1])
+        items_codes = []
+        for year in years:
+            codes = TimeRepresentation.get_codes(year, granularity)
+            items_codes.extend(codes)
     else:
-        time_codes = []
-    return time_granularity, '|'.join(time_codes)
+        items_codes = []
+    return granularity, '|'.join(items_codes)
 
 
 def parse_measure_query(query):
-    return granularities.MEASURE[query]
+    return MeasureGranularity.get_code(query)
 
 
 def build_api_representation(geo_codes, time_codes, measure_code):
@@ -43,7 +52,7 @@ def build_custom_response(api_response):
     api_index = api_response['dimension']['TIME']['representation']['index']
     index = tuple(api_index.keys())
     api_columns = api_response['dimension']['GEOGRAPHICAL']['representation']['index']
-    columns = [geographical.get_title(code) for code in api_columns]
+    columns = [GeographicalRepresentation.get_title(code) for code in api_columns]
     observations = api_response['observation']
     num_rows = len(index)
     data = {}
