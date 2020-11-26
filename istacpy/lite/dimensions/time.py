@@ -1,4 +1,7 @@
-class TimeGranularity:
+from .base import Granularity
+
+
+class TimeGranularity(Granularity):
     YEARLY, YEARLY_ID = 'YEARLY', 'Y'
     BIYEARLY, BIYEARLY_ID = 'BIYEARLY', 'B'
     QUARTERLY, QUARTERLY_ID = 'QUARTERLY', 'Q'
@@ -18,10 +21,6 @@ class TimeGranularity:
         DAILY_ID: DAILY,
         HOURLY_ID: HOURLY,
     }
-
-    @classmethod
-    def get_code(cls, id):
-        return cls.CODES[id]
 
 
 class TimeRepresentation:
@@ -48,3 +47,6 @@ class TimeRepresentation:
     @classmethod
     def get_codes(cls, year, granularity):
         return [f'{year}{suffix}' for suffix in cls.CODES[granularity]]
+
+
+TimeGranularity.build_swapped_codes()

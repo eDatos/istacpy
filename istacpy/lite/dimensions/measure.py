@@ -1,4 +1,7 @@
-class MeasureGranularity:
+from .base import Granularity
+
+
+class MeasureGranularity(Granularity):
     ABSOLUTE, ABSOLUTE_ID = 'ABSOLUTE', 'A'
     ANNUAL_PERCENTAGE_RATE, ANNUAL_PERCENTAGE_RATE_ID = 'ANNUAL_PERCENTAGE_RATE', 'N'
     INTERPERIOD_PERCENTAGE_RATE, INTERPERIOD_PERCENTAGE_RATE_ID = (
@@ -19,6 +22,5 @@ class MeasureGranularity:
         INTERPERIOD_PUNTUAL_RATE_ID: INTERPERIOD_PUNTUAL_RATE,
     }
 
-    @classmethod
-    def get_code(cls, id):
-        return cls.CODES[id]
+
+MeasureGranularity.build_swapped_codes()

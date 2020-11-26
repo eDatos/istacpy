@@ -1,4 +1,7 @@
-class GeographicalGranularity:
+from .base import Granularity
+
+
+class GeographicalGranularity(Granularity):
     COUNTRIES, COUNTRIES_ID = 'COUNTRIES', 'T'
     REGIONS, REGIONS_ID = 'REGIONS', 'R'
     ISLANDS, ISLANDS_ID = 'ISLANDS', 'I'
@@ -14,10 +17,6 @@ class GeographicalGranularity:
         COUNTIES_ID: COUNTIES,
         MUNICIPALITIES_ID: MUNICIPALITIES,
     }
-
-    @classmethod
-    def get_code(cls, id):
-        return cls.CODES[id]
 
 
 class GeographicalRepresentation:
@@ -248,5 +247,6 @@ class GeographicalRepresentation:
         return cls.FLATTENED_CODES_BY_TITLE.get(title, title)
 
 
+GeographicalGranularity.build_swapped_codes()
 GeographicalRepresentation.build_flattened_codes()
 GeographicalRepresentation.build_flattened_codes_by_title()
