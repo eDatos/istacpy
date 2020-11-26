@@ -33,16 +33,11 @@ def get_data(
 def get_granularities(indicator):
     response = get_indicators_code(indicator)
 
-    geographical_granularities = []
-    for g in response['dimension']['GEOGRAPHICAL']['granularity']:
-        code = g['code']
-        id = GeographicalGranularity.get_id(code)
-        geographical_granularities.append(f'{code} ({id})')
-
-    time_granularities = []
-    for g in response['dimension']['TIME']['granularity']:
-        code = g['code']
-        id = TimeGranularity.get_id(code)
-        time_granularities.append(f'{code} ({id})')
+    geographical_granularities = services.build_custom_granularity(
+        response, 'GEOGRAPHICAL', GeographicalGranularity
+    )
+    time_granularities = services.build_custom_granularity(
+        response, 'TIME', TimeGranularity
+    )
 
     return dict(geo=geographical_granularities, time=time_granularities)

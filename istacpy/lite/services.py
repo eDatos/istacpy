@@ -60,3 +60,12 @@ def build_custom_response(api_response):
         data[column] = tuple(observations[i : i + num_rows])
         i += num_rows
     return dict(index=index, data=data)
+
+
+def build_custom_granularity(api_response, dimension, granularity_handler):
+    granularities = []
+    for g in api_response['dimension'][dimension]['granularity']:
+        code = g['code']
+        id = granularity_handler.get_id(code)
+        granularities.append(f'{code} ({id})')
+    return granularities
