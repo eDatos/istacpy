@@ -225,9 +225,9 @@ class GeographicalRepresentation:
                 'ES701': 'LAS PALMAS',
             },
             GeographicalGranularity.COUNTIES: {
-                'ES708A01': 'Lanzarote - Este',
-                'ES708A02': 'Lanzarote - Norte',
-                'ES708A03': 'Lanzarote - Suroeste',
+                'ES708A01': 'LANZAROTE - ESTE',
+                'ES708A02': 'LANZAROTE - NORTE',
+                'ES708A03': 'LANZAROTE - SUROESTE',
             },
             GeographicalGranularity.MUNICIPALITIES: {
                 '35004': 'ARRECIFE',
