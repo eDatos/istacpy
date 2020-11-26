@@ -22,6 +22,9 @@ class GeographicalGranularity(Granularity):
 class GeographicalRepresentation:
     CODES = {
         'GRAN CANARIA': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES705': 'GRAN CANARIA',
             },
@@ -61,6 +64,9 @@ class GeographicalRepresentation:
             },
         },
         'TENERIFE': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES709': 'TENERIFE',
             },
@@ -112,6 +118,9 @@ class GeographicalRepresentation:
             },
         },
         'EL HIERRO': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES703': 'EL HIERRO',
             },
@@ -126,6 +135,9 @@ class GeographicalRepresentation:
             },
         },
         'LA GOMERA': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES706': 'LA GOMERA',
             },
@@ -146,6 +158,9 @@ class GeographicalRepresentation:
             },
         },
         'LA PALMA': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES707': 'LA PALMA',
             },
@@ -176,6 +191,9 @@ class GeographicalRepresentation:
             },
         },
         'FUERTEVENTURA': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES704': 'FUERTEVENTURA',
             },
@@ -197,6 +215,9 @@ class GeographicalRepresentation:
             },
         },
         'LANZAROTE': {
+            GeographicalGranularity.REGIONS: {
+                'ES70': 'CANARIAS',
+            },
             GeographicalGranularity.ISLANDS: {
                 'ES708': 'LANZAROTE',
             },
