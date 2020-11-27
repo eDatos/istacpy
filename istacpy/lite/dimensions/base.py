@@ -1,7 +1,7 @@
 from abc import ABC
 
 
-class Granularity(ABC):
+class CodeStore(ABC):
     CODES = dict()
 
     @classmethod

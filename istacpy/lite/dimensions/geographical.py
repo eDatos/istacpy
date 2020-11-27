@@ -1,7 +1,7 @@
-from .base import Granularity
+from .base import CodeStore
 
 
-class GeographicalGranularity(Granularity):
+class GeographicalGranularity(CodeStore):
     COUNTRIES, COUNTRIES_ID = 'COUNTRIES', 'T'
     REGIONS, REGIONS_ID = 'REGIONS', 'R'
     ISLANDS, ISLANDS_ID = 'ISLANDS', 'I'

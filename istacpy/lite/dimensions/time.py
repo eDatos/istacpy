@@ -1,7 +1,7 @@
-from .base import Granularity
+from .base import CodeStore
 
 
-class TimeGranularity(Granularity):
+class TimeGranularity(CodeStore):
     YEARLY, YEARLY_ID = 'YEARLY', 'Y'
     BIYEARLY, BIYEARLY_ID = 'BIYEARLY', 'B'
     QUARTERLY, QUARTERLY_ID = 'QUARTERLY', 'Q'

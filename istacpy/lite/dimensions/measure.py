@@ -1,7 +1,7 @@
-from .base import Granularity
+from .base import CodeStore
 
 
-class MeasureGranularity(Granularity):
+class MeasureRepresentation(CodeStore):
     ABSOLUTE, ABSOLUTE_ID = 'ABSOLUTE', 'A'
     ANNUAL_PERCENTAGE_RATE, ANNUAL_PERCENTAGE_RATE_ID = 'ANNUAL_PERCENTAGE_RATE', 'N'
     INTERPERIOD_PERCENTAGE_RATE, INTERPERIOD_PERCENTAGE_RATE_ID = (
@@ -23,4 +23,4 @@ class MeasureGranularity(Granularity):
     }
 
 
-MeasureGranularity.build_swapped_codes()
+MeasureRepresentation.build_swapped_codes()

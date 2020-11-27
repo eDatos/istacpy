@@ -2,7 +2,7 @@ import re
 
 from istacpy.indicators import indicators as api_indicators
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
-from istacpy.lite.dimensions.measure import MeasureGranularity
+from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity
 
 from . import services
@@ -13,7 +13,7 @@ def get_indicator(
     *,
     geo=GeographicalGranularity.MUNICIPALITIES_ID,
     time=TimeGranularity.YEARLY_ID,
-    measure=MeasureGranularity.ABSOLUTE_ID,
+    measure=MeasureRepresentation.ABSOLUTE_ID,
 ):
     geographical_granularity, geo_codes = services.parse_geographical_query(geo)
     time_granularity, time_codes = services.parse_time_query(time)
@@ -32,7 +32,7 @@ def get_indicator(
     return services.build_custom_response(response)
 
 
-def get_granularities(indicator):
+def get_dimensions(indicator):
     response = api_indicators.get_indicators_code(indicator)
 
     geographical_granularities = services.build_custom_granularity(
@@ -41,10 +41,14 @@ def get_granularities(indicator):
     time_granularities = services.build_custom_granularity(
         response, 'TIME', TimeGranularity
     )
+    measure_representations = services.build_custom_representation(
+        response, 'MEASURE', MeasureRepresentation
+    )
 
     return dict(
         geo=geographical_granularities,
         time=time_granularities,
+        measure=measure_representations,
     )
 
 

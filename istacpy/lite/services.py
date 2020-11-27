@@ -4,7 +4,7 @@ from istacpy.lite.dimensions.geographical import (
     GeographicalGranularity,
     GeographicalRepresentation,
 )
-from istacpy.lite.dimensions.measure import MeasureGranularity
+from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
 
 
@@ -37,7 +37,7 @@ def parse_time_query(query):
 
 
 def parse_measure_query(query):
-    return MeasureGranularity.get_code(query)
+    return MeasureRepresentation.get_code(query)
 
 
 def build_api_representation(geo_codes, time_codes, measure_code):
@@ -67,5 +67,14 @@ def build_custom_granularity(api_response, dimension, granularity_handler):
     for g in api_response['dimension'][dimension]['granularity']:
         code = g['code']
         id = granularity_handler.get_id(code)
+        granularities.append(f'{code} ({id})')
+    return granularities
+
+
+def build_custom_representation(api_response, dimension, representation_handler):
+    granularities = []
+    for g in api_response['dimension'][dimension]['representation']:
+        code = g['code']
+        id = representation_handler.get_id(code)
         granularities.append(f'{code} ({id})')
     return granularities
