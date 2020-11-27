@@ -8,3 +8,7 @@ _build/
 *.egg-info/
 .coverage
 htmlcov
+
+# custom auxiliary files
+/TODO
+/debug.py
