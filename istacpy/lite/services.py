@@ -57,8 +57,12 @@ def build_custom_response(api_response):
     num_rows = len(index)
     data = {}
     for i, column in enumerate(columns):
-        data[column] = tuple(observations[i : i + num_rows])
+        values = observations[i : i + num_rows]
+        annotated_values = sorted([(idx, value) for idx, value in zip(index, values)])
+        data[column] = tuple([value[1] for value in annotated_values])
         i += num_rows
+    # sort index to be in coherence with sorted values
+    index = sorted(index)
     return dict(index=index, data=data)
 
 
