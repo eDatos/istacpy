@@ -1,5 +1,6 @@
 import re
 
+from istacpy import config
 from istacpy.lite.dimensions.geographical import (
     GeographicalGranularity,
     GeographicalRepresentation,
@@ -48,21 +49,45 @@ def build_api_granularity(geographical_granularity, time_granularity):
     return f'GEOGRAPHICAL[{geographical_granularity}],TIME[{time_granularity}]'
 
 
+def _normalize_value(value, typecast):
+    try:
+        value = typecast(value)
+    except ValueError:
+        value = config.VALUE_ERROR
+    return value
+
+
+def _get_ordered_representation_api_codes(
+    api_response, dimension, code_translate=lambda c: c
+):
+    index = api_response['dimension'][dimension]['representation']['index']
+    # index is a dict
+    items = sorted(tuple(index.items()), key=lambda i: i[1])
+    return [code_translate(item[0]) for item in items]
+
+
 def build_custom_response(api_response):
-    api_index = api_response['dimension']['TIME']['representation']['index']
-    index = tuple(api_index.keys())
-    api_columns = api_response['dimension']['GEOGRAPHICAL']['representation']['index']
-    columns = [GeographicalRepresentation.get_title(code) for code in api_columns]
+    index = _get_ordered_representation_api_codes(api_response, 'TIME')
+    columns = _get_ordered_representation_api_codes(
+        api_response, 'GEOGRAPHICAL', code_translate=GeographicalRepresentation.get_title
+    )
+    measures = _get_ordered_representation_api_codes(api_response, 'MEASURE')
+    # only one measure is assumed
+    measure = measures[0]
     observations = api_response['observation']
-    num_rows = len(index)
-    data = {}
-    for i, column in enumerate(columns):
+
+    typecast = MeasureRepresentation.get_typecast(measure)
+    i, data, num_rows = 0, {}, len(index)
+
+    for column in columns:
         values = observations[i : i + num_rows]
         annotated_values = sorted([(idx, value) for idx, value in zip(index, values)])
-        data[column] = tuple([value[1] for value in annotated_values])
+        data[column] = tuple(
+            [_normalize_value(value[1], typecast) for value in annotated_values]
+        )
         i += num_rows
     # sort index to be in coherence with sorted values
-    index = sorted(index)
+    index = tuple(sorted(index))
     return dict(index=index, data=data)
 
 
