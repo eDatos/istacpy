@@ -27,11 +27,17 @@ def parse_time_query(query):
     parts = re.split(r'\s*\|\s*', query.strip().upper())
     granularity = TimeGranularity.get_code(parts[0])
     if len(parts) > 1:
-        years = re.split(r'\s*,\s*', parts[1])
+        year_ranges = re.split(r'\s*,\s*', parts[1])
         items_codes = []
-        for year in years:
-            codes = TimeRepresentation.get_codes(year, granularity)
-            items_codes.extend(codes)
+        for year_range in year_ranges:
+            years = re.split(r'\s*:\s*', year_range)
+            if len(years) > 1:
+                year_list = range(int(years[0]), int(years[1]) + 1)
+            else:
+                year_list = years
+            for year in year_list:
+                codes = TimeRepresentation.get_codes(year, granularity)
+                items_codes.extend(codes)
     else:
         items_codes = []
     return granularity, '|'.join(items_codes)
