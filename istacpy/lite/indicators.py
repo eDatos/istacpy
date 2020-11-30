@@ -1,6 +1,7 @@
 import re
 
 from istacpy.indicators import indicators as api_indicators
+from istacpy.lite.dimensions.base import Dimension
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity
@@ -36,13 +37,13 @@ def get_dimensions(indicator):
     response = api_indicators.get_indicators_code(indicator)
 
     geographical_granularities = services.build_custom_granularity(
-        response, 'GEOGRAPHICAL', GeographicalGranularity
+        response, Dimension.GEOGRAPHICAL, GeographicalGranularity
     )
     time_granularities = services.build_custom_granularity(
-        response, 'TIME', TimeGranularity
+        response, Dimension.TIME, TimeGranularity
     )
     measure_representations = services.build_custom_representation(
-        response, 'MEASURE', MeasureRepresentation
+        response, Dimension.MEASURE, MeasureRepresentation
     )
 
     return dict(

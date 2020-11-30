@@ -7,6 +7,7 @@ from istacpy.lite.dimensions.geographical import (
 )
 from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
+from istacpy.lite.dimensions.base import Dimension
 
 
 def parse_geographical_query(query):
@@ -72,8 +73,8 @@ def _get_ordered_representation_api_codes(api_response, dimension):
 
 
 def build_custom_response(api_response):
-    index = _get_ordered_representation_api_codes(api_response, 'TIME')
-    columns = _get_ordered_representation_api_codes(api_response, 'GEOGRAPHICAL')
+    index = _get_ordered_representation_api_codes(api_response, Dimension.TIME)
+    columns = _get_ordered_representation_api_codes(api_response, Dimension.GEOGRAPHICAL)
     observations = api_response['observation']
 
     i, data, num_rows = 0, {}, len(index)

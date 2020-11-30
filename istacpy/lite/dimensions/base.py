@@ -1,6 +1,12 @@
 from abc import ABC
 
 
+class Dimension:
+    GEOGRAPHICAL = 'GEOGRAPHICAL'
+    TIME = 'TIME'
+    MEASURE = 'MEASURE'
+
+
 class CodeStore(ABC):
     CODES = dict()
 
