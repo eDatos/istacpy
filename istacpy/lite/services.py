@@ -57,20 +57,16 @@ def _normalize_value(value, typecast):
     return value
 
 
-def _get_ordered_representation_api_codes(
-    api_response, dimension, code_translate=lambda c: c
-):
+def _get_ordered_representation_api_codes(api_response, dimension):
     index = api_response['dimension'][dimension]['representation']['index']
     # index is a dict
     items = sorted(tuple(index.items()), key=lambda i: i[1])
-    return [code_translate(item[0]) for item in items]
+    return [item[0] for item in items]
 
 
 def build_custom_response(api_response):
     index = _get_ordered_representation_api_codes(api_response, 'TIME')
-    columns = _get_ordered_representation_api_codes(
-        api_response, 'GEOGRAPHICAL', code_translate=GeographicalRepresentation.get_title
-    )
+    columns = _get_ordered_representation_api_codes(api_response, 'GEOGRAPHICAL')
     measures = _get_ordered_representation_api_codes(api_response, 'MEASURE')
     # only one measure is assumed
     measure = measures[0]
@@ -87,8 +83,13 @@ def build_custom_response(api_response):
         )
         i += num_rows
     # sort index to be in coherence with sorted values
-    index = tuple(sorted(index))
-    return dict(index=index, data=data)
+    index = sorted(index)
+
+    # title index and columns
+    titled_index = tuple([TimeRepresentation.get_title(item) for item in index])
+    titled_data = {GeographicalRepresentation.get_title(k): v for k, v in data.items()}
+
+    return dict(index=titled_index, data=titled_data)
 
 
 def build_custom_granularity(api_response, dimension, granularity_handler):

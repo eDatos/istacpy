@@ -13,7 +13,7 @@ def get_indicator(
     *,
     geo=GeographicalGranularity.MUNICIPALITIES_ID,
     time=TimeGranularity.YEARLY_ID,
-    measure=MeasureRepresentation.ABSOLUTE_ID,
+    measure=MeasureRepresentation.ABSOLUTE_ID
 ):
     geographical_granularity, geo_codes = services.parse_geographical_query(geo)
     time_granularity, time_codes = services.parse_time_query(time)
