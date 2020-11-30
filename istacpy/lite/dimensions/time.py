@@ -1,3 +1,7 @@
+import re
+
+from istacpy import config
+
 from .base import CodeStore
 
 
@@ -44,9 +48,49 @@ class TimeRepresentation:
         ),
     }
 
+    MONTHS = {
+        'ES': (
+            'ENE',
+            'FEB',
+            'MAR',
+            'ABR',
+            'MAY',
+            'JUN',
+            'JUL',
+            'AGO',
+            'SEP',
+            'OCT',
+            'NOV',
+            'DIC',
+        ),
+        'EN': (
+            'JAN',
+            'FEB',
+            'MAR',
+            'APR',
+            'MAY',
+            'JUN',
+            'JUL',
+            'AUG',
+            'SEP',
+            'OCT',
+            'NOV',
+            'DEC',
+        ),
+    }
+
     @classmethod
     def get_codes(cls, year, granularity):
         return [f'{year}{suffix}' for suffix in cls.CODES[granularity]]
+
+    @classmethod
+    def get_title(cls, code):
+        if m := re.match(r'^(\d+)M(\d{2})', code):
+            year, month = m.groups()
+            month_no = int(month) - 1
+            month_code = cls.MONTHS[config.LOCALE][month_no]
+            return f'{year} {month_code}'
+        return code
 
 
 TimeGranularity.build_swapped_codes()
