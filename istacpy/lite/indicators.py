@@ -9,48 +9,50 @@ from istacpy.lite.dimensions.time import TimeGranularity
 from . import services
 
 
-def get_indicator(
-    indicator,
-    *,
-    geo=GeographicalGranularity.MUNICIPALITIES_ID,
-    time=TimeGranularity.YEARLY_ID,
-    measure=MeasureRepresentation.ABSOLUTE_ID
-):
-    geographical_granularity, geo_codes = services.parse_geographical_query(geo)
-    time_granularity, time_codes = services.parse_time_query(time)
-    measure_code = services.parse_measure_query(measure)
+class Indicator:
+    def __init__(self, indicator_code):
+        self.indicator_code = indicator_code
+        response = api_indicators.get_indicators_code(indicator_code)
+        self.granularities = {}
+        self.granularities[Dimension.GEOGRAPHICAL] = services.build_custom_granularity(
+            response, Dimension.GEOGRAPHICAL, GeographicalGranularity
+        )
+        self.granularities[Dimension.TIME] = services.build_custom_granularity(
+            response, Dimension.TIME, TimeGranularity
+        )
+        self.representations = services.build_custom_representation(
+            response, Dimension.MEASURE, MeasureRepresentation
+        )
+        self.title_es = response['title'].get('es', 'No disponible')
+        self.title_en = response['title'].get('en', 'Not available')
 
-    representation = services.build_api_representation(geo_codes, time_codes, measure_code)
-    granularity = services.build_api_granularity(geographical_granularity, time_granularity)
+    def get_data(
+        self,
+        *,
+        geo=GeographicalGranularity.MUNICIPALITIES_ID,
+        time=TimeGranularity.YEARLY_ID,
+        measure=MeasureRepresentation.ABSOLUTE_ID
+    ):
+        geographical_granularity, geo_codes = services.parse_geographical_query(geo)
+        time_granularity, time_codes = services.parse_time_query(time)
+        measure_code = services.parse_measure_query(measure)
 
-    response = api_indicators.get_indicators_code_data(
-        indicator,
-        representation=representation,
-        granularity=granularity,
-        fields='-observationsMetadata',
-    )
+        representation = services.build_api_representation(
+            geo_codes, time_codes, measure_code
+        )
+        granularity = services.build_api_granularity(
+            geographical_granularity, time_granularity
+        )
 
-    return services.build_custom_response(response)
+        response = api_indicators.get_indicators_code_data(
+            self.indicator_code,
+            representation=representation,
+            granularity=granularity,
+            fields='-observationsMetadata',
+        )
 
-
-def get_dimensions(indicator):
-    response = api_indicators.get_indicators_code(indicator)
-
-    geographical_granularities = services.build_custom_granularity(
-        response, Dimension.GEOGRAPHICAL, GeographicalGranularity
-    )
-    time_granularities = services.build_custom_granularity(
-        response, Dimension.TIME, TimeGranularity
-    )
-    measure_representations = services.build_custom_representation(
-        response, Dimension.MEASURE, MeasureRepresentation
-    )
-
-    return dict(
-        geo=geographical_granularities,
-        time=time_granularities,
-        measure=measure_representations,
-    )
+        self.data = services.build_custom_response(response)
+        return self.data
 
 
 def get_indicators(search_query=''):
@@ -66,3 +68,7 @@ def get_indicators(search_query=''):
         if re.search(search_query, full_text, flags=re.I):
             indicators.append((code, title_es, title_en))
     return indicators
+
+
+def get_indicator(indicator_code):
+    return Indicator(indicator_code)

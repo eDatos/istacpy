@@ -94,18 +94,18 @@ def build_custom_response(api_response):
 
 
 def build_custom_granularity(api_response, dimension, granularity_handler):
-    granularities = []
+    granularities = {}
     for g in api_response['dimension'][dimension]['granularity']:
         code = g['code']
         id = granularity_handler.get_id(code)
-        granularities.append((code, id))
+        granularities[code] = id
     return granularities
 
 
 def build_custom_representation(api_response, dimension, representation_handler):
-    granularities = []
+    granularities = {}
     for g in api_response['dimension'][dimension]['representation']:
         code = g['code']
         id = representation_handler.get_id(code)
-        granularities.append((code, id))
+        granularities[code] = id
     return granularities
