@@ -49,7 +49,8 @@ def build_api_granularity(geographical_granularity, time_granularity):
     return f'GEOGRAPHICAL[{geographical_granularity}],TIME[{time_granularity}]'
 
 
-def _normalize_value(value, typecast):
+def _normalize_value(value):
+    typecast = float if value.find('.') != -1 else int
     try:
         value = typecast(value)
     except ValueError:
@@ -67,20 +68,13 @@ def _get_ordered_representation_api_codes(api_response, dimension):
 def build_custom_response(api_response):
     index = _get_ordered_representation_api_codes(api_response, 'TIME')
     columns = _get_ordered_representation_api_codes(api_response, 'GEOGRAPHICAL')
-    measures = _get_ordered_representation_api_codes(api_response, 'MEASURE')
-    # only one measure is assumed
-    measure = measures[0]
     observations = api_response['observation']
 
-    typecast = MeasureRepresentation.get_typecast(measure)
     i, data, num_rows = 0, {}, len(index)
-
     for column in columns:
         values = observations[i : i + num_rows]
         annotated_values = sorted([(idx, value) for idx, value in zip(index, values)])
-        data[column] = tuple(
-            [_normalize_value(value[1], typecast) for value in annotated_values]
-        )
+        data[column] = tuple([_normalize_value(value[1]) for value in annotated_values])
         i += num_rows
     # sort index to be in coherence with sorted values
     index = sorted(index)

@@ -22,17 +22,5 @@ class MeasureRepresentation(CodeStore):
         INTERPERIOD_PUNTUAL_RATE_ID: INTERPERIOD_PUNTUAL_RATE,
     }
 
-    TYPECAST = {
-        ABSOLUTE: int,
-        ANNUAL_PERCENTAGE_RATE: float,
-        INTERPERIOD_PERCENTAGE_RATE: float,
-        ANNUAL_PUNTUAL_RATE: int,
-        INTERPERIOD_PUNTUAL_RATE: int,
-    }
-
-    @classmethod
-    def get_typecast(cls, code):
-        return cls.TYPECAST[code]
-
 
 MeasureRepresentation.build_swapped_codes()
