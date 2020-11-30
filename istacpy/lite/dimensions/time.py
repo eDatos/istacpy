@@ -1,6 +1,6 @@
 import re
 
-from istacpy import config
+from istacpy.lite.locale import Locale
 
 from .base import CodeStore
 
@@ -88,7 +88,7 @@ class TimeRepresentation:
         if m := re.match(r'^(\d+)M(\d{2})', code):
             year, month = m.groups()
             month_no = int(month) - 1
-            month_code = cls.MONTHS[config.LOCALE][month_no]
+            month_code = cls.MONTHS[Locale.DEFAULT_LOCALE][month_no]
             return f'{year} {month_code}'
         return code
 

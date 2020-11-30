@@ -1,13 +1,14 @@
 import re
 
 from istacpy import config
+from istacpy.lite.dimensions.base import Dimension
 from istacpy.lite.dimensions.geographical import (
     GeographicalGranularity,
     GeographicalRepresentation,
 )
 from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
-from istacpy.lite.dimensions.base import Dimension
+from istacpy.lite.locale import Locale
 
 
 def parse_geographical_query(query):
@@ -109,3 +110,27 @@ def build_custom_representation(api_response, dimension, representation_handler)
         id = representation_handler.get_id(code)
         granularities[code] = id
     return granularities
+
+
+def get_indicator_title(api_response):
+    text = api_response['title'].get(Locale.DEFAULT_LOCALE, Locale.non_available_msg())
+    return text.strip(' .')
+
+
+def get_indicator_subject(api_response):
+    text = re.sub(
+        r'^[\s\d]+',  # clean leading digits
+        '',
+        api_response['subjectTitle'].get(Locale.DEFAULT_LOCALE, Locale.non_available_msg()),
+    )
+    return text.strip(' .')
+
+
+def get_indicator_description(api_response):
+    if 'conceptDescription' in api_response:
+        text = api_response['conceptDescription'].get(
+            Locale.DEFAULT_LOCALE, Locale.non_available_msg()
+        )
+    else:
+        text = Locale.non_available_msg()
+    return text.strip(' .')

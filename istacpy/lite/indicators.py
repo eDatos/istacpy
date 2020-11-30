@@ -13,18 +13,20 @@ class Indicator:
     def __init__(self, indicator_code):
         self.indicator_code = indicator_code
         response = api_indicators.get_indicators_code(indicator_code)
-        self.granularities = {}
-        self.granularities[Dimension.GEOGRAPHICAL] = services.build_custom_granularity(
-            response, Dimension.GEOGRAPHICAL, GeographicalGranularity
-        )
-        self.granularities[Dimension.TIME] = services.build_custom_granularity(
-            response, Dimension.TIME, TimeGranularity
-        )
-        self.representations = services.build_custom_representation(
+        self.granularities = {
+            Dimension.GEOGRAPHICAL: services.build_custom_granularity(
+                response, Dimension.GEOGRAPHICAL, GeographicalGranularity
+            ),
+            Dimension.TIME: services.build_custom_granularity(
+                response, Dimension.TIME, TimeGranularity
+            ),
+        }
+        self.measures = services.build_custom_representation(
             response, Dimension.MEASURE, MeasureRepresentation
         )
-        self.title_es = response['title'].get('es', 'No disponible')
-        self.title_en = response['title'].get('en', 'Not available')
+        self.title = services.get_indicator_title(response)
+        self.subject = services.get_indicator_subject(response)
+        self.description = services.get_indicator_description(response)
 
     def get_data(
         self,
@@ -61,12 +63,12 @@ def get_indicators(search_query=''):
     indicators = []
     for item in response['items']:
         code = item['code']
-        title_es = item['title'].get('es', 'No disponible')
-        title_en = item['title'].get('en', 'Not available')
-        subject_title = item['subjectTitle'].get('es', 'No disponible')
-        full_text = code + title_en + title_es + subject_title
+        title = services.get_indicator_title(item)
+        subject = services.get_indicator_subject(item)
+        description = services.get_indicator_description(item)
+        full_text = code + title + subject + description
         if re.search(search_query, full_text, flags=re.I):
-            indicators.append((code, title_es, title_en))
+            indicators.append((code, title))
     return indicators
 
 
