@@ -49,33 +49,33 @@ class TimeRepresentation:
     }
 
     MONTHS = {
-        'ES': (
-            'ENE',
-            'FEB',
-            'MAR',
-            'ABR',
-            'MAY',
-            'JUN',
-            'JUL',
-            'AGO',
-            'SEP',
-            'OCT',
-            'NOV',
-            'DIC',
+        Locale.ES: (
+            'Ene',
+            'Feb',
+            'Mar',
+            'Abr',
+            'May',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dic',
         ),
-        'EN': (
-            'JAN',
-            'FEB',
-            'MAR',
-            'APR',
-            'MAY',
-            'JUN',
-            'JUL',
-            'AUG',
-            'SEP',
-            'OCT',
-            'NOV',
-            'DEC',
+        Locale.EN: (
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
         ),
     }
 
@@ -89,7 +89,7 @@ class TimeRepresentation:
             year, month = m.groups()
             month_no = int(month) - 1
             month_code = cls.MONTHS[Locale.DEFAULT_LOCALE][month_no]
-            return f'{year} {month_code}'
+            return f'{month_code} {year}'
         return code
 
 
