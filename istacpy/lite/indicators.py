@@ -52,8 +52,28 @@ class Indicator:
             fields='-observationsMetadata',
         )
 
-        self.data = services.build_custom_response(response)
-        return self.data
+        return IndicatorData(
+            self, response, geographical_granularity, time_granularity, measure_code
+        )
+
+
+class IndicatorData:
+    def __init__(
+        self, indicator, api_response, geographical_granularity, time_granularity, measure
+    ):
+        self.indicator = indicator
+        self.granularity = {
+            Dimension.GEOGRAPHICAL: geographical_granularity,
+            Dimension.TIME: time_granularity,
+        }
+        self.measure = measure
+        self.index, self.data = services.build_custom_response(api_response)
+        self.shape = (len(self.index), len(self.data.keys()))
+        self.num_observations = self.shape[0] * self.shape[1]
+
+    @property
+    def columns(self):
+        return tuple(self.data.keys())
 
 
 def get_indicators(search_query=''):

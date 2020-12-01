@@ -91,7 +91,7 @@ def build_custom_response(api_response):
     titled_index = tuple([TimeRepresentation.get_title(item) for item in index])
     titled_data = {GeographicalRepresentation.get_title(k): v for k, v in data.items()}
 
-    return dict(index=titled_index, data=titled_data)
+    return titled_index, titled_data
 
 
 def build_custom_granularity(api_response, dimension, granularity_handler):
