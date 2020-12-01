@@ -1,3 +1,4 @@
+from istacpy.lite.i18n import Message, gettext
 import re
 
 from istacpy.indicators import indicators as api_indicators
@@ -56,6 +57,32 @@ class Indicator:
             self, response, geographical_granularity, time_granularity, measure_code
         )
 
+    def __str__(self):
+        buffer = []
+        heading = gettext(Message.CLASS)
+        buffer.append(f'- {heading}: {self.__class__.__name__}')
+        heading = gettext(Message.INDICATOR_CODE)
+        buffer.append(f'- {heading}: {self.indicator_code}')
+        heading = gettext(Message.TITLE)
+        buffer.append(f'- {heading}: {self.title}')
+        heading = gettext(Message.SUBJECT)
+        buffer.append(f'- {heading}: {self.subject}')
+        heading = gettext(Message.DESCRIPTION)
+        buffer.append(f'- {heading}: {self.description}')
+        heading = gettext(Message.GRANULARITIES)
+        buffer.append(f'- {heading}: {self.granularities}')
+        heading = gettext(Message.MEASURES)
+        buffer.append(f'- {heading}: {self.measures}')
+        heading = gettext(Message.YEARS_RANGE)
+        years_range = ','.join(str(y) for y in self.years_range)
+        buffer.append(f'- {heading}: {years_range}')
+        return '\n'.join(buffer)
+
+    def __repr__(self):
+        modulename = self.__class__.__module__
+        classname = self.__class__.__name__
+        return f'<{modulename}.{classname} object; code={self.indicator_code}>'
+
 
 class IndicatorData:
     def __init__(
@@ -74,6 +101,38 @@ class IndicatorData:
     @property
     def columns(self):
         return tuple(self.data.keys())
+
+    def __str__(self):
+        buffer = []
+        heading = gettext(Message.CLASS)
+        buffer.append(f'- {heading}: {self.__class__.__name__}')
+        heading = gettext(Message.INDICATOR_CODE)
+        buffer.append(f'- {heading}: {self.indicator.indicator_code}')
+        heading = gettext(Message.TITLE)
+        buffer.append(f'- {heading}: {self.indicator.title}')
+        heading = gettext(Message.GRANULARITY)
+        buffer.append(f'- {heading}: {self.granularity}')
+        heading = gettext(Message.MEASURE)
+        buffer.append(f'- {heading}: {self.measure}')
+        heading = gettext(Message.INDEX)
+        index = ','.join(self.index)
+        buffer.append(f'- {heading}: {index}')
+        heading = gettext(Message.COLUMNS)
+        columns = ','.join(self.columns)
+        buffer.append(f'- {heading}: {columns}')
+        heading = gettext(Message.SHAPE)
+        buffer.append(f'- {heading}: {self.shape}')
+        heading = gettext(Message.NUM_OBSERVATIONS)
+        buffer.append(f'- {heading}: {self.num_observations}')
+        return '\n'.join(buffer)
+
+    def __repr__(self):
+        modulename = self.__class__.__module__
+        classname = self.__class__.__name__
+        return (
+            f'<{modulename}.{classname} object; '
+            f'code={self.indicator.indicator_code}; shape={self.shape}>'
+        )
 
 
 def get_indicators(search_query=''):
