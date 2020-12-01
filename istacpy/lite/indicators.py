@@ -27,6 +27,7 @@ class Indicator:
         self.title = services.get_indicator_title(response)
         self.subject = services.get_indicator_subject(response)
         self.description = services.get_indicator_description(response)
+        self.years_range = services.get_years_range(response)
 
     def get_data(self, *, geo=None, time=None, measure=None):
         geo = geo or list(self.granularities[Dimension.GEOGRAPHICAL].values())[0]

@@ -134,3 +134,13 @@ def get_indicator_description(api_response):
     else:
         text = Locale.non_available_msg()
     return text.strip(' .')
+
+
+def get_years_range(api_response):
+    time_items = api_response['dimension'][Dimension.TIME]['representation']
+    years = []
+    for item in time_items:
+        code = item['code']
+        if year := re.findall(r'\d{4}', code):  # extract year
+            years.append(int(year[0]))
+    return sorted(list(set(years)))
