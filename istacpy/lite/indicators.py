@@ -1,11 +1,12 @@
-from istacpy.lite.i18n import Message, gettext
 import re
 
+from istacpy.indicators import geographic as api_geographic
 from istacpy.indicators import indicators as api_indicators
 from istacpy.lite.dimensions.base import Dimension
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity
+from istacpy.lite.i18n import Message, gettext
 
 from . import services
 
@@ -152,3 +153,11 @@ def get_indicators(search_query=''):
 
 def get_indicator(indicator_code):
     return Indicator(indicator_code)
+
+
+def get_subjects():
+    response = api_geographic.get_indicators_subjects()
+    subjects = []
+    for item in response['items']:
+        subjects.append(services.get_subject_title(item))
+    return tuple(subjects)

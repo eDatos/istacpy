@@ -150,3 +150,10 @@ def get_years_range(api_response):
         if year := re.findall(r'\d{4}', code):  # extract year
             years.append(int(year[0]))
     return sorted(list(set(years)))
+
+
+def get_subject_title(api_response_item):
+    title = api_response_item['title'].get(
+        Locale.DEFAULT_LOCALE, gettext(Message.NON_AVAILABLE)
+    )
+    return re.sub(r'^[\s\d]+', '', title)
