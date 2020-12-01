@@ -25,11 +25,15 @@ def parse_geographical_query(query):
     return granularity, '|'.join(items_codes)
 
 
-def parse_time_query(query):
+def parse_time_query(query, latest_year=None):
     parts = re.split(r'\s*\|\s*', query.strip().upper())
     granularity = TimeGranularity.get_code(parts[0])
     if len(parts) > 1:
-        year_ranges = re.split(r'\s*,\s*', parts[1])
+        filter = parts[1]
+        if filter == config.LATEST_VALUE_FLAG:
+            year_ranges = [str(latest_year)]
+        else:
+            year_ranges = re.split(r'\s*,\s*', parts[1])
         items_codes = []
         for year_range in year_ranges:
             years = re.split(r'\s*:\s*', year_range)

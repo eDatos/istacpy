@@ -36,7 +36,7 @@ class Indicator:
         measure = measure or list(self.measures.values())[0]
 
         geographical_granularity, geo_codes = services.parse_geographical_query(geo)
-        time_granularity, time_codes = services.parse_time_query(time)
+        time_granularity, time_codes = services.parse_time_query(time, self.years_range[-1])
         measure_code = services.parse_measure_query(measure)
 
         representation = services.build_api_representation(
