@@ -1,6 +1,6 @@
 import re
 
-from istacpy.lite.locale import Locale
+from istacpy.lite.i18n import Locale
 
 from .base import CodeStore
 
