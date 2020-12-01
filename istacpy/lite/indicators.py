@@ -28,13 +28,11 @@ class Indicator:
         self.subject = services.get_indicator_subject(response)
         self.description = services.get_indicator_description(response)
 
-    def get_data(
-        self,
-        *,
-        geo=GeographicalGranularity.MUNICIPALITIES_ID,
-        time=TimeGranularity.YEARLY_ID,
-        measure=MeasureRepresentation.ABSOLUTE_ID
-    ):
+    def get_data(self, *, geo=None, time=None, measure=None):
+        geo = geo or list(self.granularities[Dimension.GEOGRAPHICAL].values())[0]
+        time = time or list(self.granularities[Dimension.TIME].values())[0]
+        measure = measure or list(self.measures.values())[0]
+
         geographical_granularity, geo_codes = services.parse_geographical_query(geo)
         time_granularity, time_codes = services.parse_time_query(time)
         measure_code = services.parse_measure_query(measure)
