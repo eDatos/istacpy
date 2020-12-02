@@ -58,31 +58,35 @@ class Indicator:
             self, response, geographical_granularity, time_granularity, measure_code
         )
 
-    def __str__(self):
+    def info(self):
         buffer = []
         heading = gettext(Message.CLASS)
-        buffer.append(f'- {heading}: {self.__class__.__name__}')
+        buffer.append(f'· {heading}: {self.__class__.__module__}.{self.__class__.__name__}')
         heading = gettext(Message.INDICATOR_CODE)
-        buffer.append(f'- {heading}: {self.indicator_code}')
+        buffer.append(f'· {heading}: {self.indicator_code}')
         heading = gettext(Message.TITLE)
-        buffer.append(f'- {heading}: {self.title}')
+        buffer.append(f'· {heading}: {self.title}')
         heading = gettext(Message.SUBJECT)
-        buffer.append(f'- {heading}: {self.subject}')
+        buffer.append(f'· {heading}: {self.subject}')
         heading = gettext(Message.DESCRIPTION)
-        buffer.append(f'- {heading}: {self.description}')
+        buffer.append(f'· {heading}: {self.description}')
         heading = gettext(Message.GRANULARITIES)
-        buffer.append(f'- {heading}: {self.granularities}')
+        buffer.append(f'· {heading}: {self.granularities}')
         heading = gettext(Message.MEASURES)
-        buffer.append(f'- {heading}: {self.measures}')
+        buffer.append(f'· {heading}: {self.measures}')
         heading = gettext(Message.YEARS_RANGE)
         years_range = ','.join(str(y) for y in self.years_range)
-        buffer.append(f'- {heading}: {years_range}')
-        return '\n'.join(buffer)
+        buffer.append(f'· {heading}: {years_range}')
+        print('\n'.join(buffer))
+
+    def _quicklook(self):
+        return f'{self.indicator_code} ({self.title})'
 
     def __repr__(self):
-        modulename = self.__class__.__module__
-        classname = self.__class__.__name__
-        return f'<{modulename}.{classname} object; code={self.indicator_code}>'
+        return self._quicklook()
+
+    def __str__(self):
+        return self._quicklook()
 
 
 class IndicatorData:
@@ -103,37 +107,42 @@ class IndicatorData:
     def columns(self):
         return tuple(self.data.keys())
 
-    def __str__(self):
+    def info(self):
         buffer = []
         heading = gettext(Message.CLASS)
-        buffer.append(f'- {heading}: {self.__class__.__name__}')
+        buffer.append(f'· {heading}: {self.__class__.__module__}.{self.__class__.__name__}')
         heading = gettext(Message.INDICATOR_CODE)
-        buffer.append(f'- {heading}: {self.indicator.indicator_code}')
+        buffer.append(f'· {heading}: {self.indicator.indicator_code}')
         heading = gettext(Message.TITLE)
-        buffer.append(f'- {heading}: {self.indicator.title}')
+        buffer.append(f'· {heading}: {self.indicator.title}')
         heading = gettext(Message.GRANULARITY)
-        buffer.append(f'- {heading}: {self.granularity}')
+        buffer.append(f'· {heading}: {self.granularity}')
         heading = gettext(Message.MEASURE)
-        buffer.append(f'- {heading}: {self.measure}')
+        buffer.append(f'· {heading}: {self.measure}')
         heading = gettext(Message.INDEX)
         index = ','.join(self.index)
-        buffer.append(f'- {heading}: {index}')
+        buffer.append(f'· {heading}: {index}')
         heading = gettext(Message.COLUMNS)
         columns = ','.join(self.columns)
-        buffer.append(f'- {heading}: {columns}')
+        buffer.append(f'· {heading}: {columns}')
         heading = gettext(Message.SHAPE)
-        buffer.append(f'- {heading}: {self.shape}')
+        buffer.append(f'· {heading}: {self.shape}')
         heading = gettext(Message.NUM_OBSERVATIONS)
-        buffer.append(f'- {heading}: {self.num_observations}')
+        buffer.append(f'· {heading}: {self.num_observations}')
+        print('\n'.join(buffer))
+
+    def _quicklook(self):
+        buffer = []
+        buffer.append(str(self.indicator))
+        buffer.append(f'<{",".join(self.index)}>')
+        buffer.append(str(self.data))
         return '\n'.join(buffer)
 
     def __repr__(self):
-        modulename = self.__class__.__module__
-        classname = self.__class__.__name__
-        return (
-            f'<{modulename}.{classname} object; '
-            f'code={self.indicator.indicator_code}; shape={self.shape}>'
-        )
+        return self._quicklook()
+
+    def __str__(self):
+        return self._quicklook()
 
 
 def get_indicators(search_query=''):
