@@ -2,6 +2,10 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.5.0 (2020-12-04)
+
+- Set new base url for API entrypoints.
+
 ## istacpy 0.4.2 (2020-11-11)
 
 - Link documentation to readthedocs.
