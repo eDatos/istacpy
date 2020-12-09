@@ -6,7 +6,6 @@ from istacpy.lite.dimensions.base import Dimension
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureRepresentation
 from istacpy.lite.dimensions.time import TimeGranularity
-from istacpy.lite.i18n import Message, gettext
 
 from . import services
 
@@ -60,23 +59,15 @@ class Indicator:
 
     def info(self):
         buffer = []
-        heading = gettext(Message.CLASS)
-        buffer.append(f'· {heading}: {self.__class__.__module__}.{self.__class__.__name__}')
-        heading = gettext(Message.INDICATOR_CODE)
-        buffer.append(f'· {heading}: {self.indicator_code}')
-        heading = gettext(Message.TITLE)
-        buffer.append(f'· {heading}: {self.title}')
-        heading = gettext(Message.SUBJECT)
-        buffer.append(f'· {heading}: {self.subject}')
-        heading = gettext(Message.DESCRIPTION)
-        buffer.append(f'· {heading}: {self.description}')
-        heading = gettext(Message.GRANULARITIES)
-        buffer.append(f'· {heading}: {self.granularities}')
-        heading = gettext(Message.MEASURES)
-        buffer.append(f'· {heading}: {self.measures}')
-        heading = gettext(Message.YEARS_RANGE)
+        buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
+        buffer.append(f'· Indicator code: {self.indicator_code}')
+        buffer.append(f'· Title: {self.title}')
+        buffer.append(f'· Subject: {self.subject}')
+        buffer.append(f'· Description: {self.description}')
+        buffer.append(f'· Granularities: {self.granularities}')
+        buffer.append(f'· Measures: {self.measures}')
         years_range = ','.join(str(y) for y in self.years_range)
-        buffer.append(f'· {heading}: {years_range}')
+        buffer.append(f'· Available years: {years_range}')
         print('\n'.join(buffer))
 
     def _quicklook(self):
@@ -109,26 +100,17 @@ class IndicatorData:
 
     def info(self):
         buffer = []
-        heading = gettext(Message.CLASS)
-        buffer.append(f'· {heading}: {self.__class__.__module__}.{self.__class__.__name__}')
-        heading = gettext(Message.INDICATOR_CODE)
-        buffer.append(f'· {heading}: {self.indicator.indicator_code}')
-        heading = gettext(Message.TITLE)
-        buffer.append(f'· {heading}: {self.indicator.title}')
-        heading = gettext(Message.GRANULARITY)
-        buffer.append(f'· {heading}: {self.granularity}')
-        heading = gettext(Message.MEASURE)
-        buffer.append(f'· {heading}: {self.measure}')
-        heading = gettext(Message.INDEX)
+        buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
+        buffer.append(f'· Indicator code: {self.indicator.indicator_code}')
+        buffer.append(f'· Title: {self.indicator.title}')
+        buffer.append(f'· Granularity: {self.granularity}')
+        buffer.append(f'· Measure: {self.measure}')
         index = ','.join(self.index)
-        buffer.append(f'· {heading}: {index}')
-        heading = gettext(Message.COLUMNS)
+        buffer.append(f'· Index: {index}')
         columns = ','.join(self.columns)
-        buffer.append(f'· {heading}: {columns}')
-        heading = gettext(Message.SHAPE)
-        buffer.append(f'· {heading}: {self.shape}')
-        heading = gettext(Message.NUM_OBSERVATIONS)
-        buffer.append(f'· {heading}: {self.num_observations}')
+        buffer.append(f'· Columns: {columns}')
+        buffer.append(f'· Shape: {self.shape}')
+        buffer.append(f'· Num. observations: {self.num_observations}')
         print('\n'.join(buffer))
 
     def _quicklook(self):
