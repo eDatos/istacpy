@@ -37,7 +37,7 @@ class Message(Enum):
 
 
 MESSAGES = {
-    Message.NON_AVAILABLE: {Locale.ES: 'No disponible', Locale.EN: 'Non available'},
+    Message.NON_AVAILABLE: {Locale.ES: 'No disponible', Locale.EN: 'Not available'},
 }
 
 
