@@ -80,12 +80,13 @@ class TimeRepresentation:
     }
 
     @classmethod
-    def get_codes(cls, year, granularity):
-        return [f'{year}{suffix}' for suffix in cls.CODES[granularity]]
+    def get_codes(cls, year, granularity, use_dash=False):
+        sep = '-' if use_dash else ''
+        return [f'{year}{sep}{suffix}' for suffix in cls.CODES[granularity]]
 
     @classmethod
     def get_title(cls, code):
-        if m := re.match(r'^(\d+)M(\d{2})', code):
+        if m := re.match(r'^(\d+)-?M(\d{2})', code):
             year, month = m.groups()
             month_no = int(month) - 1
             month_code = cls.MONTHS[Locale.DEFAULT_LOCALE][month_no]

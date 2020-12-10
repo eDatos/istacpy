@@ -25,9 +25,10 @@ def parse_geographical_query(query):
     return granularity, '|'.join(items_codes)
 
 
-def parse_time_query(query, latest_year=None):
+def parse_time_query(query, use_dash, latest_year=None):
     parts = re.split(r'\s*\|\s*', query.strip().upper())
     granularity = TimeGranularity.get_code(parts[0])
+    use_dash = use_dash[granularity]
     if len(parts) > 1:
         filter = parts[1]
         if filter == config.LATEST_VALUE_FLAG:
@@ -42,7 +43,7 @@ def parse_time_query(query, latest_year=None):
             else:
                 year_list = years
             for year in year_list:
-                codes = TimeRepresentation.get_codes(year, granularity)
+                codes = TimeRepresentation.get_codes(year, granularity, use_dash)
                 items_codes.extend(codes)
     else:
         items_codes = []
@@ -114,6 +115,21 @@ def build_custom_representation(api_response, dimension, representation_handler)
         id = representation_handler.get_id(code)
         granularities[code] = id
     return granularities
+
+
+def time_granularity_using_dashes(api_response, time_granularities):
+    """
+    Some indicators use time granularities whose codes include dashes . e.g. 2020-M1
+    This functions detect which granularities use dashes in its representation.
+    """
+    dash_presence = {}
+    for r in api_response['dimension'][Dimension.TIME]['representation']:
+        granularity_code = r['granularityCode']
+        if granularity_code not in dash_presence:
+            dash_presence[granularity_code] = (r['code'].find('-') != -1)
+        if len(dash_presence) == len(time_granularities):
+            break
+    return dash_presence
 
 
 def get_indicator_title(api_response):

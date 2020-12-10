@@ -25,6 +25,9 @@ class Indicator:
         self.measures = services.build_custom_representation(
             response, Dimension.MEASURE, MeasureRepresentation
         )
+        self._time_granularity_using_dashes = services.time_granularity_using_dashes(
+            response, self.granularities[Dimension.TIME].keys()
+        )
         self.title = services.get_indicator_title(response)
         self.subject = services.get_indicator_subject(response)
         self.description = services.get_indicator_description(response)
@@ -36,7 +39,9 @@ class Indicator:
         measure = measure or list(self.measures.values())[0]
 
         geographical_granularity, geo_codes = services.parse_geographical_query(geo)
-        time_granularity, time_codes = services.parse_time_query(time, self.years_range[-1])
+        time_granularity, time_codes = services.parse_time_query(
+            time, self._time_granularity_using_dashes, self.years_range[-1]
+        )
         measure_code = services.parse_measure_query(measure)
 
         representation = services.build_api_representation(
