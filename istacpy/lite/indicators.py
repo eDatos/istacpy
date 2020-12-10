@@ -163,7 +163,7 @@ def get_indicators(search_query=''):
         full_text = code + title + subject + description
         if re.search(search_query, full_text, flags=re.I):
             indicators.append((code, title))
-    return indicators
+    return sorted(indicators)
 
 
 def get_indicator(indicator_code):
@@ -175,4 +175,4 @@ def get_subjects():
     subjects = []
     for item in response['items']:
         subjects.append(services.get_subject_title(item))
-    return tuple(subjects)
+    return tuple(sorted(subjects))
