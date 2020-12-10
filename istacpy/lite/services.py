@@ -12,42 +12,45 @@ from istacpy.lite.i18n import Locale, Message, gettext
 
 
 def parse_geographical_query(query):
-    parts = re.split(r'\s*\|\s*', query.strip().upper())
-    granularity = GeographicalGranularity.get_code(parts[0])
-    if len(parts) > 1:
-        islands = re.split(r'\s*,\s*', parts[1])
-        items_codes = []
-        for island in islands:
-            codes = GeographicalRepresentation.get_codes(island, granularity)
-            items_codes.extend(codes)
-    else:
-        items_codes = []
-    return granularity, '|'.join(items_codes)
+    query = query.strip().upper()
+    if m := re.match(r'^(=)?([A-Z])(?:\|(.*))?$', query, re.I):
+        raw_output, granularity_id, filter = m.groups()
+        granularity_code = GeographicalGranularity.get_code(granularity_id)
+        if filter is not None:
+            islands = re.split(r'\s*,\s*', filter)
+            items_codes = []
+            for island in islands:
+                codes = GeographicalRepresentation.get_codes(island, granularity_code)
+                items_codes.extend(codes)
+        else:
+            items_codes = []
+        return raw_output is None, granularity_code, '|'.join(items_codes)
 
 
 def parse_time_query(query, use_dash, latest_year=None):
-    parts = re.split(r'\s*\|\s*', query.strip().upper())
-    granularity = TimeGranularity.get_code(parts[0])
-    use_dash = use_dash[granularity]
-    if len(parts) > 1:
-        filter = parts[1]
-        if filter == config.LATEST_VALUE_FLAG:
-            year_ranges = [str(latest_year)]
-        else:
-            year_ranges = re.split(r'\s*,\s*', parts[1])
-        items_codes = []
-        for year_range in year_ranges:
-            years = re.split(r'\s*:\s*', year_range)
-            if len(years) > 1:
-                year_list = range(int(years[0]), int(years[1]) + 1)
+    query = query.strip().upper()
+    if m := re.match(r'^(=)?([A-Z])(?:\|(.*))?$', query, re.I):
+        raw_output, granularity_id, filter = m.groups()
+        granularity_code = TimeGranularity.get_code(granularity_id)
+        use_dash = use_dash[granularity_code]
+        if filter is not None:
+            if filter == config.LATEST_VALUE_FLAG:
+                year_ranges = [str(latest_year)]
             else:
-                year_list = years
-            for year in year_list:
-                codes = TimeRepresentation.get_codes(year, granularity, use_dash)
-                items_codes.extend(codes)
-    else:
-        items_codes = []
-    return granularity, '|'.join(items_codes)
+                year_ranges = re.split(r'\s*,\s*', filter)
+            items_codes = []
+            for year_range in year_ranges:
+                years = re.split(r'\s*:\s*', year_range)
+                if len(years) > 1:
+                    year_list = range(int(years[0]), int(years[1]) + 1)
+                else:
+                    year_list = years
+                for year in year_list:
+                    codes = TimeRepresentation.get_codes(year, granularity_code, use_dash)
+                    items_codes.extend(codes)
+        else:
+            items_codes = []
+        return raw_output is None, granularity_code, '|'.join(items_codes)
 
 
 def parse_measure_query(query):
@@ -78,7 +81,7 @@ def _get_ordered_representation_api_codes(api_response, dimension):
     return [item[0] for item in items]
 
 
-def build_custom_response(api_response):
+def build_custom_response(api_response, map_geographical_values=True, map_time_values=True):
     index = _get_ordered_representation_api_codes(api_response, Dimension.TIME)
     columns = _get_ordered_representation_api_codes(api_response, Dimension.GEOGRAPHICAL)
     observations = api_response['observation']
@@ -93,10 +96,12 @@ def build_custom_response(api_response):
     index = sorted(index)
 
     # title index and columns
-    titled_index = tuple([TimeRepresentation.get_title(item) for item in index])
-    titled_data = {GeographicalRepresentation.get_title(k): v for k, v in data.items()}
+    if map_geographical_values:
+        data = {GeographicalRepresentation.get_title(k): v for k, v in data.items()}
+    if map_time_values:
+        index = tuple([TimeRepresentation.get_title(item) for item in index])
 
-    return titled_index, titled_data
+    return index, data
 
 
 def build_custom_granularity(api_response, dimension, granularity_handler):
@@ -126,7 +131,7 @@ def time_granularity_using_dashes(api_response, time_granularities):
     for r in api_response['dimension'][Dimension.TIME]['representation']:
         granularity_code = r['granularityCode']
         if granularity_code not in dash_presence:
-            dash_presence[granularity_code] = (r['code'].find('-') != -1)
+            dash_presence[granularity_code] = r['code'].find('-') != -1
         if len(dash_presence) == len(time_granularities):
             break
     return dash_presence

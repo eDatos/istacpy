@@ -38,8 +38,12 @@ class Indicator:
         time = time or list(self.granularities[Dimension.TIME].values())[0]
         measure = measure or list(self.measures.values())[0]
 
-        geographical_granularity, geo_codes = services.parse_geographical_query(geo)
-        time_granularity, time_codes = services.parse_time_query(
+        (
+            map_geographical_values,
+            geographical_granularity,
+            geo_codes,
+        ) = services.parse_geographical_query(geo)
+        map_time_values, time_granularity, time_codes = services.parse_time_query(
             time, self._time_granularity_using_dashes, self.years_range[-1]
         )
         measure_code = services.parse_measure_query(measure)
@@ -59,7 +63,13 @@ class Indicator:
         )
 
         return IndicatorData(
-            self, response, geographical_granularity, time_granularity, measure_code
+            self,
+            response,
+            geographical_granularity,
+            time_granularity,
+            measure_code,
+            map_geographical_values,
+            map_time_values,
         )
 
     def info(self):
@@ -87,7 +97,14 @@ class Indicator:
 
 class IndicatorData:
     def __init__(
-        self, indicator, api_response, geographical_granularity, time_granularity, measure
+        self,
+        indicator,
+        api_response,
+        geographical_granularity,
+        time_granularity,
+        measure,
+        map_geographical_values=True,
+        map_time_values=True,
     ):
         self.indicator = indicator
         self.granularity = {
@@ -95,7 +112,9 @@ class IndicatorData:
             Dimension.TIME: time_granularity,
         }
         self.measure = measure
-        self.index, self.data = services.build_custom_response(api_response)
+        self.index, self.data = services.build_custom_response(
+            api_response, map_geographical_values, map_time_values
+        )
         self.shape = (len(self.index), len(self.data.keys()))
         self.num_observations = self.shape[0] * self.shape[1]
 
