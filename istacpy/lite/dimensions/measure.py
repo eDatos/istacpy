@@ -22,5 +22,11 @@ class MeasureRepresentation(CodeStore):
         INTERPERIOD_PUNTUAL_RATE_ID: INTERPERIOD_PUNTUAL_RATE,
     }
 
+    UNIT_MULTIPLIER = {'MILLIONS': 1_000_000, 'THOUSANDS': 1_000, 'HUNDREDS': 100}
+
+    @classmethod
+    def get_unit_multiplier(cls, unit_multiplier_code):
+        return cls.UNIT_MULTIPLIER.get(unit_multiplier_code.upper(), 1)
+
 
 MeasureRepresentation.build_swapped_codes()

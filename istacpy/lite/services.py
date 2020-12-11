@@ -65,10 +65,10 @@ def build_api_granularity(geographical_granularity, time_granularity):
     return f'GEOGRAPHICAL[{geographical_granularity}],TIME[{time_granularity}]'
 
 
-def _normalize_value(value):
+def _normalize_value(value, unit_multiplier):
     typecast = float if value.find('.') != -1 else int
     try:
-        value = typecast(value)
+        value = typecast(value) * unit_multiplier
     except ValueError:
         value = config.VALUE_ERROR
     return value
@@ -81,7 +81,12 @@ def _get_ordered_representation_api_codes(api_response, dimension):
     return [item[0] for item in items]
 
 
-def build_custom_response(api_response, map_geographical_values=True, map_time_values=True):
+def build_custom_response(
+    api_response,
+    map_geographical_values=True,
+    map_time_values=True,
+    measure_unit_multiplier=1,
+):
     index = _get_ordered_representation_api_codes(api_response, Dimension.TIME)
     columns = _get_ordered_representation_api_codes(api_response, Dimension.GEOGRAPHICAL)
     observations = api_response['observation']
@@ -90,7 +95,12 @@ def build_custom_response(api_response, map_geographical_values=True, map_time_v
     for column in columns:
         values = observations[i : i + num_rows]
         annotated_values = sorted([(idx, value) for idx, value in zip(index, values)])
-        data[column] = tuple([_normalize_value(value[1]) for value in annotated_values])
+        data[column] = tuple(
+            [
+                _normalize_value(value[1], measure_unit_multiplier)
+                for value in annotated_values
+            ]
+        )
         i += num_rows
     # sort index to be in coherence with sorted values
     index = sorted(index)
@@ -165,3 +175,18 @@ def get_subject_title(api_response_item):
         Locale.DEFAULT_LOCALE, gettext(Message.NON_AVAILABLE)
     )
     return re.sub(r'^[\s\d]+', '', title)
+
+
+def get_measure_unit_multiplier(api_response, measure_code):
+    api_representation = api_response['dimension'][Dimension.MEASURE]['representation']
+    for representation in api_representation:
+        if representation['code'] == measure_code:
+            try:
+                unit_mulitiplier_code = representation['quantity']['unitMultiplier']['en']
+                unit_multiplier = MeasureRepresentation.get_unit_multiplier(
+                    unit_mulitiplier_code
+                )
+            except KeyError:
+                unit_multiplier = 1
+            return unit_multiplier
+    return 1

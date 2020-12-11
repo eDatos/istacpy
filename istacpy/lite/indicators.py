@@ -113,8 +113,15 @@ class IndicatorData:
         self.geographical_granularity = geographical_granularity
         self.time_granularity = time_granularity
         self.measure = measure
+
+        measure_unit_multiplier = services.get_measure_unit_multiplier(
+            self.indicator.api_response, self.measure
+        )
         self.index, self.data = services.build_custom_response(
-            self.api_response, map_geographical_values, map_time_values
+            self.api_response,
+            map_geographical_values,
+            map_time_values,
+            measure_unit_multiplier,
         )
         self.shape = (len(self.index), len(self.data.keys()))
         self.num_observations = self.shape[0] * self.shape[1]
