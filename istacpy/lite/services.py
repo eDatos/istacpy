@@ -104,25 +104,12 @@ def build_custom_response(api_response, map_geographical_values=True, map_time_v
     return index, data
 
 
-def build_custom_granularity(api_response, dimension, granularity_handler):
-    granularities = {}
-    for g in api_response['dimension'][dimension]['granularity']:
-        code = g['code']
-        id = granularity_handler.get_id(code)
-        granularities[code] = id
-    return granularities
+def build_custom_dimension(api_response, property, dimension, granularity_handler):
+    granularity = api_response['dimension'][dimension][property]
+    return {e['code']: granularity_handler.get_id(e['code']) for e in granularity}
 
 
-def build_custom_representation(api_response, dimension, representation_handler):
-    granularities = {}
-    for g in api_response['dimension'][dimension]['representation']:
-        code = g['code']
-        id = representation_handler.get_id(code)
-        granularities[code] = id
-    return granularities
-
-
-def time_granularity_using_dashes(api_response, time_granularities):
+def time_granularities_using_dashes(api_response, time_granularities):
     """
     Some indicators use time granularities whose codes include dashes . e.g. 2020-M1
     This functions detect which granularities use dashes in its representation.
@@ -163,7 +150,7 @@ def get_indicator_description(api_response):
     return text.strip(' .')
 
 
-def get_years_range(api_response):
+def get_available_years(api_response):
     time_items = api_response['dimension'][Dimension.TIME]['representation']
     years = []
     for item in time_items:

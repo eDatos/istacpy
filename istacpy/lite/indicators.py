@@ -12,30 +12,31 @@ from . import services
 
 class Indicator:
     def __init__(self, indicator_code):
-        self.indicator_code = indicator_code
+        self.code = indicator_code
         self.api_response = api_indicators.get_indicators_code(indicator_code)
-        self.granularities = {
-            Dimension.GEOGRAPHICAL: services.build_custom_granularity(
-                self.api_response, Dimension.GEOGRAPHICAL, GeographicalGranularity
-            ),
-            Dimension.TIME: services.build_custom_granularity(
-                self.api_response, Dimension.TIME, TimeGranularity
-            ),
-        }
-        self.measures = services.build_custom_representation(
-            self.api_response, Dimension.MEASURE, MeasureRepresentation
+        self.geographical_granularities = services.build_custom_dimension(
+            self.api_response,
+            'granularity',
+            Dimension.GEOGRAPHICAL,
+            GeographicalGranularity,
         )
-        self._time_granularity_using_dashes = services.time_granularity_using_dashes(
-            self.api_response, self.granularities[Dimension.TIME].keys()
+        self.time_granularities = services.build_custom_dimension(
+            self.api_response, 'granularity', Dimension.TIME, TimeGranularity
+        )
+        self.measures = services.build_custom_dimension(
+            self.api_response, 'representation', Dimension.MEASURE, MeasureRepresentation
+        )
+        self._time_granularities_using_dashes = services.time_granularities_using_dashes(
+            self.api_response, self.time_granularities.keys()
         )
         self.title = services.get_indicator_title(self.api_response)
         self.subject = services.get_indicator_subject(self.api_response)
         self.description = services.get_indicator_description(self.api_response)
-        self.years_range = services.get_years_range(self.api_response)
+        self.available_years = services.get_available_years(self.api_response)
 
     def get_data(self, *, geo=None, time=None, measure=None):
-        geo = geo or list(self.granularities[Dimension.GEOGRAPHICAL].values())[0]
-        time = time or list(self.granularities[Dimension.TIME].values())[0]
+        geo = geo or list(self.geographical_granularities.values())[0]
+        time = time or list(self.time_granularities.values())[0]
         measure = measure or list(self.measures.values())[0]
 
         (
@@ -44,7 +45,7 @@ class Indicator:
             geo_codes,
         ) = services.parse_geographical_query(geo)
         map_time_values, time_granularity, time_codes = services.parse_time_query(
-            time, self._time_granularity_using_dashes, self.years_range[-1]
+            time, self._time_granularities_using_dashes, self.available_years[-1]
         )
         measure_code = services.parse_measure_query(measure)
 
@@ -56,7 +57,7 @@ class Indicator:
         )
 
         response = api_indicators.get_indicators_code_data(
-            self.indicator_code,
+            self.code,
             representation=representation,
             granularity=granularity,
             fields='-observationsMetadata',
@@ -75,18 +76,19 @@ class Indicator:
     def info(self):
         buffer = []
         buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
-        buffer.append(f'· Indicator code: {self.indicator_code}')
+        buffer.append(f'· Indicator code: {self.code}')
         buffer.append(f'· Title: {self.title}')
         buffer.append(f'· Subject: {self.subject}')
         buffer.append(f'· Description: {self.description}')
-        buffer.append(f'· Granularities: {self.granularities}')
+        buffer.append(f'· Geographical granularities: {self.geographical_granularities}')
+        buffer.append(f'· Time granularities: {self.time_granularities}')
         buffer.append(f'· Measures: {self.measures}')
-        years_range = ','.join(str(y) for y in self.years_range)
-        buffer.append(f'· Available years: {years_range}')
+        available_years = ','.join(str(y) for y in self.available_years)
+        buffer.append(f'· Available years: {available_years}')
         print('\n'.join(buffer))
 
     def _quicklook(self):
-        return f'{self.indicator_code} ({self.title})'
+        return f'{self.code} ({self.title})'
 
     def __repr__(self):
         return self._quicklook()
@@ -108,10 +110,8 @@ class IndicatorData:
     ):
         self.indicator = indicator
         self.api_response = api_response
-        self.granularity = {
-            Dimension.GEOGRAPHICAL: geographical_granularity,
-            Dimension.TIME: time_granularity,
-        }
+        self.geographical_granularity = geographical_granularity
+        self.time_granularity = time_granularity
         self.measure = measure
         self.index, self.data = services.build_custom_response(
             self.api_response, map_geographical_values, map_time_values
@@ -126,9 +126,10 @@ class IndicatorData:
     def info(self):
         buffer = []
         buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
-        buffer.append(f'· Indicator code: {self.indicator.indicator_code}')
+        buffer.append(f'· Indicator code: {self.indicator.code}')
         buffer.append(f'· Title: {self.indicator.title}')
-        buffer.append(f'· Granularity: {self.granularity}')
+        buffer.append(f'· Geographical granularity: {self.geographical_granularity}')
+        buffer.append(f'· Time granularity: {self.time_granularity}')
         buffer.append(f'· Measure: {self.measure}')
         index = ','.join(self.index)
         buffer.append(f'· Index: {index}')
