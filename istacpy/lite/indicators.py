@@ -13,25 +13,25 @@ from . import services
 class Indicator:
     def __init__(self, indicator_code):
         self.indicator_code = indicator_code
-        response = api_indicators.get_indicators_code(indicator_code)
+        self.api_response = api_indicators.get_indicators_code(indicator_code)
         self.granularities = {
             Dimension.GEOGRAPHICAL: services.build_custom_granularity(
-                response, Dimension.GEOGRAPHICAL, GeographicalGranularity
+                self.api_response, Dimension.GEOGRAPHICAL, GeographicalGranularity
             ),
             Dimension.TIME: services.build_custom_granularity(
-                response, Dimension.TIME, TimeGranularity
+                self.api_response, Dimension.TIME, TimeGranularity
             ),
         }
         self.measures = services.build_custom_representation(
-            response, Dimension.MEASURE, MeasureRepresentation
+            self.api_response, Dimension.MEASURE, MeasureRepresentation
         )
         self._time_granularity_using_dashes = services.time_granularity_using_dashes(
-            response, self.granularities[Dimension.TIME].keys()
+            self.api_response, self.granularities[Dimension.TIME].keys()
         )
-        self.title = services.get_indicator_title(response)
-        self.subject = services.get_indicator_subject(response)
-        self.description = services.get_indicator_description(response)
-        self.years_range = services.get_years_range(response)
+        self.title = services.get_indicator_title(self.api_response)
+        self.subject = services.get_indicator_subject(self.api_response)
+        self.description = services.get_indicator_description(self.api_response)
+        self.years_range = services.get_years_range(self.api_response)
 
     def get_data(self, *, geo=None, time=None, measure=None):
         geo = geo or list(self.granularities[Dimension.GEOGRAPHICAL].values())[0]
@@ -107,13 +107,14 @@ class IndicatorData:
         map_time_values=True,
     ):
         self.indicator = indicator
+        self.api_response = api_response
         self.granularity = {
             Dimension.GEOGRAPHICAL: geographical_granularity,
             Dimension.TIME: time_granularity,
         }
         self.measure = measure
         self.index, self.data = services.build_custom_response(
-            api_response, map_geographical_values, map_time_values
+            self.api_response, map_geographical_values, map_time_values
         )
         self.shape = (len(self.index), len(self.data.keys()))
         self.num_observations = self.shape[0] * self.shape[1]
