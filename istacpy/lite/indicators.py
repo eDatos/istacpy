@@ -1,5 +1,6 @@
 import re
 
+from istacpy.exceptions import IndicatorNotFoundError
 from istacpy.indicators import geographic as api_geographic
 from istacpy.indicators import indicators as api_indicators
 from istacpy.lite.dimensions.base import Dimension
@@ -14,6 +15,9 @@ class Indicator:
     def __init__(self, indicator_code):
         self.code = indicator_code
         self.api_response = api_indicators.get_indicators_code(indicator_code)
+        if self.api_response.get('code') == '404':
+            raise IndicatorNotFoundError(indicator_code)
+
         self.geographical_granularities = services.build_custom_dimension(
             self.api_response,
             'granularity',
@@ -43,11 +47,11 @@ class Indicator:
             map_geographical_values,
             geographical_granularity,
             geo_codes,
-        ) = services.parse_geographical_query(geo)
+        ) = services.parse_geographical_query(geo, self.geographical_granularities.keys())
         map_time_values, time_granularity, time_codes = services.parse_time_query(
             time, self._time_granularities_using_dashes, self.available_years[-1]
         )
-        measure_code = services.parse_measure_query(measure)
+        measure_code = services.parse_measure_query(measure, self.measures.keys())
 
         representation = services.build_api_representation(
             geo_codes, time_codes, measure_code
@@ -161,6 +165,9 @@ class IndicatorData:
 
 
 def get_indicators(search_query=''):
+    if not isinstance(search_query, str):
+        raise TypeError('argument must be string')
+
     response = api_indicators.get_indicators(limit=1000)
 
     indicators = []

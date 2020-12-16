@@ -1,6 +1,11 @@
 import re
 
 from istacpy import config
+from istacpy.exceptions import (
+    GranularityNotAvailableError,
+    MeasureNotAvailableError,
+    QueryMalformedError,
+)
 from istacpy.lite.dimensions.base import Dimension
 from istacpy.lite.dimensions.geographical import (
     GeographicalGranularity,
@@ -11,11 +16,19 @@ from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
 from istacpy.lite.i18n import Locale, Message, gettext
 
 
-def parse_geographical_query(query):
-    query = query.strip().upper()
-    if m := re.match(r'^(=)?([A-Z])(?:\|(.*))?$', query, re.I):
+def parse_geographical_query(query, available_granularities):
+    if m := re.match(
+        r'^(=)?([A-Z])(?:\|([\s\w]+(?:,[\s\w]+)*))?$', query.strip().upper(), re.I
+    ):
         raw_output, granularity_id, filter = m.groups()
-        granularity_code = GeographicalGranularity.get_code(granularity_id)
+        try:
+            granularity_code = GeographicalGranularity.get_code(granularity_id)
+        except KeyError as err:
+            raise Exception(
+                f'"{granularity_id}" not found as geographical granularity identifier'
+            ) from err
+        if granularity_code not in available_granularities:
+            raise GranularityNotAvailableError(granularity_code)
         if filter is not None:
             islands = re.split(r'\s*,\s*', filter)
             items_codes = []
@@ -25,14 +38,28 @@ def parse_geographical_query(query):
         else:
             items_codes = []
         return raw_output is None, granularity_code, '|'.join(items_codes)
+    else:
+        raise QueryMalformedError(query)
 
 
 def parse_time_query(query, use_dash, latest_year=None):
-    query = query.strip().upper()
-    if m := re.match(r'^(=)?([A-Z])(?:\|(.*))?$', query, re.I):
+    if m := re.match(
+        r'^(=)?([A-Z])(?:\|((?:\d{4}(?:[:-]\d{4})?(?:,\d{4}(?:[:-]\d{4})?)*)|latest))?$',
+        query.strip().upper(),
+        re.I,
+    ):
         raw_output, granularity_id, filter = m.groups()
-        granularity_code = TimeGranularity.get_code(granularity_id)
-        use_dash = use_dash[granularity_code]
+        try:
+            granularity_code = TimeGranularity.get_code(granularity_id)
+        except KeyError as err:
+            raise Exception(
+                f'"{granularity_id}" not found as time granularity identifier'
+            ) from err
+        try:
+            use_dash = use_dash[granularity_code]
+        except KeyError as err:
+            raise GranularityNotAvailableError(granularity_code) from err
+
         if filter is not None:
             if filter == config.LATEST_VALUE_FLAG:
                 year_ranges = [str(latest_year)]
@@ -40,7 +67,7 @@ def parse_time_query(query, use_dash, latest_year=None):
                 year_ranges = re.split(r'\s*,\s*', filter)
             items_codes = []
             for year_range in year_ranges:
-                years = re.split(r'\s*:\s*', year_range)
+                years = re.split(r'\s*[:-]\s*', year_range)
                 if len(years) > 1:
                     year_list = range(int(years[0]), int(years[1]) + 1)
                 else:
@@ -51,10 +78,21 @@ def parse_time_query(query, use_dash, latest_year=None):
         else:
             items_codes = []
         return raw_output is None, granularity_code, '|'.join(items_codes)
+    else:
+        raise QueryMalformedError(query)
 
 
-def parse_measure_query(query):
-    return MeasureRepresentation.get_code(query)
+def parse_measure_query(query, available_measures):
+    if re.match(r'^\w$', query, re.I):
+        try:
+            measure_code = MeasureRepresentation.get_code(query)
+        except KeyError as err:
+            raise Exception(f'"{query}" not found as measure representation') from err
+        if measure_code not in available_measures:
+            raise MeasureNotAvailableError(measure_code)
+        return measure_code
+    else:
+        raise QueryMalformedError(query)
 
 
 def build_api_representation(geo_codes, time_codes, measure_code):

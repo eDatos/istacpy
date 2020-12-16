@@ -1,3 +1,5 @@
+from istacpy.exceptions import IslandNotFoundError
+
 from .base import CodeStore
 
 
@@ -256,8 +258,11 @@ class GeographicalRepresentation:
 
     @classmethod
     def get_codes(cls, island, granularity):
-        locations = cls.CODES[island.title()][granularity]
-        return locations.keys()
+        try:
+            locations = cls.CODES[island.title()][granularity]
+            return locations.keys()
+        except KeyError as err:
+            raise IslandNotFoundError(island) from err
 
     @classmethod
     def get_title(cls, code):

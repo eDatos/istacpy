@@ -1,8 +1,10 @@
 import itertools
 import re
+import uuid
 
 import pytest
 
+from istacpy import exceptions
 from istacpy.lite import i18n, indicators
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureRepresentation
@@ -12,6 +14,21 @@ from istacpy.lite.dimensions.time import TimeGranularity
 @pytest.fixture
 def population_indicator():
     return indicators.get_indicator('POBLACION')
+
+
+@pytest.fixture
+def active_population_indicator():
+    return indicators.get_indicator('POBLACION_ACTIVA')
+
+
+@pytest.fixture
+def affiliation_indicator():
+    return indicators.get_indicator('AFILIACIONES')
+
+
+@pytest.fixture
+def activity_rate_indicator():
+    return indicators.get_indicator('TASA_ACTIVIDAD')
 
 
 def test_get_subjects():
@@ -87,11 +104,12 @@ def test_geographical_filter(population_indicator):
 def test_time_filter(population_indicator):
     query = 'Y|2002:2005,2015'
     indicator_data = population_indicator.get_data(time=query)
-    assert '2002' in indicator_data.index
-    assert '2003' in indicator_data.index
-    assert '2004' in indicator_data.index
-    assert '2005' in indicator_data.index
-    assert '2015' in indicator_data.index
+    years = ('2002', '2003', '2004', '2005', '2015')
+    for year in years:
+        assert year in indicator_data.index
+    years = ('2000', '2001', '2007')
+    for year in years:
+        assert year not in indicator_data.index
     assert indicator_data.data is not None
 
 
@@ -110,29 +128,26 @@ def test_english_response():
     assert indicator.description.startswith('Number of persons')
 
 
-def test_monthly_indicator():
-    indicator = indicators.get_indicator('AFILIACIONES')
+def test_monthly_indicator(affiliation_indicator):
     time_query = 'M'
-    indicator_data = indicator.get_data(time=time_query)
+    indicator_data = affiliation_indicator.get_data(time=time_query)
     for value in indicator_data.index:
         assert re.match(r'^\w{3} \d{4}$', value) is not None
 
 
-def test_raw_output():
-    indicator = indicators.get_indicator('AFILIACIONES')
+def test_raw_output(affiliation_indicator):
     geographical_query = '=I'
     time_query = '=M'
-    indicator_data = indicator.get_data(geo=geographical_query, time=time_query)
+    indicator_data = affiliation_indicator.get_data(geo=geographical_query, time=time_query)
     for value in indicator_data.index:
         assert re.search(r'M\d\d$', value) is not None
     for value in indicator_data.columns:
         assert re.match(r'^ES\d{3}$', value) is not None
 
 
-def test_unit_multiplier():
+def test_unit_multiplier(active_population_indicator):
     # Unit multiplier shoud be "Thousands"
-    indicator = indicators.get_indicator('POBLACION_ACTIVA')
-    indicator_data = indicator.get_data()
+    indicator_data = active_population_indicator.get_data()
     # check all values are floats
     for value in itertools.chain(*indicator_data.data.values()):
         assert isinstance(value, float)
@@ -160,3 +175,40 @@ def test_indicator_data_quicklook(population_indicator):
     indicator_data = population_indicator.get_data()
     assert len(str(indicator_data)) >= 3
     assert len(repr(indicator_data)) >= 3
+
+
+def test_indicator_not_found():
+    with pytest.raises(exceptions.IndicatorNotFoundError):
+        indicators.get_indicator(str(uuid.uuid1()))
+
+
+def test_dimension_not_found(population_indicator):
+    with pytest.raises(Exception):
+        population_indicator.get_data(geo='@')
+    with pytest.raises(Exception):
+        population_indicator.get_data(time='@')
+    with pytest.raises(Exception):
+        population_indicator.get_data(measure='@')
+
+
+def test_dimension_not_available(affiliation_indicator, activity_rate_indicator):
+    with pytest.raises(exceptions.GranularityNotAvailableError):
+        affiliation_indicator.get_data(geo='C')
+    with pytest.raises(exceptions.GranularityNotAvailableError):
+        affiliation_indicator.get_data(time='Y')
+    with pytest.raises(exceptions.MeasureNotAvailableError):
+        activity_rate_indicator.get_data(measure='N')
+
+
+def test_query_malformed(population_indicator):
+    queries = (
+        {'geo': 'I|'},
+        {'geo': 'I|Tenerife,'},
+        {'time': 'Y|200'},
+        {'time': 'Y|2001_2002'},
+        {'measure': 'A-'},
+        {'measure': '$$'},
+    )
+    for query in queries:
+        with pytest.raises(exceptions.QueryMalformedError):
+            population_indicator.get_data(**query)
