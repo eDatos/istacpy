@@ -105,10 +105,10 @@ def build_api_granularity(geographical_granularity, time_granularity):
 
 
 def _normalize_value(value, unit_multiplier):
-    typecast = float if value.find('.') != -1 else int
     try:
+        typecast = float if value.find('.') != -1 else int
         value = typecast(value) * unit_multiplier
-    except ValueError:
+    except (AttributeError, ValueError):
         value = config.VALUE_ERROR
     return value
 
