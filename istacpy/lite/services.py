@@ -42,9 +42,11 @@ def parse_geographical_query(query, available_granularities):
         raise QueryMalformedError(query)
 
 
-def parse_time_query(query, use_dash, latest_year=None):
+def parse_time_query(query, use_dash, available_years):
     if m := re.match(
-        r'^(=)?([A-Z])(?:\|((?:\d{4}(?:[:-]\d{4})?(?:,\d{4}(?:[:-]\d{4})?)*)|latest))?$',
+        r'^(=)?([A-Z])'
+        r'(?:\|((?:\d{4}|[FL])(?:[:-](?:\d{4}|[FL]))?'
+        r'(?:,(?:\d{4}|[FL])(?:[:-](?:\d{4}|[FL]))?)*))?$',
         query.strip().upper(),
         re.I,
     ):
@@ -61,10 +63,9 @@ def parse_time_query(query, use_dash, latest_year=None):
             raise GranularityNotAvailableError(granularity_code) from err
 
         if filter is not None:
-            if filter == config.LATEST_VALUE_FLAG:
-                year_ranges = [str(latest_year)]
-            else:
-                year_ranges = re.split(r'\s*,\s*', filter)
+            filter = filter.replace('F', str(available_years[0]))
+            filter = filter.replace('L', str(available_years[-1]))
+            year_ranges = re.split(r'\s*,\s*', filter)
             items_codes = []
             for year_range in year_ranges:
                 years = re.split(r'\s*[:-]\s*', year_range)

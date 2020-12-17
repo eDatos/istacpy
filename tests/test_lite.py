@@ -113,8 +113,16 @@ def test_time_filter(population_indicator):
     assert indicator_data.data is not None
 
 
-def test_time_filter_latest(population_indicator):
-    query = 'Y|latest'
+def test_time_filter_first(population_indicator):
+    query = 'Y|f'
+    indicator_data = population_indicator.get_data(time=query)
+    latest_year = population_indicator.available_years[0]
+    assert str(latest_year) in indicator_data.index
+    assert indicator_data.data is not None
+
+
+def test_time_filter_last(population_indicator):
+    query = 'Y|l'
     indicator_data = population_indicator.get_data(time=query)
     latest_year = population_indicator.available_years[-1]
     assert str(latest_year) in indicator_data.index

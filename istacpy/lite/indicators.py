@@ -49,7 +49,7 @@ class Indicator:
             geo_codes,
         ) = services.parse_geographical_query(geo, self.geographical_granularities.keys())
         map_time_values, time_granularity, time_codes = services.parse_time_query(
-            time, self._time_granularities_using_dashes, self.available_years[-1]
+            time, self._time_granularities_using_dashes, self.available_years
         )
         measure_code = services.parse_measure_query(measure, self.measures.keys())
 
