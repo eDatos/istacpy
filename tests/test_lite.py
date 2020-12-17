@@ -4,7 +4,7 @@ import uuid
 
 import pytest
 
-from istacpy import exceptions
+from istacpy import config, exceptions
 from istacpy.lite import i18n, indicators
 from istacpy.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.lite.dimensions.measure import MeasureRepresentation
@@ -129,6 +129,13 @@ def test_time_filter_last(population_indicator):
     assert indicator_data.data is not None
 
 
+def test_spanish_response():
+    i18n.set_spanish()
+    indicator = indicators.get_indicator('POBLACION')
+    assert indicator.title == 'Población'
+    assert indicator.description.startswith('Número de personas')
+
+
 def test_english_response():
     i18n.set_english()
     indicator = indicators.get_indicator('POBLACION')
@@ -159,6 +166,12 @@ def test_unit_multiplier(active_population_indicator):
     # check all values are floats
     for value in itertools.chain(*indicator_data.data.values()):
         assert isinstance(value, float)
+
+
+def test_unit_multiplier_notdefined(population_indicator):
+    # Unit multiplier for POBLACION with ANNUAL_PERCENTAGE_RATE is not defined
+    indicator_data = population_indicator.get_data(measure='N')
+    assert indicator_data.num_observations > 0
 
 
 def test_indicator_info(population_indicator, capsys):
@@ -192,11 +205,11 @@ def test_indicator_not_found():
 
 def test_dimension_not_found(population_indicator):
     with pytest.raises(Exception):
-        population_indicator.get_data(geo='@')
+        population_indicator.get_data(geo='Z')
     with pytest.raises(Exception):
-        population_indicator.get_data(time='@')
+        population_indicator.get_data(time='Z')
     with pytest.raises(Exception):
-        population_indicator.get_data(measure='@')
+        population_indicator.get_data(measure='Z')
 
 
 def test_dimension_not_available(affiliation_indicator, activity_rate_indicator):
@@ -220,3 +233,19 @@ def test_query_malformed(population_indicator):
     for query in queries:
         with pytest.raises(exceptions.QueryMalformedError):
             population_indicator.get_data(**query)
+
+
+def test_island_not_found(population_indicator):
+    with pytest.raises(exceptions.IslandNotFoundError):
+        population_indicator.get_data(geo='I|Hawai')
+
+
+def test_get_indicators_bad_argument():
+    with pytest.raises(TypeError):
+        indicators.get_indicators(3.14)
+
+
+def test_value_error(population_indicator):
+    indicator_data = population_indicator.get_data(measure='J')
+    values = set(itertools.chain(*indicator_data.data.values()))
+    assert config.VALUE_ERROR in values
