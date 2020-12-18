@@ -190,5 +190,7 @@ def get_subjects():
     response = api_geographic.get_indicators_subjects()
     subjects = []
     for item in response['items']:
-        subjects.append(services.get_subject_title(item))
+        code = item['code']
+        title = services.get_subject_title(item)
+        subjects.append((code, title))
     return tuple(sorted(subjects))
