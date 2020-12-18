@@ -11,6 +11,11 @@ from istacpy.indicators.lite.dimensions.measure import MeasureRepresentation
 from istacpy.indicators.lite.dimensions.time import TimeGranularity
 
 
+# =================================================================
+# FIXTURES
+# =================================================================
+
+
 @pytest.fixture
 def population_indicator():
     return indicators.get_indicator('POBLACION')
@@ -31,14 +36,23 @@ def activity_rate_indicator():
     return indicators.get_indicator('TASA_ACTIVIDAD')
 
 
-def test_get_subjects():
-    subjects = indicators.get_subjects()
-    assert len(subjects) > 0
+@pytest.fixture
+def subjects():
+    return indicators.get_subjects()
 
 
-def test_get_indicators():
-    all_indicators = indicators.get_indicators()
-    assert len(all_indicators) > 0
+# =================================================================
+# TESTS
+# =================================================================
+
+
+def test_get_indicators(subjects):
+    subject_code = subjects[0][0]
+    results = indicators.get_indicators(subject_code=subject_code)
+    assert len(results) > 0
+    indicator_title = results[0][1]
+    results = indicators.get_indicators(indicator_title, subject_code=subject_code)
+    assert len(results) > 0
 
 
 def test_indicator(population_indicator):

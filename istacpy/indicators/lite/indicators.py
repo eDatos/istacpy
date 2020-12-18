@@ -164,11 +164,10 @@ class IndicatorData:
         return self._quicklook()
 
 
-def get_indicators(search_query=''):
-    if not isinstance(search_query, str):
-        raise TypeError('argument must be string')
+def get_indicators(search_query='', *, subject_code=''):
 
-    response = api_indicators.get_indicators(limit=1000)
+    query = f'subjectCode EQ "{subject_code}"' if subject_code else ''
+    response = api_indicators.get_indicators(q=query, limit=1000)
 
     indicators = []
     for item in response['items']:
