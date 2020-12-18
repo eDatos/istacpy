@@ -3,10 +3,10 @@ import re
 from istacpy.exceptions import IndicatorNotFoundError
 from istacpy.indicators import geographic as api_geographic
 from istacpy.indicators import indicators as api_indicators
-from istacpy.lite.dimensions.base import Dimension
-from istacpy.lite.dimensions.geographical import GeographicalGranularity
-from istacpy.lite.dimensions.measure import MeasureRepresentation
-from istacpy.lite.dimensions.time import TimeGranularity
+from istacpy.indicators.lite.dimensions.base import Dimension
+from istacpy.indicators.lite.dimensions.geographical import GeographicalGranularity
+from istacpy.indicators.lite.dimensions.measure import MeasureRepresentation
+from istacpy.indicators.lite.dimensions.time import TimeGranularity
 
 from . import services
 

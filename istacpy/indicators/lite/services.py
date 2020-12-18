@@ -6,14 +6,14 @@ from istacpy.exceptions import (
     MeasureNotAvailableError,
     QueryMalformedError,
 )
-from istacpy.lite.dimensions.base import Dimension
-from istacpy.lite.dimensions.geographical import (
+from istacpy.indicators.lite.dimensions.base import Dimension
+from istacpy.indicators.lite.dimensions.geographical import (
     GeographicalGranularity,
     GeographicalRepresentation,
 )
-from istacpy.lite.dimensions.measure import MeasureRepresentation
-from istacpy.lite.dimensions.time import TimeGranularity, TimeRepresentation
-from istacpy.lite.i18n import Locale, Message, gettext
+from istacpy.indicators.lite.dimensions.measure import MeasureRepresentation
+from istacpy.indicators.lite.dimensions.time import TimeGranularity, TimeRepresentation
+from istacpy.indicators.lite.i18n import Locale, Message, gettext
 
 
 def parse_geographical_query(query, available_granularities):

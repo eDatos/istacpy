@@ -5,10 +5,10 @@ import uuid
 import pytest
 
 from istacpy import config, exceptions
-from istacpy.lite import i18n, indicators
-from istacpy.lite.dimensions.geographical import GeographicalGranularity
-from istacpy.lite.dimensions.measure import MeasureRepresentation
-from istacpy.lite.dimensions.time import TimeGranularity
+from istacpy.indicators.lite import i18n, indicators
+from istacpy.indicators.lite.dimensions.geographical import GeographicalGranularity
+from istacpy.indicators.lite.dimensions.measure import MeasureRepresentation
+from istacpy.indicators.lite.dimensions.time import TimeGranularity
 
 
 @pytest.fixture
