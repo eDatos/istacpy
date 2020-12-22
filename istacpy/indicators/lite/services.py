@@ -16,6 +16,16 @@ from istacpy.indicators.lite.dimensions.time import TimeGranularity, TimeReprese
 from istacpy.indicators.lite.i18n import Locale, Message, gettext
 
 
+def _expand_island_subcodes(filter, granularity_code):
+    items_codes = []
+    if filter is not None:
+        islands = re.split(r'\s*,\s*', filter)
+        for island in islands:
+            codes = GeographicalRepresentation.get_codes(island, granularity_code)
+            items_codes.extend(codes)
+    return items_codes
+
+
 def parse_geographical_query(query, available_granularities):
     if m := re.match(
         r'^(=)?([A-Z])(?:\|([\s\w]+(?:,[\s\w]+)*))?$', query.strip().upper(), re.I
@@ -29,17 +39,29 @@ def parse_geographical_query(query, available_granularities):
             ) from err
         if granularity_code not in available_granularities:
             raise GranularityNotAvailableError(granularity_code)
-        if filter is not None:
-            islands = re.split(r'\s*,\s*', filter)
-            items_codes = []
-            for island in islands:
-                codes = GeographicalRepresentation.get_codes(island, granularity_code)
-                items_codes.extend(codes)
-        else:
-            items_codes = []
+        items_codes = _expand_island_subcodes(filter, granularity_code)
         return raw_output is None, granularity_code, '|'.join(items_codes)
     else:
         raise QueryMalformedError(query)
+
+
+def _expand_year_subcodes(filter, granularity_code, available_years, use_dash):
+    items_codes = []
+    if filter is not None:
+        filter = filter.replace('F', str(available_years[0]))
+        filter = filter.replace('L', str(available_years[-1]))
+        year_ranges = re.split(r'\s*,\s*', filter)
+        items_codes = []
+        for year_range in year_ranges:
+            years = re.split(r'\s*[:-]\s*', year_range)
+            if len(years) > 1:
+                year_list = range(int(years[0]), int(years[1]) + 1)
+            else:
+                year_list = years
+            for year in year_list:
+                codes = TimeRepresentation.get_codes(year, granularity_code, use_dash)
+                items_codes.extend(codes)
+    return items_codes
 
 
 def parse_time_query(query, use_dash, available_years):
@@ -62,22 +84,9 @@ def parse_time_query(query, use_dash, available_years):
         except KeyError as err:
             raise GranularityNotAvailableError(granularity_code) from err
 
-        if filter is not None:
-            filter = filter.replace('F', str(available_years[0]))
-            filter = filter.replace('L', str(available_years[-1]))
-            year_ranges = re.split(r'\s*,\s*', filter)
-            items_codes = []
-            for year_range in year_ranges:
-                years = re.split(r'\s*[:-]\s*', year_range)
-                if len(years) > 1:
-                    year_list = range(int(years[0]), int(years[1]) + 1)
-                else:
-                    year_list = years
-                for year in year_list:
-                    codes = TimeRepresentation.get_codes(year, granularity_code, use_dash)
-                    items_codes.extend(codes)
-        else:
-            items_codes = []
+        items_codes = _expand_year_subcodes(
+            filter, granularity_code, available_years, use_dash
+        )
         return raw_output is None, granularity_code, '|'.join(items_codes)
     else:
         raise QueryMalformedError(query)
