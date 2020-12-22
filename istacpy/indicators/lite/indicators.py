@@ -150,6 +150,11 @@ class IndicatorData:
         buffer.append(f'· Num. observations: {self.num_observations}')
         print('\n'.join(buffer))
 
+    def as_dataframe(self):
+        import pandas as pd
+
+        return pd.DataFrame(data=self.data, index=self.index)
+
     def _quicklook(self):
         buffer = []
         buffer.append(str(self.indicator))

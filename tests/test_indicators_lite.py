@@ -2,6 +2,7 @@ import itertools
 import re
 import uuid
 
+import pandas as pd
 import pytest
 
 from istacpy import config, exceptions
@@ -9,7 +10,6 @@ from istacpy.indicators.lite import i18n, indicators
 from istacpy.indicators.lite.dimensions.geographical import GeographicalGranularity
 from istacpy.indicators.lite.dimensions.measure import MeasureRepresentation
 from istacpy.indicators.lite.dimensions.time import TimeGranularity
-
 
 # =================================================================
 # FIXTURES
@@ -263,3 +263,9 @@ def test_value_error(population_indicator):
     indicator_data = population_indicator.get_data(measure='J')
     values = set(itertools.chain(*indicator_data.data.values()))
     assert config.VALUE_ERROR in values
+
+
+def test_as_dataframe(population_indicator):
+    indicator_data = population_indicator.get_data()
+    df = indicator_data.as_dataframe()
+    assert isinstance(df, pd.DataFrame)
