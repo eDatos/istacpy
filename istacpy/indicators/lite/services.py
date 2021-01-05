@@ -163,8 +163,12 @@ def build_custom_response(
 
 
 def build_custom_dimension(api_response, property, dimension, granularity_handler):
-    granularity = api_response['dimension'][dimension][property]
-    return {e['code']: granularity_handler.get_id(e['code']) for e in granularity}
+    api_codes = [e['code'] for e in api_response['dimension'][dimension][property]]
+    dimension = {}
+    for code, id in granularity_handler.SWAPPED_CODES.items():
+        if code in api_codes:
+            dimension[code] = id
+    return dimension
 
 
 def time_granularities_using_dashes(api_response, time_granularities):
