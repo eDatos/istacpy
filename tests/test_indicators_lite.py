@@ -1,4 +1,3 @@
-import itertools
 import re
 import uuid
 
@@ -104,7 +103,7 @@ def test_measure(population_indicator):
     measure_code = MeasureRepresentation.get_code(measure_id)
     assert indicator_data.measure == measure_code
     # check all values are integers
-    for value in itertools.chain(*indicator_data.data.values()):
+    for value in indicator_data.as_list():
         assert isinstance(value, int)
 
 
@@ -189,7 +188,7 @@ def test_unit_multiplier(active_population_indicator):
     # Unit multiplier shoud be "Thousands"
     indicator_data = active_population_indicator.get_data()
     # check all values are floats
-    for value in itertools.chain(*indicator_data.data.values()):
+    for value in indicator_data.as_list():
         assert isinstance(value, float)
 
 
@@ -272,11 +271,18 @@ def test_get_indicators_bad_argument():
 
 def test_value_error(population_indicator):
     indicator_data = population_indicator.get_data(measure='J')
-    values = set(itertools.chain(*indicator_data.data.values()))
+    values = set(indicator_data.as_list())
     assert config.VALUE_ERROR in values
 
 
-def test_as_dataframe(population_indicator):
+def test_data_as_dataframe(population_indicator):
     indicator_data = population_indicator.get_data()
     df = indicator_data.as_dataframe()
     assert isinstance(df, pd.DataFrame)
+
+
+def test_data_as_list(population_indicator):
+    indicator_data = population_indicator.get_data()
+    data_as_list = indicator_data.as_list()
+    assert isinstance(data_as_list, list)
+    assert len(data_as_list) > 0

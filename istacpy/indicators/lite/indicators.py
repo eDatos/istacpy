@@ -1,3 +1,4 @@
+import itertools
 import re
 
 from istacpy.exceptions import IndicatorNotFoundError
@@ -154,6 +155,9 @@ class IndicatorData:
         import pandas as pd
 
         return pd.DataFrame(data=self.data, index=self.index)
+
+    def as_list(self):
+        return list(itertools.chain(*self.data.values()))
 
     def _quicklook(self):
         buffer = []
