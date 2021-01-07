@@ -157,11 +157,22 @@ def test_english_response():
     assert indicator.description.startswith('Number of persons')
 
 
-def test_monthly_indicator(affiliation_indicator):
+def test_monthly_indicator_codes(affiliation_indicator):
     time_query = 'M'
     indicator_data = affiliation_indicator.get_data(time=time_query)
     for value in indicator_data.index:
         assert re.match(r'^\w{3} \d{4}$', value) is not None
+
+
+@pytest.mark.skip(
+    reason="API doesn't filter indicators by years with monthly granularities using dashes"
+)
+def test_monthly_indicator_filter(affiliation_indicator):
+    time_query = '=M|L'
+    last_year = affiliation_indicator.available_years[-1]
+    indicator_data = affiliation_indicator.get_data(time=time_query)
+    returned_years = set([int(i[:4]) for i in indicator_data.index])
+    assert last_year in returned_years and len(returned_years) == 1
 
 
 def test_raw_output(affiliation_indicator):
