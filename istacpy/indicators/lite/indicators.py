@@ -40,6 +40,24 @@ class Indicator:
         self.available_years = services.get_available_years(self.api_response)
 
     def get_data(self, *, geo=None, time=None, measure=None):
+        """Get data from API on the basis of query strings from arguments.
+
+        Parameters
+        ----------
+        geo : str
+            Query string for geographical dimension. Defaults to the largest grain
+            granularity with no filter.
+        time : str
+            Query string for time dimension. Defaults to the largest grain granularity with
+            no filter.
+        measure : str
+            Indicates the representation of measure to use. Defaults to absolute measure.
+
+        Returns
+        -------
+        IndicatorData
+            Object with requested data and other metadata
+        """
         geo = geo or list(self.geographical_granularities.values())[0]
         time = time or list(self.time_granularities.values())[0]
         measure = measure or list(self.measures.values())[0]
@@ -79,6 +97,8 @@ class Indicator:
         )
 
     def info(self):
+        """Information about the object with a summary of the main attributes.
+        Output is sent to stdout."""
         buffer = []
         buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
         buffer.append(f'· Indicator code: {self.code}')
@@ -136,6 +156,8 @@ class IndicatorData:
         return tuple(self.data.keys())
 
     def info(self):
+        """Information about the object with a summary of the main attributes.
+        Output is sent to stdout."""
         buffer = []
         buffer.append(f'· Class: {self.__class__.__module__}.{self.__class__.__name__}')
         buffer.append(f'· Indicator code: {self.indicator.code}')
@@ -152,11 +174,25 @@ class IndicatorData:
         print('\n'.join(buffer))
 
     def as_dataframe(self):
+        """Convert current object to a Pandas Dataframe.
+
+        Returns
+        -------
+        pandas.core.frame.DataFrame
+            Dataframe containing index, columns and data from indicator.
+        """
         import pandas as pd
 
         return pd.DataFrame(data=self.data, index=self.index)
 
     def as_list(self):
+        """Convert current object to a list of values.
+
+        Returns
+        -------
+        list
+            List with flattened values from indicator data.
+        """
         return list(itertools.chain(*self.data.values()))
 
     def _quicklook(self):
@@ -174,7 +210,21 @@ class IndicatorData:
 
 
 def get_indicators(search_query='', *, subject_code=''):
+    """Get available indicators on the API.
 
+    Parameters
+    ----------
+    search_query : str
+        Free text to look for against.
+    subject_code : str
+        Subject code to restrict search within that context.
+
+    Returns
+    -------
+    tuple
+        Tuple of tuples with first value as indicator code and second value as
+        indicator title.
+    """
     query = f'subjectCode EQ "{subject_code}"' if subject_code else ''
     response = api_indicators.get_indicators(q=query, limit=1000)
 
@@ -191,10 +241,30 @@ def get_indicators(search_query='', *, subject_code=''):
 
 
 def get_indicator(indicator_code):
+    """Get a concrete indicator through its code.
+
+    Parameters
+    ----------
+    indicator_code :  str
+        Indicator code as is set on API.
+
+    Returns
+    -------
+    Indicator
+        Object with all the information about the indicator.
+    """
     return Indicator(indicator_code)
 
 
 def get_subjects():
+    """Get subjects on API in which indicators are sorted in.
+
+    Returns
+    -------
+    tuple
+        Tuple of tuples with first value as subject code and second value as
+        subject title.
+    """
     response = api_geographic.get_indicators_subjects()
     subjects = []
     for item in response['items']:

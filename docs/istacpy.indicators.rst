@@ -23,7 +23,7 @@ First of all, you have to import the right submodule::
 Look for subjects
 =================
 
-Indicators are grouped in subjects. Access easily to these subjects::
+Indicators are grouped in subjects. For this purpose the function :func:`istacpy.indicators.lite.indicators.get_subjects` is provided. Access easily to these subjects::
 
     >>> indicators.get_subjects()
     (('011', 'Territorio y usos del suelo'),
@@ -38,7 +38,7 @@ Each tuple represents: **subject code** and **subject title**. Subjects are **so
 Look for indicators
 ===================
 
-Look for indicators using a *subject code*::
+For this purpose the function :func:`istacpy.indicators.lite.indicators.get_indicators` is provided. Look for indicators using a *subject code*::
 
     >>> indicators.get_indicators(subject_code='022')
     (('DEFUNCIONES', 'Defunciones'),
@@ -110,7 +110,7 @@ Once you have identified which indicator you want to work with, it's time to get
     >>> indicator
     POBLACION (Population)
 
-You can get more information about this indicator using the next method::
+For this purpose the class :class:`istacpy.indicators.lite.indicators.Indicator` is provided. You can get more information about this indicator using the next method::
 
     >>> indicator.info()
     · Class: istacpy.indicators.lite.indicators.Indicator
@@ -142,7 +142,7 @@ Since this object internally uses an :ref:`istacpy.indicators.indicators` method
 Indicator Data
 ==============
 
-Once you have inspected our indicator, you are ready to get some data from it. Suppose you need to know the evolution of population on every Canary island. Query this through the next sentence::
+Once you have inspected our indicator, you are ready to get some data from it. For this purpose the method :meth:`istacpy.indicators.lite.indicators.Indicator.get_data` is provided. Suppose you need to know the evolution of population on every Canary island. Query this through the next sentence::
 
     >>> data = indicator.get_data(geo='I')
 
@@ -151,7 +151,7 @@ Once you have inspected our indicator, you are ready to get some data from it. S
     <2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019>
     {'Lanzarote': (96310, 103044, 109942, 114715, 116782, 123039, 127457, 132366, 139506, 141938, 141437, 142517, 142132, 141953, 141940, 143209, 145084, 147023, 149183, 152289), 'Fuerteventura': (60124, 66025, 69762, 74983, 79986, 86642, 89680, 94386, 100929, 103167, 103492, 104072, 106456, 109174, 106930, 107367, 107521, 110299, 113275, 116886), 'Gran Canaria': (741161, 755489, 771333, 789908, 790360, 802247, 807049, 815379, 829597, 838397, 845676, 850391, 852225, 852723, 851157, 847830, 845195, 843158, 846717, 851231), 'Tenerife': (709365, 744076, 778071, 799889, 812839, 838877, 852945, 865070, 886033, 899833, 906854, 908555, 898680, 897582, 889936, 888184, 891111, 894636, 904713, 917841), 'La Gomera': (18300, 18990, 19098, 19580, 21220, 21746, 21952, 22259, 22622, 22769, 22776, 23076, 22350, 21153, 20721, 20783, 20940, 20976, 21136, 21503), 'La Palma': (82483, 84319, 85547, 85631, 84282, 85252, 86062, 85933, 86528, 86996, 87324, 87163, 85468, 85115, 83456, 82346, 81486, 81350, 81863, 82671), 'El Hierro': (8533, 9423, 10002, 10162, 10071, 10477, 10688, 10558, 10753, 10892, 10960, 10995, 11033, 10979, 10675, 10587, 10587, 10679, 10798, 10968)}
 
-Get more information about this data using the next method::
+For this purpose the class :class:`istacpy.indicators.lite.indicators.IndicatorData` is provided. Get more information about this data using the next method::
 
     >>> data.info()
     · Class: istacpy.indicators.lite.indicators.IndicatorData
@@ -168,8 +168,8 @@ Get more information about this data using the next method::
 As you can see, every field contains helpful information:
 
 - *Class*: shows the full qualified name of the indicator data.
-- *Indicator code*: shows the indicator code and can be also independently accessed through the ``indicator.code`` attribute.
-- *Title*: shows the indicator title (internationalized if proceed) and can be also independently accessed through the ``indicator.title`` attribute.
+- *Indicator code*: shows the indicator code and can be also independently accessed through the ``code`` attribute.
+- *Title*: shows the indicator title (internationalized if proceed) and can be also independently accessed through the ``title`` attribute.
 - *Geographical granularity*: shows the pinned geographical granularity for this dataset and can be also independently accessed through the ``geographical_granularity`` attribute.
 - *Time granularity*: shows the pinned time granularity for this dataset and can be also independently accessed through the ``time_granularity`` attribute.
 - *Measure*: shows the pinned measure for this dataset and can be also independently accessed through the ``measure`` attribute.
@@ -240,6 +240,8 @@ In case you are working with `Pandas`_ it's super easy to convert indicator data
 
 .. important:: ``pip install pandas`` is a required dependency in case you want to use ``.as_dataframe()`` method.
 
+For this purpose the method :meth:`istacpy.indicators.lite.indicators.Indicator.as_dataframe` is provided.
+
 Convert to list
 ---------------
 
@@ -262,6 +264,7 @@ It's also possible to flatten data and get a list of values as follows::
      10798,
      10968]
 
+For this purpose the method :meth:`istacpy.indicators.lite.indicators.Indicator.as_list` is provided.
 
 Default values
 --------------
@@ -565,6 +568,28 @@ Query indicating to return raw codes::
     ('ES708', 'ES704', 'ES705', 'ES709', 'ES706', 'ES707', 'ES703')
 
 .. note:: This can be used in time dimension as well.
+
+API Reference
+=============
+
+Functions
+---------
+
+.. automodule:: istacpy.indicators.lite.indicators
+    :members: get_indicators, get_indicator, get_subjects
+    :undoc-members:
+
+``Indicator``
+-------------
+
+.. autoclass:: istacpy.indicators.lite.indicators.Indicator
+    :members: info, get_data
+
+``IndicatorData``
+-----------------
+
+.. autoclass:: istacpy.indicators.lite.indicators.IndicatorData
+    :members: info, as_dataframe, as_list
 
 *****************************
 istacpy.indicators.geographic
