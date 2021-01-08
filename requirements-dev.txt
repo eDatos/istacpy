@@ -9,3 +9,4 @@ pytest
 coverage
 twine
 pandas
+wheel
