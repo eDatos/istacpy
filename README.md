@@ -28,6 +28,10 @@ from istacpy.indicators import geographic
 geographic.get_indicators_geographic_granularities()
 ```
 
+#### `istacpy.indicators.lite`
+
+This is a lite version of the rest of the indicators API. It’s a kind of wrapper to facilitate the access to indicators data. It’s not as powerful as the above functions but it hides a lot of the business logic of the API, so it’s quite suitable to quickly retrieve information.
+
 ### Statistical resources
 
 **Example 1**: Get all existing statistical data cubes:

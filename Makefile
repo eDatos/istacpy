@@ -4,7 +4,7 @@ init:
 	pip install -r requirements.txt
 
 test:
-	pytest
+	pytest -rs
 
 build:
 	python setup.py sdist bdist_wheel

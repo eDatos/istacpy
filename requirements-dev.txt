@@ -8,3 +8,5 @@ sphinx-autobuild
 pytest
 coverage
 twine
+pandas
+wheel
