@@ -2,6 +2,10 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.6.0 (2021-01-13)
+
+- Add module `istacpy.indicators.lite`.
+
 ## istacpy 0.5.0 (2020-12-04)
 
 - Set new base url for API entrypoints.
