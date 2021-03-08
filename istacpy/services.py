@@ -19,14 +19,11 @@ def get_content(url):
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
     }
-    content = None
-
     try:
         response = requests.get(url, headers=headers)
         content = response.json()
-    except requests.exceptions.HTTPError as e:
-        print("Bad HTTP status code:", e)
-    except requests.exceptions.RequestException as e:
-        print("Network error:", e)
+    except Exception as err:
+        err.requested_url = url
+        raise
 
     return content
