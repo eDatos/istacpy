@@ -2,6 +2,10 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.6.1 (2021-03-08)
+
+- Fix error handling.
+
 ## istacpy 0.6.0 (2021-01-13)
 
 - Add module `istacpy.indicators.lite`.
