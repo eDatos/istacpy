@@ -2,6 +2,10 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## istacpy 0.6.2 (2021-03-17)
+
+- Change license to AGPL-3.0.
+
 ## istacpy 0.6.1 (2021-03-08)
 
 - Fix error handling.
