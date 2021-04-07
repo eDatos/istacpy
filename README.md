@@ -32,6 +32,8 @@ The package is divided into several modules depending on the resource you want t
 
 This is a lite version of the rest of the indicators API. It’s a kind of wrapper to facilitate the access to indicators data. It’s not as powerful as the above functions but it hides a lot of the business logic of the API, so it’s quite suitable to quickly retrieve information.
 
+**Example**: Get (absolute yearly) population of Lanzarote municipalities between 2010 and 2020:
+
 ```pycon
 >>> from istacpy.indicators.lite import indicators
 
