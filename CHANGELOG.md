@@ -2,6 +2,12 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## Unreleased
+
+Released XXXX-XX-XX
+
+- Add code example of `istacpy.indicators.lite` to README.
+
 ## Version 0.6.3
 
 Released 2021-04-07
