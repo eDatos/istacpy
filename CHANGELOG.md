@@ -4,9 +4,10 @@ Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<pa
 
 ## Unreleased
 
-Release XXXX-XX-XX
+Released XXXX-XX-XX
 
 - Reformat CHANGELOG.
+- Fix minor issues on documentation.
 
 ## Version 0.6.2
 

@@ -22,10 +22,6 @@ project = 'istacpy'
 copyright = '2019, Instituto Canario de Estadistica (ISTAC)'
 author = 'Instituto Canario de Estadistica (ISTAC)'
 
-# The full version, including alpha/beta/rc tags
-release = '0.1'
-
-
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -60,3 +56,5 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 # html_static_path = ['_static']
+
+html_title = 'istacpy docs'

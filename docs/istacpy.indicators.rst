@@ -526,17 +526,18 @@ For example, if you are working with *unemployed population*, this indicator has
     · Measures: {'ABSOLUTE': 'A', 'ANNUAL_PERCENTAGE_RATE': 'N', 'INTERPERIOD_PERCENTAGE_RATE': 'I', 'ANNUAL_PUNTUAL_RATE': 'M', 'INTERPERIOD_PUNTUAL_RATE': 'J'}
     · Available years: 2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020
 
-    >>> data = indicator.get_data(geo='C', time='Q|L')
+    >>> data = indicator.get_data()
 
 Let's compare the last three values of ``data`` against the last three raw values from API response::
 
     >>> data.api_response['observation'][-3:][::-1]
     ['7.62', '9.66', '9.87']
 
-    >>> [v for v in data.data.values()][-1]
-    (7620.0, 9660.0, 9870.0)
+    >>> values = data.as_list()
+    >>> values[:3]
+    [7620.0, 9660.0, 9870.0]
 
-You can check than values are correctly converted.
+You can check that values are correctly converted.
 
 Getting raw codes
 -----------------
