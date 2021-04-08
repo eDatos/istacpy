@@ -7,6 +7,7 @@ Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<pa
 Released XXXX-XX-XX
 
 - Add code example of `istacpy.indicators.lite` to README.
+- Fix build of entrypoint url. Required for istacpy to properly work on Windows.
 
 ## Version 0.6.3
 
