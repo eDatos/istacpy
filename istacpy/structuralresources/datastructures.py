@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'structural-resources'
@@ -49,7 +47,7 @@ def get_structuralresources_content_constraints_agency(
     Examples:
         >>> get_structuralresources_content_constraints_agency("ISTAC")
     """
-    path = os.path.join('contentConstraints', agencyid)
+    path = '/'.join(['contentConstraints', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -79,7 +77,7 @@ def get_structuralresources_content_constraints_agency_resource(
         ...     "CSM_C00010A_SIE"
         ... )
     """
-    path = os.path.join('contentConstraints', agencyid, resourceid)
+    path = '/'.join(['contentConstraints', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -106,7 +104,7 @@ def get_structuralresources_content_constraints_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('contentConstraints', agencyid, resourceid, version)
+    path = '/'.join(['contentConstraints', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -135,8 +133,8 @@ def get_structuralresources_content_constraints_agency_resource_version_regions(
         ... )
     """
     path = "contentConstraints"
-    path = os.path.join(
-        'contentConstraints', agencyid, resourceid, version, 'regions', regioncode
+    path = '/'.join(
+        ['contentConstraints', agencyid, resourceid, version, 'regions', regioncode]
     )
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
@@ -186,7 +184,7 @@ def get_structuralresources_data_structures_agency(
     Examples:
         >>> get_structuralresources_data_structures_agency("ISTAC")
     """
-    path = os.path.join('datastructures', agencyid)
+    path = '/'.join(['datastructures', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -215,7 +213,7 @@ def get_structuralresources_data_structures_agency_resource(
         ...     "DSD_C00010A_00001"
         ... )
     """
-    path = os.path.join('datastructures', agencyid, resourceid)
+    path = '/'.join(['datastructures', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -242,6 +240,6 @@ def get_structuralresources_data_structures_agency_resource_version(
         ...     "01.001"
         ... )
     """
-    path = os.path.join('datastructures', agencyid, resourceid, version)
+    path = '/'.join(['datastructures', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

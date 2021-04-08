@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'structural-resources'
@@ -38,7 +36,7 @@ def get_structuralresources_codelist_families_id(id):
     Examples:
         >>> get_structuralresources_codelist_families_id('CODELIST_ID')
     """
-    path = os.path.join('codelistfamilies', id)
+    path = '/'.join(['codelistfamilies', id])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -85,7 +83,7 @@ def get_structuralresources_codelists_agency(
         >>> get_structuralresources_codelists_agency("ISTAC")
         >>> get_structuralresources_codelists_agency("ESTAT")
     """
-    path = os.path.join('codelists', agencyid)
+    path = '/'.join(['codelists', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -112,7 +110,7 @@ def get_structuralresources_codelists_agency_resource(
     Examples:
         >>> get_structuralresources_codelists_agency_resource("ISTAC", "CL_AREA_ES")
     """
-    path = os.path.join('codelists', agencyid, resourceid)
+    path = '/'.join(['codelists', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -138,7 +136,7 @@ def get_structuralresources_codelists_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('codelists', agencyid, resourceid, version)
+    path = '/'.join(['codelists', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -181,7 +179,7 @@ def get_structuralresources_codelists_agency_resource_version_codes(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('codelists', agencyid, resourceid, version, 'codes')
+    path = '/'.join(['codelists', agencyid, resourceid, version, 'codes'])
     url = services.build_entrypoint_url(
         API,
         path,
@@ -213,6 +211,6 @@ def get_structuralresources_codelists_agency_resource_version_codes_codeid(
         >>> get_structuralresources_codelists_agency_resource_version_codes_codeid(
             "ISTAC", "CL_AREA_ES", "01.000", "ES706A01")
     """
-    path = os.path.join('codelists', agencyid, resourceid, version, 'codes', codeid)
+    path = '/'.join(['codelists', agencyid, resourceid, version, 'codes', codeid])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

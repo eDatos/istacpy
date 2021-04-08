@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'structural-resources'
@@ -38,7 +36,7 @@ def get_structuralresources_variable_families_id(id):
     Examples:
         >>> get_structuralresources_variable_families_id("VRF_DEMOGRAFICAS")
     """
-    path = os.path.join('variablefamilies', id)
+    path = '/'.join(['variablefamilies', id])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -61,7 +59,7 @@ def get_structuralresources_variable_families_id_variables(
     Examples:
         >>> get_structuralresources_variable_families_id_variables("VRF_DEMOGRAFICAS")
     """
-    path = os.path.join('variablefamilies', id, 'variables')
+    path = '/'.join(['variablefamilies', id, 'variables'])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -101,7 +99,7 @@ def get_structuralresources_variables_id(id):
     Examples:
       >>> get_structuralresources_variables_id("VR_SEXO")
     """
-    path = os.path.join('variables', id)
+    path = '/'.join(['variables', id])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -124,7 +122,7 @@ def get_structuralresources_variableelements(
     Examples:
         >>> get_structuralresources_variableelements("VR_SEXO")
     """
-    path = os.path.join('variables', variableid, 'variableelements')
+    path = '/'.join(['variables', variableid, 'variableelements'])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -144,7 +142,7 @@ def get_structuralresources_variableelements_resource(variableid, resourceid):
     Examples:
         >>> get_structuralresources_variableelements_resource("VR_SEXO", "FEMALE")
     """
-    path = os.path.join('variables', variableid, 'variableelements', resourceid)
+    path = '/'.join(['variables', variableid, 'variableelements', resourceid])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -170,7 +168,7 @@ def get_structuralresources_geoinfo(
     Examples:
       >>> get_structuralresources_geoinfo("VR_TERRITORIO", "MUN_ICOD_VINOS")
     """
-    path = os.path.join('variables', variableid, 'variableelements', resourceid, 'geoinfo')
+    path = '/'.join(['variables', variableid, 'variableelements', resourceid, 'geoinfo'])
     url = services.build_entrypoint_url(
         API, path, fields=fields, limit=limit, offset=offset, query=query, orderBy=orderby
     )

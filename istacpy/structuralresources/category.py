@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'structural-resources'
@@ -49,7 +47,7 @@ def get_structuralresources_categorisations_agency(
     Examples:
         >>> get_structuralresources_categorisations_agency("ISTAC")
     """
-    path = os.path.join('categorisations', agencyid)
+    path = '/'.join(['categorisations', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -75,7 +73,7 @@ def get_structuralresources_categorisations_agency_resource(
     Examples:
         >>> get_structuralresources_categorisations_agency_resource("ISTAC", "cat2")
     """
-    path = os.path.join('categorisations', agencyid, resourceid)
+    path = '/'.join(['categorisations', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -102,7 +100,7 @@ def get_structuralresources_categorisations_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('categorisations', agencyid, resourceid, version)
+    path = '/'.join(['categorisations', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -155,7 +153,7 @@ def get_structuralresources_category_schemes_agency(
         ...     orderby="ID ASC"
         ...)
     """
-    path = os.path.join('categoryschemes', agencyid)
+    path = '/'.join(['categoryschemes', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -184,7 +182,7 @@ def get_structuralresources_category_schemes_agency_resource(
         ...     "TEMAS_CANARIAS"
         ... )
     """
-    path = os.path.join('categoryschemes', agencyid, resourceid)
+    path = '/'.join(['categoryschemes', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -211,7 +209,7 @@ def get_structuralresources_category_schemes_agency_resource_version(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('categoryschemes', agencyid, resourceid, version)
+    path = '/'.join(['categoryschemes', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -241,7 +239,7 @@ def get_structuralresources_category_schemes_agency_resource_version_categories(
         ...     "01.000"
         ... )
     """
-    path = os.path.join('categoryschemes', agencyid, resourceid, version, 'categories')
+    path = '/'.join(['categoryschemes', agencyid, resourceid, version, 'categories'])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -276,8 +274,8 @@ def get_structuralresources_category_schemes_agency_resource_version_categories_
         ...     "060.060_010.060_010_010"
         ... )
     """
-    path = os.path.join(
-        'categoryschemes', agencyid, resourceid, version, 'categories', categoryid
+    path = '/'.join(
+        ['categoryschemes', agencyid, resourceid, version, 'categories', categoryid]
     )
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)

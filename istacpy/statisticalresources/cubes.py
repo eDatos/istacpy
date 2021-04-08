@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'statistical-resources'
@@ -48,7 +46,7 @@ def get_statisticalresources_datasets_agency(
     Examples:
         >>> get_statisticalresources_datasets_agency(agencyid="ISTAC")
     """
-    path = os.path.join('datasets', agencyid)
+    path = '/'.join(['datasets', agencyid])
     url = services.build_entrypoint_url(
         API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
@@ -81,7 +79,7 @@ def get_statisticalresources_datasets_agency_resource(
         ... )
 
     """
-    path = os.path.join('datasets', agencyid, resourceid)
+    path = '/'.join(['datasets', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
@@ -114,6 +112,6 @@ def get_statisticalresources_datasets_agency_resource_version(
         ...     version="001.000"
         ... )
     """
-    path = os.path.join('datasets', agencyid, resourceid, version)
+    path = '/'.join(['datasets', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path, dim=dim, fields=fields, lang=lang)
     return services.get_content(url)

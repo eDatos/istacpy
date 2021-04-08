@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'indicators'
@@ -63,7 +61,7 @@ def get_indicators_code(indicatorcode):
         >>> get_indicators_code("AFILIACIONES")
         >>> get_indicators_code("PARO_REGISTRADO")
     """
-    path = os.path.join('indicators', indicatorcode)
+    path = '/'.join(['indicators', indicatorcode])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -88,7 +86,7 @@ def get_indicators_code_data(indicatorcode, representation='', granularity='', f
     Examples:
         >>> get_indicators_code_data("AFILIACIONES")
     """
-    path = os.path.join('indicators', indicatorcode, 'data')
+    path = '/'.join(['indicators', indicatorcode, 'data'])
     url = services.build_entrypoint_url(
         API, path, representation=representation, granularity=granularity, fields=fields
     )

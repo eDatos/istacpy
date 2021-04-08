@@ -2,6 +2,12 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## Unreleased
+
+Released XXXX-XX-XX
+
+- Fix entrypoint path building.
+
 ## Version 0.6.4
 
 Released 2021-04-08

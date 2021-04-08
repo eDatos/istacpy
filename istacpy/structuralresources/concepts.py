@@ -1,5 +1,3 @@
-import os
-
 from istacpy import services
 
 API = 'structural-resources'
@@ -67,7 +65,7 @@ def get_structuralresources_concept_schemes_agency(
         ...     orderby="ID ASC"
         ... )
     """
-    path = os.path.join('conceptschemes', agencyid)
+    path = '/'.join(['conceptschemes', agencyid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -96,7 +94,7 @@ def get_structuralresources_concept_schemes_agency_resource(
         ...     resourceid="CSM_C00010A_SIE"
         ... )
     """
-    path = os.path.join('conceptschemes', agencyid, resourceid)
+    path = '/'.join(['conceptschemes', agencyid, resourceid])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby
     )
@@ -123,7 +121,7 @@ def get_structuralresources_concept_schemes_agency_resource_version(
         ...     version="01.000"
         ... )
     """
-    path = os.path.join('conceptschemes', agencyid, resourceid, version)
+    path = '/'.join(['conceptschemes', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
@@ -154,7 +152,7 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts(
         ...     version="01.000"
         ... )
     """
-    path = os.path.join('conceptschemes', agencyid, resourceid, version, 'concepts')
+    path = '/'.join(['conceptschemes', agencyid, resourceid, version, 'concepts'])
     url = services.build_entrypoint_url(
         API, path, limit=limit, offset=offset, query=query, orderBy=orderby, fields=fields
     )
@@ -183,8 +181,8 @@ def get_structuralresources_concept_schemes_agency_resource_version_concepts_id(
         ...     conceptID="ELECTORES"
         ... )
     """
-    path = os.path.join(
-        'conceptschemes', agencyid, resourceid, version, 'concepts', conceptid
+    path = '/'.join(
+        ['conceptschemes', agencyid, resourceid, version, 'concepts', conceptid]
     )
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
