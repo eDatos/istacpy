@@ -2,9 +2,9 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
-## Unreleased
+## Version 0.6.4
 
-Released XXXX-XX-XX
+Released 2021-04-08
 
 - Add code example of `istacpy.indicators.lite` to README.
 - Fix build of entrypoint url. Required for istacpy to properly work on Windows.
