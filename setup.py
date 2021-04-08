@@ -5,7 +5,7 @@ with open('README.md') as fh:
 
 setup(
     name='istacpy',
-    version='0.6.3',
+    version='0.6.4',
     packages=find_packages(exclude=('tests',)),
     url='https://www.gobiernodecanarias.org/istac/api/',
     license='gpl-3.0',
