@@ -19,7 +19,8 @@ def get_content(url):
         'Access-Control-Allow-Origin': '*',
     }
     try:
-        print(url)
+        if config.DEBUG:
+            print(url)
         response = requests.get(url, headers=headers)
         content = response.json()
     except Exception as err:
@@ -27,3 +28,11 @@ def get_content(url):
         raise
 
     return content
+
+
+def set_debug():
+    config.DEBUG = True
+
+
+def set_nodebug():
+    config.DEBUG = False
