@@ -2,9 +2,9 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
-## Unreleased
+## Version 0.6.6
 
-Released XXXX-XX-XX
+Released 2021-04-19
 
 - Add option to enable debug mode.
 
