@@ -58,7 +58,7 @@ def get_codelists_from_api_response(api_response: dict) -> dict:
     return codelists
 
 
-def as_dataframe(api_response: dict):
+def convert_api_response_to_dataframe(api_response: dict):
     """Convert json API response (as dict) into a Pandas Dataframe.
     To that end, it's necessary to resolve the scalar product with
     dimensions and observations"""
