@@ -12,6 +12,14 @@ Statistical resources
     from istacpy.statisticalresources import cubes
     cubes.get_statisticalresources_datasets_agency(agencyid='ISTAC')
 
+************************************
+istacpy.statisticalresources.queries
+************************************
+
+.. automodule:: istacpy.statisticalresources.queries
+    :members:
+    :undoc-members:
+
 **********************************
 istacpy.statisticalresources.cubes
 **********************************
