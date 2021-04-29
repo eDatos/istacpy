@@ -40,6 +40,24 @@ def set_nodebug():
     config.DEBUG = False
 
 
+def get_codelists_from_api_response(api_response: dict) -> dict:
+    '''Extract dimension codelists from the metadata of API response'''
+
+    dimensions = api_response['metadata']['dimensions']['dimension']
+    codelists = {}
+    for dimension in dimensions:
+        dimension_id = dimension['id']
+        dimension_values = dimension['dimensionValues']['value']
+        codelist = {}
+        for dimension_value in dimension_values:
+            value_id = dimension_value['id']
+            value_text = dimension_value['name']['text'][0]['value']
+            codelist[value_id] = value_text
+
+        codelists[dimension_id] = codelist
+    return codelists
+
+
 def as_dataframe(api_response: dict):
     """Convert json API response (as dict) into a Pandas Dataframe.
     To that end, it's necessary to resolve the scalar product with
