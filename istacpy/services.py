@@ -7,6 +7,8 @@ import requests
 
 from . import config
 
+ResolvedAPIResponse = collections.namedtuple('ResolvedAPIResponse', 'dataframe codelists')
+
 
 def build_entrypoint_url(api, path, **query):
     api_version = f'v{config.API_VERSION}'
@@ -87,9 +89,6 @@ def convert_api_response_to_dataframe(api_response: dict):
 
 
 def build_resolved_api_response(api_response: dict):
-    ResolvedAPIResponse = collections.namedtuple(
-        'ResolvedAPIResponse', 'dataframe codelists'
-    )
     item = ResolvedAPIResponse(
         dataframe=convert_api_response_to_dataframe(api_response),
         codelists=get_codelists_from_api_response(api_response),
