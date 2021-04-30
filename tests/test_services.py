@@ -29,34 +29,32 @@ def test_build_entrypoint_url():
 def test_convert_api_response_to_dataframe():
     COLUMNS = (
         'MEDIDAS',
-        'TERRITORIO',
-        'AEROPUERTO_ESCALA',
-        'MOVIMIENTO_AERONAVE',
-        'SERVICIO_AEREO',
         'TIME_PERIOD',
+        'SEXO',
+        'SITUACION_ECONOMICA_ICC',
+        'VALORACION',
         'OBSERVACIONES',
     )
 
     api_response = queries.get_statisticalresources_queries_agency_resource(
-        agencyid='ISTAC', resourceid='C00017A_000010'
+        agencyid='ISTAC', resourceid='C00086B_000006'
     )
     df = services.convert_api_response_to_dataframe(api_response)
     assert isinstance(df, pd.DataFrame)
     assert tuple(df.columns) == COLUMNS
-    assert df.size >= 301056
+    assert df.size >= 1728
 
 
 def test_get_codelists_from_api_response():
     DIMENSIONS = (
         'MEDIDAS',
-        'TERRITORIO',
-        'AEROPUERTO_ESCALA',
-        'MOVIMIENTO_AERONAVE',
-        'SERVICIO_AEREO',
         'TIME_PERIOD',
+        'SEXO',
+        'SITUACION_ECONOMICA_ICC',
+        'VALORACION',
     )
     api_response = queries.get_statisticalresources_queries_agency_resource(
-        agencyid='ISTAC', resourceid='C00017A_000010'
+        agencyid='ISTAC', resourceid='C00086B_000006'
     )
     cl = services.get_codelists_from_api_response(api_response)
     assert isinstance(cl, dict)

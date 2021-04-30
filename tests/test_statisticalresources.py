@@ -69,9 +69,8 @@ def test_get_statisticalresources_queries_agency():
 def test_get_statisticalresources_queries_agency_resource():
     response = queries.get_statisticalresources_queries_agency_resource(
         agencyid='ISTAC',
-        resourceid='C00017A_000001',
-        orderby='id ASC',
-        query='name ILIKE "PASAJEROS"',
+        resourceid='C00086B_000006',
+        fields='-metadata',
     )
     assert_valid_response(response)
 
@@ -79,9 +78,7 @@ def test_get_statisticalresources_queries_agency_resource():
 def test_get_statisticalresources_queries_agency_resource_as_dataframe():
     response = queries.get_statisticalresources_queries_agency_resource(
         agencyid='ISTAC',
-        resourceid='C00017A_000001',
-        orderby='id ASC',
-        query='name ILIKE "PASAJEROS"',
+        resourceid='C00086B_000006',
         as_dataframe=True,
     )
     assert isinstance(response, ResolvedAPIResponse)
