@@ -54,7 +54,14 @@ def get_statisticalresources_queries_agency(
 
 
 def get_statisticalresources_queries_agency_resource(
-    agencyid, resourceid, lang='es', limit=25, offset=0, orderby='', query=''
+    agencyid,
+    resourceid,
+    lang='es',
+    limit=25,
+    offset=0,
+    orderby='',
+    query='',
+    as_dataframe=False,
 ):
     """Get queries (agencyID / resourceID)
 
@@ -71,6 +78,9 @@ def get_statisticalresources_queries_agency_resource(
             ``offset=0``.
         orderby (string): Order. Possible values are ``ID ASC`` or ``ID DESC``,
         query (string): Metadata query on which the searches can be built.
+        as_dataframe (bool): If True, this function returns a namedtuple with:
+          - dataframe: pandas dataframe built from API response.
+          - codelists: mapping between codes and representations for each column.
 
     Examples:
         >>> get_statisticalresources_queries_agency_resource(
@@ -83,4 +93,8 @@ def get_statisticalresources_queries_agency_resource(
     url = services.build_entrypoint_url(
         API, path, lang=lang, limit=limit, offset=offset, orderBy=orderby, query=query
     )
-    return services.get_content(url)
+    api_response = services.get_content(url)
+    if as_dataframe:
+        return services.build_resolved_api_response(api_response)
+    else:
+        return api_response

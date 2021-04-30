@@ -1,3 +1,4 @@
+import collections
 import itertools
 import re
 import urllib.parse
@@ -83,3 +84,14 @@ def convert_api_response_to_dataframe(api_response: dict):
     columns = dimension_titles + ['OBSERVACIONES']
 
     return pd.DataFrame(data, columns=columns)
+
+
+def build_resolved_api_response(api_response: dict):
+    ResolvedAPIResponse = collections.namedtuple(
+        'ResolvedAPIResponse', 'dataframe codelists'
+    )
+    item = ResolvedAPIResponse(
+        dataframe=convert_api_response_to_dataframe(api_response),
+        codelists=get_codelists_from_api_response(api_response),
+    )
+    return item
