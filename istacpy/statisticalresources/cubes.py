@@ -87,7 +87,7 @@ def get_statisticalresources_datasets_agency_resource(
 
 
 def get_statisticalresources_datasets_agency_resource_version(
-    agencyid, resourceid, version, dim='', fields='', lang='es'
+    agencyid, resourceid, version, dim='', fields='', lang='es', as_dataframe=False
 ):
     """Get datasets (agencyID / resourceID / version)
 
@@ -104,6 +104,9 @@ def get_statisticalresources_datasets_agency_resource_version(
         fields (string): Allows you to customize the response by excluding fields from it.
             The possible values are ``-metadata`` and ``-data``.
         lang (string): Language in which you want to get the answer.
+        as_dataframe (bool): If True, this function returns a namedtuple with:
+          - dataframe: pandas dataframe built from API response.
+          - codelists: mapping between codes and representations for each column.
 
     Examples:
         >>> get_statisticalresources_datasets_agency_resource_version(
@@ -114,4 +117,8 @@ def get_statisticalresources_datasets_agency_resource_version(
     """
     path = '/'.join(['datasets', agencyid, resourceid, version])
     url = services.build_entrypoint_url(API, path, dim=dim, fields=fields, lang=lang)
-    return services.get_content(url)
+    api_response = services.get_content(url)
+    if as_dataframe:
+        return services.build_resolved_api_response(api_response)
+    else:
+        return api_response

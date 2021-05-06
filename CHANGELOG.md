@@ -2,6 +2,14 @@
 
 Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<patch>`).
 
+## Unreleased
+
+Released XXXX-XX-XX
+
+- Add functions to retrieve API data from statistical queries.
+- Add feature to convert statistical queries and cubes into a pandas dataframe.
+- Add documentation about dataframe handling.
+
 ## Version 0.6.6
 
 Released 2021-04-19

@@ -1,6 +1,9 @@
 import urllib.parse
 
+import pandas as pd
+
 from istacpy import services
+from istacpy.statisticalresources import queries
 
 
 def test_build_entrypoint_url():
@@ -21,3 +24,40 @@ def test_build_entrypoint_url():
         'granularity=GEOGRAPHICAL%5BMUNICIPALITIES%7CPROVINCES%5D&'
         'fields=-observationsMetadata'
     )
+
+
+def test_convert_api_response_to_dataframe():
+    COLUMNS = (
+        'MEDIDAS',
+        'TIME_PERIOD',
+        'SEXO',
+        'SITUACION_ECONOMICA_ICC',
+        'VALORACION',
+        'OBSERVACIONES',
+    )
+
+    api_response = queries.get_statisticalresources_queries_agency_resource(
+        agencyid='ISTAC', resourceid='C00086B_000006'
+    )
+    df = services.convert_api_response_to_dataframe(api_response)
+    assert isinstance(df, pd.DataFrame)
+    assert tuple(df.columns) == COLUMNS
+    assert df.size >= 1728
+
+
+def test_get_codelists_from_api_response():
+    DIMENSIONS = (
+        'MEDIDAS',
+        'TIME_PERIOD',
+        'SEXO',
+        'SITUACION_ECONOMICA_ICC',
+        'VALORACION',
+    )
+    api_response = queries.get_statisticalresources_queries_agency_resource(
+        agencyid='ISTAC', resourceid='C00086B_000006'
+    )
+    cl = services.get_codelists_from_api_response(api_response)
+    assert isinstance(cl, dict)
+    assert tuple(cl.keys()) == DIMENSIONS
+    assert all([isinstance(m, dict) for m in cl.values()])
+    assert all([len(m) > 0 for m in cl.values()])
