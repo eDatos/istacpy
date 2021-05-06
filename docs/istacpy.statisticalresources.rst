@@ -67,6 +67,9 @@ This object provides two attributes: ``dataframe`` and ``codelists``:
     'IGUAL': 'Igual',
     'PEOR': 'Peor'}}
 
+.. important:: Codelists are mappings between codes and text descriptions. The returned ``response.codelists`` always contains **spanish texts** because they are most cases.
+
+
 Recoding of downloaded dataset is as easy as:
 
 .. code-block::
