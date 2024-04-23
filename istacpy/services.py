@@ -4,6 +4,7 @@ import re
 import urllib.parse
 
 import requests
+import pandas
 
 from . import config
 
@@ -94,3 +95,20 @@ def build_resolved_api_response(api_response: dict):
         codelists=get_codelists_from_api_response(api_response),
     )
     return item
+
+def build_resolved_codelists_api_response(api_response_list, lang):
+  codelist = pandas.DataFrame()
+  for api_response in api_response_list:
+    codelist = pandas.concat([codelist, convert_codelists_api_response_to_dataframe(api_response, lang)])
+  return codelist
+
+def convert_codelists_api_response_to_dataframe(api_response, lang):
+  codes = api_response.get("code")
+  result = pandas.DataFrame()
+  for code in codes:
+    #lang_index = code[name]
+    langs = [c['lang'] for c in code['name']['text']]
+    lang_index = langs.index(lang)
+    result = pandas.concat([result, pandas.DataFrame({'id': [code['id']], 
+                                             'name': [code['name']['text'][lang_index]['value']]})])
+  return result

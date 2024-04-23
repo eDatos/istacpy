@@ -200,13 +200,15 @@ def get_structuralresources_codelists_agency_resource_version_codes(
     agencyid,
     resourceid,
     version,
-    limit=25,
+    limit=1000,
     offset=0,
     query='',
     orderby='',
     openness='',
     order='',
     fields='',
+    lang='es',
+    as_dataframe=True
 ):
     """Get codelists agency resource version codes
 
@@ -246,8 +248,18 @@ def get_structuralresources_codelists_agency_resource_version_codes(
         order=order,
         fields=fields,
     )
-    return services.get_content(url)
+    api_response = services.get_content(url)
+    if as_dataframe:
+        api_response_list = []
+        api_response_list.append(api_response)
+        while "nextLink" in api_response:
+            api_response = services.get_content(api_response.get('nextLink'))
+            #list_index = str(length(api_response_list) + 1)
+            api_response_list.append(api_response)
 
+        return services.build_resolved_codelists_api_response(api_response_list, lang)
+    else:
+        return api_response
 
 def get_structuralresources_codelists_agency_resource_version_codes_codeid(
     agencyid, resourceid, version, codeid
