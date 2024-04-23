@@ -140,6 +140,61 @@ def get_structuralresources_codelists_agency_resource_version(
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
+def get_structuralresources_codelists_agency_resource_version_restrictions(
+    agencyid, resourceid, version
+):
+    """Get codelists agency resource version restrictions
+
+    This function allows you to consult restrictions in a particular version of a classification.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        version (string): Specific resource version.
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource_version_restrictions(
+        ...     "ISTAC",
+        ...     "CL_AREA_ES",
+        ...     "01.000"
+        ... )
+    """
+    path = '/'.join(['codelists', agencyid, resourceid, version, 'restrictions'])
+    url = services.build_entrypoint_url(API, path)
+    return services.get_content(url)
+    
+def get_structuralresources_codelists_agency_resource_version_recode(
+    agencyid, resourceid, version, referenceagencyid, referenceresourceid, referenceversion
+):
+    """Get codelists agency resource version recode
+
+    This function allows you to recode a particular version of a classification.
+
+    Args:
+        agencyid (string): Agency identificator.
+        resourceid (string): Resource identificator.
+        version (string): Specific resource version.
+        referenceagencyid (string): Agency identificator (reference).
+        referenceresourceid (string): Resource identificator (reference).
+        referenceversion (string): Specific resource version (reference).
+
+    Examples:
+        >>> get_structuralresources_codelists_agency_resource_version_recode(
+        ...     "ISTAC",
+        ...     "CL_AREA_ES",
+        ...     "01.000"
+        ... )
+    """
+    path = '/'.join(['codelists', agencyid, resourceid, ':'.join([version, 'recode'])])
+    '''query = {'referenceAgencyID': referenceagencyid,
+             'referenceResourceID': referenceresourceid,
+             'referenceVersion': referenceversion
+            }'''
+    #query = f'referenceAgencyID="{referenceagencyid}&referenceResourceID={referenceresourceid}&referenceVersion={referenceversion}"'
+    #url = services.build_entrypoint_url(API, path, query)
+    url = services.build_entrypoint_url(API, path, referenceAgencyID=referenceagencyid, 
+                                        referenceResourceID=referenceresourceid, referenceVersion=referenceversion)
+    return services.get_content(url)
 
 def get_structuralresources_codelists_agency_resource_version_codes(
     agencyid,
