@@ -66,8 +66,6 @@ def convert_api_response_to_dataframe(api_response: dict):
     """Convert json API response (as dict) into a Pandas Dataframe.
     To that end, it's necessary to resolve the scalar product with
     dimensions and observations"""
-    import pandas as pd
-
     dimensions = api_response['data']['dimensions']['dimension']
 
     observations = api_response['data']['observations']
@@ -85,8 +83,18 @@ def convert_api_response_to_dataframe(api_response: dict):
     dimension_codes_product = itertools.product(*dimension_codes)
     data = [dim + (obs,) for dim, obs in zip(dimension_codes_product, observations)]
     columns = dimension_titles + ['OBSERVACIONES']
+    result = pandas.DataFrame(data, columns=columns)
 
-    return pd.DataFrame(data, columns=columns)
+    if 'attributes' in api_response['data']:
+        print(api_response['data']['attributes'])
+        for attribute in api_response['data']['attributes']['attribute']:
+            print(attribute)
+            print('id', attribute['id'])
+            attribute_values = re.split(r'\s*\|\s*', attribute['value'])
+            attribute_values_cycle = itertools.cycle(attribute_values)
+            result[attribute['id']] = [next(attribute_values_cycle) for count in range(result.shape[0])]
+            
+    return result
 
 
 def build_resolved_api_response(api_response: dict):
@@ -109,6 +117,7 @@ def convert_codelists_api_response_to_dataframe(api_response, lang):
     #lang_index = code[name]
     langs = [c['lang'] for c in code['name']['text']]
     lang_index = langs.index(lang)
-    result = pandas.concat([result, pandas.DataFrame({'id': [code['id']], 
-                                             'name': [code['name']['text'][lang_index]['value']]})])
+    result = pandas.concat([result, pandas.DataFrame({
+        'id': [code['id']], 
+        'name': [code['name']['text'][lang_index]['value']]})])
   return result
