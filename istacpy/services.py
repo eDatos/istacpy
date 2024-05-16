@@ -121,3 +121,11 @@ def convert_codelists_api_response_to_dataframe(api_response, lang):
         'id': [code['id']], 
         'name': [code['name']['text'][lang_index]['value']]})])
   return result
+
+def convert_recode_api_response_to_dataframe(api_response):
+    codes = api_response.get("code")
+    return pandas.DataFrame(codes)
+    
+def convert_restrictions_api_response_to_dataframe(api_response):
+    restrictions = api_response.get("restriction")
+    return pandas.DataFrame(restrictions)

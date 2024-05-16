@@ -140,6 +140,7 @@ def get_structuralresources_codelists_agency_resource_version(
     url = services.build_entrypoint_url(API, path)
     return services.get_content(url)
 
+
 def get_structuralresources_codelists_agency_resource_version_restrictions(
     agencyid, resourceid, version
 ):
@@ -161,14 +162,16 @@ def get_structuralresources_codelists_agency_resource_version_restrictions(
     """
     path = '/'.join(['codelists', agencyid, resourceid, version, 'restrictions'])
     url = services.build_entrypoint_url(API, path)
-    return services.get_content(url)
+    response = services.get_content(url)
+    return services.convert_restrictions_api_response_to_dataframe(response)
+    
     
 def get_structuralresources_codelists_agency_resource_version_recode(
     agencyid, resourceid, version, referenceagencyid, referenceresourceid, referenceversion
 ):
     """Get codelists agency resource version recode
 
-    This function allows you to recode a particular version of a classification.
+    This function allows to see changes between two classifications.
 
     Args:
         agencyid (string): Agency identificator.
@@ -194,7 +197,8 @@ def get_structuralresources_codelists_agency_resource_version_recode(
     #url = services.build_entrypoint_url(API, path, query)
     url = services.build_entrypoint_url(API, path, referenceAgencyID=referenceagencyid, 
                                         referenceResourceID=referenceresourceid, referenceVersion=referenceversion)
-    return services.get_content(url)
+    response = services.get_content(url)
+    return services.convert_recode_api_response_to_dataframe(response)
 
 def get_structuralresources_codelists_agency_resource_version_codes(
     agencyid,
