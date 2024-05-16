@@ -87,7 +87,7 @@ def get_statisticalresources_datasets_agency_resource(
 
 
 def get_statisticalresources_datasets_agency_resource_version(
-    agencyid, resourceid, version, dim='', fields='', lang='es', as_dataframe=False
+    agencyid, resourceid, version, dim='', fields='', lang='es', as_dataframe=True
 ):
     """Get datasets (agencyID / resourceID / version)
 

@@ -4,6 +4,7 @@ import re
 import urllib.parse
 
 import requests
+import pandas
 
 from . import config
 
@@ -65,8 +66,6 @@ def convert_api_response_to_dataframe(api_response: dict):
     """Convert json API response (as dict) into a Pandas Dataframe.
     To that end, it's necessary to resolve the scalar product with
     dimensions and observations"""
-    import pandas as pd
-
     dimensions = api_response['data']['dimensions']['dimension']
 
     observations = api_response['data']['observations']
@@ -84,8 +83,18 @@ def convert_api_response_to_dataframe(api_response: dict):
     dimension_codes_product = itertools.product(*dimension_codes)
     data = [dim + (obs,) for dim, obs in zip(dimension_codes_product, observations)]
     columns = dimension_titles + ['OBSERVACIONES']
+    result = pandas.DataFrame(data, columns=columns)
 
-    return pd.DataFrame(data, columns=columns)
+    if 'attributes' in api_response['data']:
+        print(api_response['data']['attributes'])
+        for attribute in api_response['data']['attributes']['attribute']:
+            print(attribute)
+            print('id', attribute['id'])
+            attribute_values = re.split(r'\s*\|\s*', attribute['value'])
+            attribute_values_cycle = itertools.cycle(attribute_values)
+            result[attribute['id']] = [next(attribute_values_cycle) for count in range(result.shape[0])]
+            
+    return result
 
 
 def build_resolved_api_response(api_response: dict):
@@ -94,3 +103,29 @@ def build_resolved_api_response(api_response: dict):
         codelists=get_codelists_from_api_response(api_response),
     )
     return item
+
+def build_resolved_codelists_api_response(api_response_list, lang):
+  codelist = pandas.DataFrame()
+  for api_response in api_response_list:
+    codelist = pandas.concat([codelist, convert_codelists_api_response_to_dataframe(api_response, lang)])
+  return codelist
+
+def convert_codelists_api_response_to_dataframe(api_response, lang):
+  codes = api_response.get("code")
+  result = pandas.DataFrame()
+  for code in codes:
+    #lang_index = code[name]
+    langs = [c['lang'] for c in code['name']['text']]
+    lang_index = langs.index(lang)
+    result = pandas.concat([result, pandas.DataFrame({
+        'id': [code['id']], 
+        'name': [code['name']['text'][lang_index]['value']]})])
+  return result
+
+def convert_recode_api_response_to_dataframe(api_response):
+    codes = api_response.get("code")
+    return pandas.DataFrame(codes)
+    
+def convert_restrictions_api_response_to_dataframe(api_response):
+    restrictions = api_response.get("restriction")
+    return pandas.DataFrame(restrictions)
