@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistical resources &mdash; istacpy docs</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Structural resources" href="istacpy.structuralresources.html" />
+    <link rel="prev" title="Indicators" href="istacpy.indicators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            istacpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="istacpy.indicators.html">Indicators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Statistical resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dataframe-handling">Dataframe handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.statisticalresources.queries">istacpy.statisticalresources.queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_queries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries_agency"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_queries_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_queries_agency_resource()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.statisticalresources.cubes">istacpy.statisticalresources.cubes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_datasets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_datasets_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_datasets_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_statisticalresources_datasets_agency_resource_version()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="istacpy.structuralresources.html">Structural resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">Error handling</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">istacpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Statistical resources</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/istacpy.statisticalresources.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="statistical-resources">
+<span id="istacpy-statisticalresources"></span><h1>Statistical resources<a class="headerlink" href="#statistical-resources" title="Link to this heading"></a></h1>
+<p>A statistical resource is a statistical operation result.</p>
+<section id="dataframe-handling">
+<h2>Dataframe handling<a class="headerlink" href="#dataframe-handling" title="Link to this heading"></a></h2>
+<p>Apart from all the functions below, there are <strong>two special calls</strong> we can use in order to get a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">pandas DataFrame</a>  instead of the usual json API response:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource" title="istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource"><code class="xref py py-func docutils literal notranslate"><span class="pre">istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource()</span></code></a></p></li>
+<li><p><a class="reference internal" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version" title="istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version"><code class="xref py py-func docutils literal notranslate"><span class="pre">istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version()</span></code></a></p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code> is required for this feature to work.</p>
+</div>
+<p>Guess you are looking for data about population under 18 in Canary Islands regarding its employment status. Once you get the <em>resource identifier</em> you could make this query:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">istacpy.statisticalresources</span> <span class="kn">import</span> <span class="n">queries</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">queries</span><span class="o">.</span><span class="n">get_statisticalresources_queries_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">agencyid</span><span class="o">=</span><span class="s1">&#39;ISTAC&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">resourceid</span><span class="o">=</span><span class="s1">&#39;C00086B_000006&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">as_dataframe</span><span class="o">=</span><span class="kc">True</span>
+<span class="gp">... </span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="go">istacpy.services.ResolvedAPIResponse</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Adding the parameter <code class="docutils literal notranslate"><span class="pre">as_dataframe=True</span></code> makes you get a <code class="docutils literal notranslate"><span class="pre">ResolvedAPIResponse</span></code> object.</p>
+</div>
+<p>This object provides two attributes: <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> and <code class="docutils literal notranslate"><span class="pre">codelists</span></code>:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">dataframe</span>
+<span class="go">                MEDIDAS TIME_PERIOD SEXO      SITUACION_ECONOMICA_ICC VALORACION OBSERVACIONES</span>
+<span class="go">0                POBLACION     2018-Q4   _T       ACTUAL_BUSQUEDA_EMPLEO         _T       1791633</span>
+<span class="go">1                POBLACION     2018-Q4   _T       ACTUAL_BUSQUEDA_EMPLEO      IGUAL        782350</span>
+<span class="go">2                POBLACION     2018-Q4   _T       ACTUAL_BUSQUEDA_EMPLEO      MEJOR        272479</span>
+<span class="go">3                POBLACION     2018-Q4   _T       ACTUAL_BUSQUEDA_EMPLEO       PEOR        736804</span>
+<span class="go">4                POBLACION     2018-Q4   _T  EXPECTATIVA_BUSQUEDA_EMPLEO         _T       1791633</span>
+<span class="go">..                     ...         ...  ...                          ...        ...           ...</span>
+<span class="go">283  POBLACION__PORCENTAJE     2020-Q4    M       ACTUAL_BUSQUEDA_EMPLEO       PEOR         87.10</span>
+<span class="go">284  POBLACION__PORCENTAJE     2020-Q4    M  EXPECTATIVA_BUSQUEDA_EMPLEO         _T        100.00</span>
+<span class="go">285  POBLACION__PORCENTAJE     2020-Q4    M  EXPECTATIVA_BUSQUEDA_EMPLEO      IGUAL         19.25</span>
+<span class="go">286  POBLACION__PORCENTAJE     2020-Q4    M  EXPECTATIVA_BUSQUEDA_EMPLEO      MEJOR         19.35</span>
+<span class="go">287  POBLACION__PORCENTAJE     2020-Q4    M  EXPECTATIVA_BUSQUEDA_EMPLEO       PEOR         61.40</span>
+
+<span class="go">[288 rows x 6 columns]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">codelists</span>
+<span class="go">{&#39;MEDIDAS&#39;: {&#39;POBLACION&#39;: &#39;Población&#39;,</span>
+<span class="go">&#39;POBLACION__PORCENTAJE&#39;: &#39;Población. Porcentaje&#39;},</span>
+<span class="go">&#39;TIME_PERIOD&#39;: {&#39;2020-Q4&#39;: &#39;2020 Cuarto trimestre&#39;,</span>
+<span class="go">&#39;2020-Q2&#39;: &#39;2020 Segundo trimestre&#39;,</span>
+<span class="go">&#39;2019-Q4&#39;: &#39;2019 Cuarto trimestre&#39;,</span>
+<span class="go">&#39;2019-Q2&#39;: &#39;2019 Segundo trimestre&#39;,</span>
+<span class="go">&#39;2019-Q1&#39;: &#39;2019 Primer trimestre&#39;,</span>
+<span class="go">&#39;2018-Q4&#39;: &#39;2018 Cuarto trimestre&#39;},</span>
+<span class="go">&#39;SEXO&#39;: {&#39;_T&#39;: &#39;Ambos sexos&#39;, &#39;M&#39;: &#39;Hombres&#39;, &#39;F&#39;: &#39;Mujeres&#39;},</span>
+<span class="go">&#39;SITUACION_ECONOMICA_ICC&#39;: {&#39;ACTUAL_BUSQUEDA_EMPLEO&#39;: &#39;Situación actual para encontrar o mejorar un puesto de trabajo&#39;,</span>
+<span class="go">&#39;EXPECTATIVA_BUSQUEDA_EMPLEO&#39;: &#39;Expectativa futura para encontrar o mejorar un puesto de trabajo&#39;},</span>
+<span class="go">&#39;VALORACION&#39;: {&#39;_T&#39;: &#39;Total&#39;,</span>
+<span class="go">&#39;MEJOR&#39;: &#39;Mejor&#39;,</span>
+<span class="go">&#39;IGUAL&#39;: &#39;Igual&#39;,</span>
+<span class="go">&#39;PEOR&#39;: &#39;Peor&#39;}}</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Codelists are mappings between codes and text descriptions. The returned <code class="docutils literal notranslate"><span class="pre">response.codelists</span></code> always contains <strong>spanish texts</strong> because they are most cases.</p>
+</div>
+<p>Recoding of downloaded dataset is as easy as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">codelists</span><span class="p">)</span>
+<span class="go">                MEDIDAS            TIME_PERIOD         SEXO                            SITUACION_ECONOMICA_ICC VALORACION OBSERVACIONES</span>
+<span class="go">0                Población  2018 Cuarto trimestre  Ambos sexos  Situación actual para encontrar o mejorar un p...      Total       1791633</span>
+<span class="go">1                Población  2018 Cuarto trimestre  Ambos sexos  Situación actual para encontrar o mejorar un p...      Igual        782350</span>
+<span class="go">2                Población  2018 Cuarto trimestre  Ambos sexos  Situación actual para encontrar o mejorar un p...      Mejor        272479</span>
+<span class="go">3                Población  2018 Cuarto trimestre  Ambos sexos  Situación actual para encontrar o mejorar un p...       Peor        736804</span>
+<span class="go">4                Población  2018 Cuarto trimestre  Ambos sexos  Expectativa futura para encontrar o mejorar un...      Total       1791633</span>
+<span class="go">..                     ...                    ...          ...                                                ...        ...           ...</span>
+<span class="go">283  Población. Porcentaje  2020 Cuarto trimestre      Hombres  Situación actual para encontrar o mejorar un p...       Peor         87.10</span>
+<span class="go">284  Población. Porcentaje  2020 Cuarto trimestre      Hombres  Expectativa futura para encontrar o mejorar un...      Total        100.00</span>
+<span class="go">285  Población. Porcentaje  2020 Cuarto trimestre      Hombres  Expectativa futura para encontrar o mejorar un...      Igual         19.25</span>
+<span class="go">286  Población. Porcentaje  2020 Cuarto trimestre      Hombres  Expectativa futura para encontrar o mejorar un...      Mejor         19.35</span>
+<span class="go">287  Población. Porcentaje  2020 Cuarto trimestre      Hombres  Expectativa futura para encontrar o mejorar un...       Peor         61.40</span>
+
+<span class="go">[288 rows x 6 columns]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Truco</p>
+<p>This process can also be made for statistical datasets.</p>
+</div>
+</section>
+<section id="module-istacpy.statisticalresources.queries">
+<span id="istacpy-statisticalresources-queries"></span><h2>istacpy.statisticalresources.queries<a class="headerlink" href="#module-istacpy.statisticalresources.queries" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.queries.get_statisticalresources_queries">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.queries.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_queries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries" title="Link to this definition"></a></dt>
+<dd><p>Get queries</p>
+<p>This function allows consulting all existing statistical queries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit=25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset=0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Order. Possible values are <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">ASC</span></code> or <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">DESC</span></code>,</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Metadata query on which the searches can be built.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_queries</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.queries.get_statisticalresources_queries_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.queries.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_queries_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries_agency" title="Link to this definition"></a></dt>
+<dd><p>Get queries (agencyID)</p>
+<p>This function allows to consult all the queries maintained by a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the maintainer organization of the resource.
+A possible value is <code class="docutils literal notranslate"><span class="pre">ISTAC</span></code>.</p></li>
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit=25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset=0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Order. Possible values are <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">ASC</span></code> or <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">DESC</span></code>,</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Metadata query on which the searches can be built.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_queries_agency</span><span class="p">(</span><span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.queries.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_queries_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.queries.get_statisticalresources_queries_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get queries (agencyID / resourceID)</p>
+<p>This function allows to obtain final data of a statistical query with a certain
+identifier and that also maintains a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the maintainer organization of the resource.
+A possible value is <code class="docutils literal notranslate"><span class="pre">ISTAC</span></code>.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier. A possible value is <code class="docutils literal notranslate"><span class="pre">C00010A_000002</span></code>.</p></li>
+<li><p><strong>fields</strong> (<em>string</em>) – Allows you to customize the response by excluding fields from it.
+The possible values are <code class="docutils literal notranslate"><span class="pre">-metadata</span></code> and <code class="docutils literal notranslate"><span class="pre">-data</span></code>.</p></li>
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>as_dataframe</strong> (<em>bool</em>) – If True, this function returns a namedtuple with:
+- dataframe: pandas dataframe built from API response.
+- codelists: mapping between codes and representations for each column.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_queries_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;C00017A_000001&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-istacpy.statisticalresources.cubes">
+<span id="istacpy-statisticalresources-cubes"></span><h2>istacpy.statisticalresources.cubes<a class="headerlink" href="#module-istacpy.statisticalresources.cubes" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.cubes.get_statisticalresources_datasets">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.cubes.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_datasets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets" title="Link to this definition"></a></dt>
+<dd><p>Get datasets</p>
+<p>This function allows consulting all existing statistical data cubes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit=25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset=0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Order. Possible values are <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">ASC</span></code> or <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">DESC</span></code>,</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Metadata query on which the searches can be built.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_datasets</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.cubes.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_datasets_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency" title="Link to this definition"></a></dt>
+<dd><p>Get datasets (agencyID)</p>
+<p>This function allows to consult all the data sets maintained by a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the maintainer organization of the resource.
+A possible value is <code class="docutils literal notranslate"><span class="pre">ISTAC</span></code>.</p></li>
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit=25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset=0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Order. Possible values are <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">ASC</span></code> or <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">DESC</span></code>,</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Metadata query on which the searches can be built.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_datasets_agency</span><span class="p">(</span><span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.cubes.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_datasets_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get datasets (agencyID / resourceID)</p>
+<p>This function allows to obtain all the versions of a statistical cube with a certain
+identifier and that also maintains a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the maintainer organization of the resource.
+A possible value is <code class="docutils literal notranslate"><span class="pre">ISTAC</span></code>.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier. A possible value is <code class="docutils literal notranslate"><span class="pre">C00010A_000002</span></code>.</p></li>
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit=25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset=0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Order. Possible values are <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">ASC</span></code> or <code class="docutils literal notranslate"><span class="pre">ID</span> <span class="pre">DESC</span></code>,</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Metadata query on which the searches can be built.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_datasets_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;C00010A_000002&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.statisticalresources.cubes.</span></span><span class="sig-name descname"><span class="pre">get_statisticalresources_datasets_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.statisticalresources.cubes.get_statisticalresources_datasets_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get datasets (agencyID / resourceID / version)</p>
+<p>This function allows to obtain all the versions of a statistical cube with a certain
+identifier and that also maintains a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the maintainer organization of the resource.
+A possible value is <code class="docutils literal notranslate"><span class="pre">ISTAC</span></code>.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier. A possible value is <code class="docutils literal notranslate"><span class="pre">C00010A_000002</span></code>.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Resource version. A possible value is <code class="docutils literal notranslate"><span class="pre">001.000</span></code>.</p></li>
+<li><p><strong>dim</strong> (<em>string</em>) – Allows filtering the data obtained in the response. A example is
+<code class="docutils literal notranslate"><span class="pre">TIME_PERIOD:2009|2010</span></code>.</p></li>
+<li><p><strong>fields</strong> (<em>string</em>) – Allows you to customize the response by excluding fields from it.
+The possible values are <code class="docutils literal notranslate"><span class="pre">-metadata</span></code> and <code class="docutils literal notranslate"><span class="pre">-data</span></code>.</p></li>
+<li><p><strong>lang</strong> (<em>string</em>) – Language in which you want to get the answer.</p></li>
+<li><p><strong>as_dataframe</strong> (<em>bool</em>) – If True, this function returns a namedtuple with:
+- dataframe: pandas dataframe built from API response.
+- codelists: mapping between codes and representations for each column.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_statisticalresources_datasets_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;C00010A_000002&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;001.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="istacpy.indicators.html" class="btn btn-neutral float-left" title="Indicators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="istacpy.structuralresources.html" class="btn btn-neutral float-right" title="Structural resources" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2019, Instituto Canario de Estadistica (ISTAC).</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

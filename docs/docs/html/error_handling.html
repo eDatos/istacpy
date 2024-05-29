@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error handling &mdash; istacpy docs</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Structural resources" href="istacpy.structuralresources.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            istacpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="istacpy.indicators.html">Indicators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="istacpy.statisticalresources.html">Statistical resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="istacpy.structuralresources.html">Structural resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Error handling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#custom-exceptions">Custom exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.GranularityNotAvailableError"><code class="docutils literal notranslate"><span class="pre">GranularityNotAvailableError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.IndicatorNotFoundError"><code class="docutils literal notranslate"><span class="pre">IndicatorNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.IslandNotFoundError"><code class="docutils literal notranslate"><span class="pre">IslandNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.IstacPyError"><code class="docutils literal notranslate"><span class="pre">IstacPyError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.MeasureNotAvailableError"><code class="docutils literal notranslate"><span class="pre">MeasureNotAvailableError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.exceptions.QueryMalformedError"><code class="docutils literal notranslate"><span class="pre">QueryMalformedError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#on-the-shoulder-of-gigants">On the shoulder of gigants</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">istacpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Error handling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/error_handling.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="error-handling">
+<h1>Error handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h1>
+<section id="custom-exceptions">
+<h2>Custom exceptions<a class="headerlink" href="#custom-exceptions" title="Link to this heading"></a></h2>
+<p>There are a bunch of custom exceptions defined in the package:</p>
+<dl class="py exception" id="module-istacpy.exceptions">
+<dt class="sig sig-object py" id="istacpy.exceptions.GranularityNotAvailableError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">GranularityNotAvailableError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'given</span> <span class="pre">granularity{}is</span> <span class="pre">not</span> <span class="pre">available</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">indicator'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.GranularityNotAvailableError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="istacpy.exceptions.IndicatorNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">IndicatorNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'given</span> <span class="pre">indicator{}not</span> <span class="pre">found</span> <span class="pre">on</span> <span class="pre">API'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.IndicatorNotFoundError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="istacpy.exceptions.IslandNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">IslandNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'given</span> <span class="pre">island{}not</span> <span class="pre">found'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.IslandNotFoundError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="istacpy.exceptions.IstacPyError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">IstacPyError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.IstacPyError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="istacpy.exceptions.MeasureNotAvailableError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">MeasureNotAvailableError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'given</span> <span class="pre">measure{}is</span> <span class="pre">not</span> <span class="pre">available</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">indicator'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.MeasureNotAvailableError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="istacpy.exceptions.QueryMalformedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">istacpy.exceptions.</span></span><span class="sig-name descname"><span class="pre">QueryMalformedError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'given</span> <span class="pre">query{}is</span> <span class="pre">malformed</span> <span class="pre">or</span> <span class="pre">not</span> <span class="pre">properly</span> <span class="pre">written'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.exceptions.QueryMalformedError" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<section id="on-the-shoulder-of-gigants">
+<h3>On the shoulder of gigants<a class="headerlink" href="#on-the-shoulder-of-gigants" title="Link to this heading"></a></h3>
+<p>Special mention to API requests handling. Behind the scenes, this package uses well-known <a class="reference external" href="https://requests.readthedocs.io/en/master/">requests</a> package to retrieve data from API. <a class="reference external" href="https://requests.readthedocs.io/en/master/_modules/requests/exceptions/">Different errors</a> can happen and they are raised to be captured for the user.</p>
+<p>It’s important to say that these exceptions will include a custom field called <code class="docutils literal notranslate"><span class="pre">requested_url</span></code> that let’s the user to handle the API url.</p>
+</section>
+</section>
+<section id="debug-mode">
+<h2>Debug mode<a class="headerlink" href="#debug-mode" title="Link to this heading"></a></h2>
+<p>Debug mode can be enabled using the proper function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">istacpy</span> <span class="kn">import</span> <span class="n">services</span>
+<span class="n">services</span><span class="o">.</span><span class="n">set_debug</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Amongh other side effects, when debug mode is enabled, API urls are displayed when a query is performed:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">indicators</span><span class="o">.</span><span class="n">get_subjects</span><span class="p">()</span>
+<span class="hll"><span class="go">https://datos.canarias.es/api/estadisticas/indicators/v1.0/subjects</span>
+</span><span class="go">((&#39;011&#39;, &#39;Territorio y usos del suelo&#39;),</span>
+<span class="go"> (&#39;012&#39;, &#39;Medio ambiente&#39;),</span>
+<span class="go"> (&#39;021&#39;, &#39;Población&#39;),</span>
+<span class="go"> (&#39;022&#39;, &#39;Movimiento natural&#39;),</span>
+<span class="go"> (&#39;023&#39;, &#39;Movimientos migratorios&#39;),</span>
+<span class="go"> (&#39;031&#39;, &#39;Calidad de vida&#39;),</span>
+<span class="go"> (&#39;033&#39;, &#39;Educación&#39;),</span>
+<span class="go"> (&#39;036&#39;, &#39;Justicia y seguridad&#39;),</span>
+<span class="go"> (&#39;041&#39;, &#39;Cuentas económicas&#39;),</span>
+<span class="go"> (&#39;042&#39;, &#39;Precios, consumo e inversión&#39;),</span>
+<span class="go"> (&#39;043&#39;, &#39;Empresas y centros de trabajo&#39;),</span>
+<span class="go"> (&#39;051&#39;, &#39;Empleo&#39;),</span>
+<span class="go"> (&#39;061&#39;, &#39;Agricultura, ganadería, pesca y caza&#39;),</span>
+<span class="go"> (&#39;071&#39;, &#39;Industria, energía y agua&#39;),</span>
+<span class="go"> (&#39;072&#39;, &#39;Construcción y vivienda&#39;),</span>
+<span class="go"> (&#39;080&#39;, &#39;SECTOR SERVICIOS&#39;),</span>
+<span class="go"> (&#39;081&#39;, &#39;Comercio&#39;),</span>
+<span class="go"> (&#39;082&#39;, &#39;Hostelería y turismo&#39;),</span>
+<span class="go"> (&#39;083&#39;, &#39;Transporte y comunicaciones&#39;),</span>
+<span class="go"> (&#39;084&#39;, &#39;Servicios financieros, monetarios y seguros&#39;),</span>
+<span class="go"> (&#39;091&#39;, &#39;Administración pública&#39;))</span>
+</pre></div>
+</div>
+<p>Debug can be disabled as well. For that end, you can use the function <code class="docutils literal notranslate"><span class="pre">services.set_nodebug()</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="istacpy.structuralresources.html" class="btn btn-neutral float-left" title="Structural resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2019, Instituto Canario de Estadistica (ISTAC).</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
