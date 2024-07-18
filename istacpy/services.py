@@ -118,8 +118,8 @@ def convert_codelists_api_response_to_dataframe(api_response, lang):
     langs = [c['lang'] for c in code['name']['text']]
     lang_index = langs.index(lang)
     result = pandas.concat([result, pandas.DataFrame({
-        'id': [code['id']], 
-        'name': [code['name']['text'][lang_index]['value']]})])
+      'id': [code['id']], 
+      'name': [code['name']['text'][lang_index]['value']]})])
   return result
 
 def convert_recode_api_response_to_dataframe(api_response):
@@ -129,3 +129,6 @@ def convert_recode_api_response_to_dataframe(api_response):
 def convert_restrictions_api_response_to_dataframe(api_response):
     restrictions = api_response.get("restriction")
     return pandas.DataFrame(restrictions)
+
+def change_api_url(api_root_url):
+    config.API_ROOT_URL = api_root_url
