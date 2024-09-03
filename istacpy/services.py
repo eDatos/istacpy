@@ -19,10 +19,20 @@ def build_entrypoint_url(api, path, **query):
     return url
 
 
+def get_api_key(url):
+    api_key = ''
+    if 'canarias' in url:
+        api_key = config.ISTAC_API_KEY
+    if 'ibestat' in url:
+        api_key = config.IBESTAT_API_KEY
+    
+    return api_key
+
 def get_content(url):
     headers = {
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'api-key': get_api_key(url)
     }
     try:
         if config.DEBUG:
@@ -118,8 +128,8 @@ def convert_codelists_api_response_to_dataframe(api_response, lang):
     langs = [c['lang'] for c in code['name']['text']]
     lang_index = langs.index(lang)
     result = pandas.concat([result, pandas.DataFrame({
-      'id': [code['id']], 
-      'name': [code['name']['text'][lang_index]['value']]})])
+        'id': [code['id']], 
+        'name': [code['name']['text'][lang_index]['value']]})])
   return result
 
 def convert_recode_api_response_to_dataframe(api_response):
