@@ -44,15 +44,19 @@ def subjects():
 # TESTS
 # =================================================================
 
-
 def test_get_indicators(subjects):
+    # The first topic ('0100000', 'Territory and environment') has no indicator.
     subject_code = subjects[0][0]
     results = indicators.get_indicators(subject_code=subject_code)
+    assert len(results) == 0
+
+    subject_code = subjects[1][0]
+    results = indicators.get_indicators(subject_code=subject_code)
     assert len(results) > 0
+
     indicator_title = results[0][1]
     results = indicators.get_indicators(indicator_title, subject_code=subject_code)
     assert len(results) > 0
-
 
 def test_indicator(population_indicator):
     assert population_indicator.code is not None
@@ -160,7 +164,8 @@ def test_monthly_indicator_codes(affiliation_indicator):
     time_query = 'M'
     indicator_data = affiliation_indicator.get_data(time=time_query)
     for value in indicator_data.index:
-        assert re.match(r'^\w{3} \d{4}$', value) is not None
+        # assert re.match(r'^\w{3} \d{4}$', value) is not None
+        assert re.match(r'^\d{4}-\d{2}$', value) is not None
 
 
 @pytest.mark.skip(
@@ -179,7 +184,8 @@ def test_raw_output(affiliation_indicator):
     time_query = '=M'
     indicator_data = affiliation_indicator.get_data(geo=geographical_query, time=time_query)
     for value in indicator_data.index:
-        assert re.search(r'M\d\d$', value) is not None
+        # assert re.search(r'M\d\d$', value) is not None
+        assert re.search(r'\d{4}-\d{2}$', value) is not None
     for value in indicator_data.columns:
         assert re.match(r'^ES\d{3}$', value) is not None
 
