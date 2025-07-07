@@ -34,6 +34,8 @@ def test_convert_api_response_to_dataframe():
         'SITUACION_ECONOMICA_ICC',
         'VALORACION',
         'OBSERVACIONES',
+        'TERRITORIO', 
+        'ESTADO_OBSERVACION',
     )
 
     api_response = queries.get_statisticalresources_queries_agency_resource(
