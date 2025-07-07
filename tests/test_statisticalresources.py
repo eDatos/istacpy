@@ -35,6 +35,7 @@ def test_get_statisticalresources_datasets_agency_resource_version():
         version='2.2',
         dim='TIME_PERIOD:2010',
         fields='-metadata',
+        as_dataframe=False
     )
     assert_valid_response(response)
 
