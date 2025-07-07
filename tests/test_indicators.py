@@ -45,7 +45,14 @@ def test_get_indicators_geographic_granularities():
 
 def test_get_indicators_geographical_values():
     response = geographic.get_indicators_geographical_values(
-        geographicalgranularitycode='REGIONS', subjectcode='061'
+        geographicalgranularitycode='REGIONS', 
+        subjectcode='061'
+    )
+    assert response['code'] == '500'
+
+    response = geographic.get_indicators_geographical_values(
+        geographicalgranularitycode='REGIONS', 
+        subjectcode='0900000.0910000'
     )
     assert_valid_response(response)
 
