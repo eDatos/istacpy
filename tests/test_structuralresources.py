@@ -153,6 +153,7 @@ def test_get_structuralresources_codelists_agency_resource_version_codes():
             query='name ILIKE "AEROPUERTOS"',
             orderby='id ASC',
             fields='+open',
+            as_dataframe=False
         )
     )
     assert_valid_response(response)

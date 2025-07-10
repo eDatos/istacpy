@@ -5,7 +5,7 @@ with open('README.md') as fh:
 
 setup(
     name='istacpy',
-    version='0.7.0',
+    version='0.8.0',
     packages=find_packages(exclude=('tests',)),
     url='https://www.gobiernodecanarias.org/istac/api/',
     license='gpl-3.0',
@@ -18,7 +18,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     keywords=['istacpy', 'ISTAC', 'Instituto Canario de Estadistica', 'API', 'JSON'],
-    install_requires=['requests'],
+    install_requires=['requests','pandas'],
     python_requires='>=3.6',
     classifiers=[
         'Development Status :: 4 - Beta',

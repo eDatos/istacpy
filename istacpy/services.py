@@ -19,10 +19,20 @@ def build_entrypoint_url(api, path, **query):
     return url
 
 
+def get_api_key(url):
+    api_key = ''
+    if 'canarias' in url:
+        api_key = config.ISTAC_API_KEY
+    if 'ibestat' in url:
+        api_key = config.IBESTAT_API_KEY
+    
+    return api_key
+
 def get_content(url):
     headers = {
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': '*',
+        'api-key': get_api_key(url)
     }
     try:
         if config.DEBUG:
@@ -129,3 +139,6 @@ def convert_recode_api_response_to_dataframe(api_response):
 def convert_restrictions_api_response_to_dataframe(api_response):
     restrictions = api_response.get("restriction")
     return pandas.DataFrame(restrictions)
+
+def change_api_url(api_root_url):
+    config.API_ROOT_URL = api_root_url

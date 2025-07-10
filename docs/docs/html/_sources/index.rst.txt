@@ -24,14 +24,7 @@ The package is divided into several modules depending on the resource you want t
 * :ref:`istacpy.statisticalresources`: Datasets and queries of cubes.
 * :ref:`istacpy.structuralresources`: Categories, schemes, classifications, families and concepts for normalize statistical resources.
 * :ref:`Error handling`
-
-********
-Base URL
-********
-
-The package allows you to consult data from any eDatos API catalog instance. To change default instance (https://datos.canarias.es/api/estadisticas/), use the **change_api_url** method.
-
-
+   
 .. toctree::
    :hidden:
    :maxdepth: 2

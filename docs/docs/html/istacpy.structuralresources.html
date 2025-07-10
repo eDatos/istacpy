@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structural resources &mdash; istacpy docs</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Error handling" href="error_handling.html" />
+    <link rel="prev" title="Statistical resources" href="istacpy.statisticalresources.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            istacpy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="istacpy.indicators.html">Indicators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="istacpy.statisticalresources.html">Statistical resources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Structural resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.structuralresources.category">istacpy.structuralresources.category</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_categorisations"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_categorisations()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_categorisations_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_categorisations_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_categorisations_agency_resource_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes_agency_resource_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes_agency_resource_version_categories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories_id"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_category_schemes_agency_resource_version_categories_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.structuralresources.classifications">istacpy.structuralresources.classifications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelist_families"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelist_families()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelist_families_id"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelist_families_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource_version_codes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes_codeid"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource_version_codes_codeid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_recode"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource_version_recode()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_restrictions"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_codelists_agency_resource_version_restrictions()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.structuralresources.concepts">istacpy.structuralresources.concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version_concepts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts_id"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version_concepts_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_types"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_concept_types()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.structuralresources.datastructures">istacpy.structuralresources.datastructures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_content_constraints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_content_constraints_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_content_constraints_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_content_constraints_agency_resource_version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version_regions"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_content_constraints_agency_resource_version_regions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_data_structures()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_data_structures_agency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_data_structures_agency_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource_version"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_data_structures_agency_resource_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-istacpy.structuralresources.variables">istacpy.structuralresources.variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_geoinfo"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_geoinfo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variable_families()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families_id"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variable_families_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families_id_variables"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variable_families_id_variables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variableelements"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variableelements()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variableelements_resource"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variableelements_resource()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variables"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variables()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#istacpy.structuralresources.variables.get_structuralresources_variables_id"><code class="docutils literal notranslate"><span class="pre">get_structuralresources_variables_id()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">Error handling</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">istacpy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Structural resources</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/istacpy.structuralresources.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="structural-resources">
+<span id="istacpy-structuralresources"></span><h1>Structural resources<a class="headerlink" href="#structural-resources" title="Link to this heading"></a></h1>
+<p>Structural resources serve as support to normalize statistical resources produces by the organization. The main existing structural resources are organization schemes, topic schemes, concept schemes, classifications and definitions of data structures.</p>
+<p><strong>Example 1</strong>: Get a list of classifications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">istacpy.structuralresources</span> <span class="kn">import</span> <span class="n">classifications</span>
+<span class="n">classifications</span><span class="o">.</span><span class="n">get_structuralresources_codelists</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Example 2</strong>: Get a list of geographic coordinate from <a class="reference external" href="https://www.icoddelosvinos.es/">Icod de los Vinos</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">istacpy.structuralresources</span> <span class="kn">import</span> <span class="n">variables</span>
+<span class="n">variables</span><span class="o">.</span><span class="n">get_structuralresources_geoinfo</span><span class="p">(</span><span class="s1">&#39;VR_TERRITORIO&#39;</span><span class="p">,</span> <span class="s1">&#39;MUN_ICOD_VINOS&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="module-istacpy.structuralresources.category">
+<span id="istacpy-structuralresources-category"></span><h2>istacpy.structuralresources.category<a class="headerlink" href="#module-istacpy.structuralresources.category" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_categorisations">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_categorisations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_categorisations" title="Link to this definition"></a></dt>
+<dd><p>Get categorisations</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categorisations</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned.  By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_categorisations</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_categorisations</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_categorisations_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_categorisations_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency" title="Link to this definition"></a></dt>
+<dd><p>Get categorisations agency</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categorisations/{agencyID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned.  By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_categorisations_agency</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_categorisations_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get categorisations agency resource</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categorisations/{agencyID}/{resourceID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned.  By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_categorisations_agency_resource</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span> <span class="s2">&quot;cat2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_categorisations_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_categorisations_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get categorisations agency resource version</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/categorisations/{agencyID}/{resourceID}/{version}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_categorisations_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;cat2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned.  By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes agency</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes/{agencyID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned.  By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="go">...)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes agency resource</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes/{agencyID}/{resourceID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;TEMAS_CANARIAS&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes agency resource version</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes/{agencyID}/{resourceID}/{version}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;TEMAS_CANARIAS&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes_agency_resource_version_categories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes agency resource version categories</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes/{agencyID}/{resourceID}/{version}/categories</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency_resource_version_categories</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;TEMAS_CANARIAS&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories_id">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.category.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_category_schemes_agency_resource_version_categories_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categoryid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.category.get_structuralresources_category_schemes_agency_resource_version_categories_id" title="Link to this definition"></a></dt>
+<dd><p>Get category schemes agency resource version categories (id)</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/categoryschemes/{agencyID}/{resourceID}/{version}/categories/{categoryID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+<li><p><strong>categoryid</strong> (<em>string</em>) – category identifier</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency_resource_version_categories_id</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;TEMAS_CANARIAS&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;060&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_category_schemes_agency_resource_version_categories_id</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;TEMAS_CANARIAS&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;060.060_010.060_010_010&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-istacpy.structuralresources.classifications">
+<span id="istacpy-structuralresources-classifications"></span><h2>istacpy.structuralresources.classifications<a class="headerlink" href="#module-istacpy.structuralresources.classifications" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelist_families">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelist_families</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelist_families" title="Link to this definition"></a></dt>
+<dd><p>Get codelist families</p>
+<p>This function returns the list of families of classifications</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelist_families</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelist_families_id">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelist_families_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelist_families_id" title="Link to this definition"></a></dt>
+<dd><p>Get codelist families</p>
+<p>This function allows to obtain a family of classifications in particular.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – codelist family identificator</p>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelist_families_id</span><span class="p">(</span><span class="s1">&#39;CODELIST_ID&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists" title="Link to this definition"></a></dt>
+<dd><p>Get codelists</p>
+<p>This function allows to obtain the list of classifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency</p>
+<p>This function allows obtaining the list of all the classifications maintained by a
+certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency</span><span class="p">(</span><span class="s2">&quot;ESTAT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource</p>
+<p>This function allows to obtain all the versions of a classification with a certain
+identifier and that is also kept by a certain organization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span> <span class="s2">&quot;CL_AREA_ES&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource version</p>
+<p>This function allows you to consult a particular version of a classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific resource version.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CL_AREA_ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource_version_codes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">openness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'es'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource version codes</p>
+<p>This function allows to consult the codes of a version of a classification. Note that
+if wildcards are used as <code class="docutils literal notranslate"><span class="pre">~all</span></code> or one of the <code class="docutils literal notranslate"><span class="pre">limit</span></code>, <code class="docutils literal notranslate"><span class="pre">offset</span></code>, <code class="docutils literal notranslate"><span class="pre">query</span></code> or
+<code class="docutils literal notranslate"><span class="pre">orderBy</span></code> parameters, the list will be automatically paginated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific resource version.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+<li><p><strong>openness</strong> (<em>string</em>) – Opening established for viewing.</p></li>
+<li><p><strong>order</strong> (<em>string</em>) – Order established for visualization.</p></li>
+<li><p><strong>fields</strong> (<em>string</em>) – Additional fields that you want to show in the answer.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource_version_codes</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CL_AREA_ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes_codeid">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource_version_codes_codeid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codeid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_codes_codeid" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource version codes (codeID)</p>
+<p>This function allows to consult a specific code of a version of a classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific resource version.</p></li>
+<li><p><strong>codeid</strong> (<em>string</em>) – Code identificator.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource_version_codes_codeid</span><span class="p">(</span>
+<span class="go">    &quot;ISTAC&quot;, &quot;CL_AREA_ES&quot;, &quot;01.000&quot;, &quot;ES706A01&quot;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_recode">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource_version_recode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">referenceagencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">referenceresourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">referenceversion</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_recode" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource version recode</p>
+<p>This function allows to see changes between two classifications.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific resource version.</p></li>
+<li><p><strong>referenceagencyid</strong> (<em>string</em>) – Agency identificator (reference).</p></li>
+<li><p><strong>referenceresourceid</strong> (<em>string</em>) – Resource identificator (reference).</p></li>
+<li><p><strong>referenceversion</strong> (<em>string</em>) – Specific resource version (reference).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource_version_recode</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CL_AREA_ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_restrictions">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.classifications.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_codelists_agency_resource_version_restrictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.classifications.get_structuralresources_codelists_agency_resource_version_restrictions" title="Link to this definition"></a></dt>
+<dd><p>Get codelists agency resource version restrictions</p>
+<p>This function allows you to consult restrictions in a particular version of a classification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Agency identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific resource version.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_codelists_agency_resource_version_restrictions</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CL_AREA_ES&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-istacpy.structuralresources.concepts">
+<span id="istacpy-structuralresources-concepts"></span><h2>istacpy.structuralresources.concepts<a class="headerlink" href="#module-istacpy.structuralresources.concepts" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes agency</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes/{agencyID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ESTAT&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes agency resource</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes/{agencyID}/{resourceID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;CSM_C00010A_SIE&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes agency resource version</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes/{agencyID}/{resourceID}/{version}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>)</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>)</p></li>
+<li><p><strong>version</strong> (<em>string</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">gencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;CSM_C00010A_SIE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version_concepts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes agency resource version concepts</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes/{agencyID}/{resourceID}/{version}/concepts</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+<li><p><strong>fields</strong> (<em>string</em>) – Additional fields that you want to show in the answer.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency_resource_version_concepts</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;CSM_C00010A_SIE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts_id">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_schemes_agency_resource_version_concepts_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conceptid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_schemes_agency_resource_version_concepts_id" title="Link to this definition"></a></dt>
+<dd><p>Get concept schemes agency resource version concepts (id)</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/conceptschemes/{agencyID}/{resourceID}/{version}/concepts/{conceptID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+<li><p><strong>conceptid</strong> (<em>string</em>) – Concept identifier.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_schemes_agency_resource_version_concepts_id</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">agencyid</span><span class="o">=</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">resourceid</span><span class="o">=</span><span class="s2">&quot;CSM_C00010A_SIE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">version</span><span class="o">=</span><span class="s2">&quot;01.000&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">conceptID</span><span class="o">=</span><span class="s2">&quot;ELECTORES&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.concepts.get_structuralresources_concept_types">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.concepts.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_concept_types</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.concepts.get_structuralresources_concept_types" title="Link to this definition"></a></dt>
+<dd><p>Get concept types</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/conceptTypes</span></code></p>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_concept_types</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-istacpy.structuralresources.datastructures">
+<span id="istacpy-structuralresources-datastructures"></span><h2>istacpy.structuralresources.datastructures<a class="headerlink" href="#module-istacpy.structuralresources.datastructures" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_content_constraints">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_content_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints" title="Link to this definition"></a></dt>
+<dd><p>Get content constraints</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/contentConstraints</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_content_constraints_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency" title="Link to this definition"></a></dt>
+<dd><p>Get content constraints agency</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/contentConstraints/{agencyID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints_agency</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_content_constraints_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get content constraints agency resource</p>
+<dl class="simple">
+<dt>This function returns the content from</dt><dd><p><code class="docutils literal notranslate"><span class="pre">/v1.0/contentConstraints/{agencyID}/{resourceID}</span></code></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CSM_C00010A_SIE&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_content_constraints_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get content constraints agency resource version</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/contentConstraints/{agencyID}/{resourceID}/{version}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CSM_C00010A_SIE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version_regions">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_content_constraints_agency_resource_version_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">regioncode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_content_constraints_agency_resource_version_regions" title="Link to this definition"></a></dt>
+<dd><p>Get content constraints agency resource version regions</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/contentConstraints/{agencyID}/{resourceID}/{version}/regions/</span></code>
+{regionCode}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>regioncode</strong> (<em>string</em>)</p></li>
+<li><p><strong>agencyid</strong> (<em>string</em>)</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>)</p></li>
+<li><p><strong>version</strong> (<em>string</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_content_constraints_agency_resource_version_regions</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;0001&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;CSM_C00010A_SIE&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.000&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_data_structures">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_data_structures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures" title="Link to this definition"></a></dt>
+<dd><p>Get data structures</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/datastructures</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_data_structures</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_data_structures</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s2">&quot;ID EQ 2090&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">orderby</span><span class="o">=</span><span class="s2">&quot;ID ASC&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_data_structures_agency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency" title="Link to this definition"></a></dt>
+<dd><p>Get data structures agency</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/datastructures/{agencyID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_data_structures_agency</span><span class="p">(</span><span class="s2">&quot;ISTAC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_data_structures_agency_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource" title="Link to this definition"></a></dt>
+<dd><p>Get data structures agency resource</p>
+<p>This function returns the content from <code class="docutils literal notranslate"><span class="pre">/v1.0/datastructures/{agencyID}/{resourceID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_data_structures_agency_resource</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;DSD_C00010A_00001&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource_version">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.datastructures.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_data_structures_agency_resource_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agencyid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.datastructures.get_structuralresources_data_structures_agency_resource_version" title="Link to this definition"></a></dt>
+<dd><p>Get data structures agency resource version</p>
+<p>This function returns the content from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/datastructures/{agencyID}/{resourceID}/{version}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>agencyid</strong> (<em>string</em>) – Identifier of the agency that publishes.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identifier.</p></li>
+<li><p><strong>version</strong> (<em>string</em>) – Specific version of the resource.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_data_structures_agency_resource_version</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s2">&quot;ISTAC&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;DSD_C00010A_00001&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;01.001&quot;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-istacpy.structuralresources.variables">
+<span id="istacpy-structuralresources-variables"></span><h2>istacpy.structuralresources.variables<a class="headerlink" href="#module-istacpy.structuralresources.variables" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_geoinfo">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_geoinfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variableid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_geoinfo" title="Link to this definition"></a></dt>
+<dd><p>Get geoinfo</p>
+<p>This function returns data from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/variables/{variableID}/variableelements/{resourceID}/geoinfo</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variableid</strong> (<em>string</em>) – Variable identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>fields</strong> (<em>string</em>) – Additional fields that you want to show in the answer.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_geoinfo</span><span class="p">(</span><span class="s2">&quot;VR_TERRITORIO&quot;</span><span class="p">,</span> <span class="s2">&quot;MUN_ICOD_VINOS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variable_families">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variable_families</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families" title="Link to this definition"></a></dt>
+<dd><p>Get variable families</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variablefamilies</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variable_families</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variable_families_id">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variable_families_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families_id" title="Link to this definition"></a></dt>
+<dd><p>Get variable families (id)</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variablefamilies/{id}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – Variable family identificator.</p>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variable_families_id</span><span class="p">(</span><span class="s2">&quot;VRF_DEMOGRAFICAS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variable_families_id_variables">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variable_families_id_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variable_families_id_variables" title="Link to this definition"></a></dt>
+<dd><p>Get variable families (id) variables</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variablefamilies/{id}/variables</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – Variable family identificator.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variable_families_id_variables</span><span class="p">(</span><span class="s2">&quot;VRF_DEMOGRAFICAS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variableelements">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variableelements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variableid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variableelements" title="Link to this definition"></a></dt>
+<dd><p>Get variableelements</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variables/{variableID}/variableelements</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variableid</strong> (<em>string</em>)</p></li>
+<li><p><strong>limit</strong> (<em>int</em>)</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – <code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>)</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variableelements</span><span class="p">(</span><span class="s2">&quot;VR_SEXO&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variableelements_resource">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variableelements_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variableid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resourceid</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variableelements_resource" title="Link to this definition"></a></dt>
+<dd><p>Get variableelements resource</p>
+<p>This function returns data from
+<code class="docutils literal notranslate"><span class="pre">/v1.0/variables/{variableID}/variableelements/{resourceID}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variableid</strong> (<em>string</em>) – Resource identificator.</p></li>
+<li><p><strong>resourceid</strong> (<em>string</em>) – Variable identificator.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variableelements_resource</span><span class="p">(</span><span class="s2">&quot;VR_SEXO&quot;</span><span class="p">,</span> <span class="s2">&quot;FEMALE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variables">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderby</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variables" title="Link to this definition"></a></dt>
+<dd><p>Get variables</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variables</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> (<em>int</em>) – Results limit. By default <code class="docutils literal notranslate"><span class="pre">limit</span> <span class="pre">=</span> <span class="pre">25</span></code>.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Displacement. Result from which it is returned. By default
+<code class="docutils literal notranslate"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p></li>
+<li><p><strong>query</strong> (<em>string</em>) – Query to filter the results.</p></li>
+<li><p><strong>orderby</strong> (<em>string</em>) – Field by which to sort the results.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variables</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="istacpy.structuralresources.variables.get_structuralresources_variables_id">
+<span class="sig-prename descclassname"><span class="pre">istacpy.structuralresources.variables.</span></span><span class="sig-name descname"><span class="pre">get_structuralresources_variables_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#istacpy.structuralresources.variables.get_structuralresources_variables_id" title="Link to this definition"></a></dt>
+<dd><p>Get variables (id)</p>
+<p>This function returns data from <code class="docutils literal notranslate"><span class="pre">/v1.0/variables/{id}</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – Variable identifier.</p>
+</dd>
+</dl>
+<p class="rubric">Ejemplos</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_structuralresources_variables_id</span><span class="p">(</span><span class="s2">&quot;VR_SEXO&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="istacpy.statisticalresources.html" class="btn btn-neutral float-left" title="Statistical resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="error_handling.html" class="btn btn-neutral float-right" title="Error handling" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2019, Instituto Canario de Estadistica (ISTAC).</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
