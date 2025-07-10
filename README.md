@@ -89,7 +89,16 @@ This is a lite version of the rest of the indicators API. It’s a kind of wrapp
 
 ## Documentation
 
-For a full documentation of all available functions within the package, please see http://istacpy.readthedocs.io/
+The package is divided into several modules depending on the resource you want to retrieve:
+
+* [istacpy.indicators](docs/md/indicators.md): Systems, instances, granularities and subjects of indicators.
+* [istacpy.statisticalresources](docs/md/statisticalresources.md): Datasets and queries of cubes.
+* [istacpy.structuralresources](docs/md/structuralresources.md): Categories, schemes, classifications, families and concepts for normalize statistical resources.
+* [Error handling](docs/md/error_handling.md)
+
+> **Base URL**
+>
+> The package allows you to consult data from any eDatos API catalog instance. To change default instance (https://datos.canarias.es/api/estadisticas/), use the **change_api_url** method.
 
 ## Bugs/Requests
 
