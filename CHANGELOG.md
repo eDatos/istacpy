@@ -6,6 +6,18 @@ Versions follow [Semantic Versioning](https://semver.org/) (`<major>.<minor>.<pa
 
 Released XXXX-XX-XX
 
+## Version 0.8.0
+
+Released 2025-07-10
+
+- Update test.
+- Add API Key to library calls and document changes.
+- Add parameterization of methods for use by various provider agencies.
+- Return dataframes in new methods.
+- Add attributes in dataframe.
+- Avoid pagination in codelists.
+- Add new API methods.
+
 ## Version 0.7.0
 
 Released 2021-05-06
