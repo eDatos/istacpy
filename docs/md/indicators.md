@@ -165,16 +165,18 @@ For this purpose the class `istacpy.indicators.lite.indicators.IndicatorData` is
 
 As you can see, every field contains helpful information:
 
-- *Class*: shows the full qualified name of the indicator data.
-- *Indicator code*: shows the indicator code and can be also independently accessed through the `code` attribute.
-- *Title*: shows the indicator title (internationalized if proceed) and can be also independently accessed through the `title` attribute.
-- *Geographical granularity*: shows the pinned geographical granularity for this dataset and can be also independently accessed through the `geographical_granularity` attribute.
-- *Time granularity*: shows the pinned time granularity for this dataset and can be also independently accessed through the `time_granularity` attribute.
-- *Measure*: shows the pinned measure for this dataset and can be also independently accessed through the `measure` attribute.
-- *Index*: shows the index of the dataset as a tuple of **sorted** years. It can be also independently accessed through the `index` attribute.
-- *Columns*: shows the columns of the dataset as a tuple of geographical locations. It can be also independently accessed through the `columns` attribute.
-- *Shape*: shows a tuple with index size by columns size and can be also independently accessed through the `shape` attribute.
-- *Num. observations*: shows the total number of observations within the dataset and can be also independently accessed through the `num_observations` attribute.
+| Field               | Description |
+| ------------------- | ----------- |
+| *Class*             | shows the full qualified name of the indicator data |
+| *Indicator code*    | shows the indicator code and can be also independently accessed through the `code` attribute |
+| *Title*             | shows the indicator title (internationalized if proceed) and can be also independently accessed through the `title` attribute |
+| *Geographical granularity* | shows the pinned geographical granularity for this dataset and can be also independently accessed through the `geographical_granularity` attribute |
+| *Time granularity*  | shows the pinned time granularity for this dataset and can be also independently accessed through the `time_granularity` attribute |
+| *Measure*           | shows the pinned measure for this dataset and can be also independently accessed through the `measure` attribute |
+| *Index*             | shows the index of the dataset as a tuple of **sorted** years. It can be also independently accessed through the `index` attribute |
+| *Columns*           | shows the columns of the dataset as a tuple of geographical locations. It can be also independently accessed through the `columns` attribute |
+| *Shape*             | shows a tuple with index size by columns size and can be also independently accessed through the `shape` attribute |
+| *Num. observations* | shows the total number of observations within the dataset and can be also independently accessed through the `num_observations` attribute |
 
 Although data itself is not shown on `info()` calling, it's always available through `.data` attribute:
 ```pycon
