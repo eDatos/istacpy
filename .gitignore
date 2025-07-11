@@ -1,8 +1,6 @@
 .vscode
 .DS_Store
 
-/venv/
-
 *.pyc
 dist/
 build/
@@ -10,3 +8,6 @@ _build/
 *.egg-info/
 .coverage
 htmlcov
+
+/venv/
+/private/
