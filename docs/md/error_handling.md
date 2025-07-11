@@ -4,11 +4,11 @@
 
 ## Custom exceptions
 
-There are a bunch of custom exceptions defined in the package:
+There are a bunch of custom exceptions defined in the package.
 
-### On the shoulder of gigants
-
-Special mention to API requests handling. Behind the scenes, this package uses well-known [`requests`](https://requests.readthedocs.io/en/master) package to retrieve data from API. [Different errors](https://requests.readthedocs.io/en/master/_modules/requests/exceptions/) can happen and they are raised to be captured for the user.
+> **On the shoulder of gigants**
+>
+> Special mention to API requests handling. Behind the scenes, this package uses well-known [`requests`](https://requests.readthedocs.io/en/master) package to retrieve data from API. [Different errors](https://requests.readthedocs.io/en/master/_modules/requests/exceptions/) can happen and they are raised to be captured for the user.
 
 It's important to say that these exceptions will include a custom field called `requested_url` that let's the user to handle the API url.
 
@@ -24,8 +24,6 @@ Debug mode can be enabled using the proper function:
 Amongh other side effects, when debug mode is enabled, API urls are displayed when a query is performed:
 
 ```pycon
-    :emphasize-lines: 2
-
     >>> indicators.get_subjects()
     https://datos.canarias.es/api/estadisticas/indicators/v1.0/subjects
     (('011', 'Territorio y usos del suelo'),
