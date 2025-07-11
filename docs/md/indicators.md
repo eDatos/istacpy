@@ -122,15 +122,17 @@ For this purpose the class `istacpy.indicators.lite.indicators.Indicator` is pro
 
 As you can see, every field contains helpful information:
 
-- *Class*: shows the full qualified name of the indicator.
-- *Indicator code*: shows the indicator code and can be also independently accessed through the `code` attribute.
-- *Title*: shows the indicator title (internationalized if proceed) and can be also independently accessed through the `title` attribute.
-- *Subject*: shows the subject where this indicator is included (internationalized if proceed) and can be also independently accessed through the `subject` attribute.
-- *Description*: shows the indicator description (internationalized if proceed) and can be also independently accessed through the `description` attribute.
-- *Geographical granularities*: shows the available geographical granularities for this indicator and can be also independently accessed through the `geographical_granularities` attribute. It's a **dict** where *keys* are **granularity codes** and *values* are **granularity ids** (they will be use later).
-- *Time granularities*: shows the available time granularities for this indicator and can be also independently accessed through the `time_granularities` attribute. It's a **dict** where *keys* are **granularity codes** and *values* are **granularity ids** (they will be used later).
-- *Measures*: shows the available measures for this indicator and can be also independently accessed through the `measures` attribute. It's a **dict** where *keys* are **measure codes** and *values* are **measure ids** (they will be used later).
-- *Available years*: shows the available years (as time dimension) for this indicator and can be also independently accessed through the `available_years` attribute. It's a list containing the available years for the different combinations of granularities and measures.
+| Field                | Description |
+| -------------------- | ----------- |
+| *Class*              | shows the full qualified name of the indicator |
+| *Indicator code*     | shows the indicator code and can be also independently accessed through the `code` attribute |
+| *Title*              | shows the indicator title (internationalized if proceed) and can be also independently accessed through the `title` attribute |
+| *Subject*            | shows the subject where this indicator is included (internationalized if proceed) and can be also independently accessed through the `subject` attribute |
+| *Description*        | shows the indicator description (internationalized if proceed) and can be also independently accessed through the `description` attribute |
+| *Geographical granularities* | shows the available geographical granularities for this indicator and can be also independently accessed through the `geographical_granularities` attribute. It's a **dict** where *keys* are **granularity codes** and *values* are **granularity ids** (they will be use later) |
+| *Time granularities* | shows the available time granularities for this indicator and can be also independently accessed through the `time_granularities` attribute. It's a **dict** where *keys* are **granularity codes** and *values* are **granularity ids** (they will be used later) |
+| *Measures*           | shows the available measures for this indicator and can be also independently accessed through the `measures` attribute. It's a **dict** where *keys* are **measure codes** and *values* are **measure ids** (they will be used later) |
+| *Available years*    | shows the available years (as time dimension) for this indicator and can be also independently accessed through the `available_years` attribute. It's a list containing the available years for the different combinations of granularities and measures |
 
 > **Note**: It's possible that some available year has no data for a certain combination of granularities and measures, since `available_years` is just a summary of all possible time slots.
 
