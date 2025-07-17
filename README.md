@@ -91,10 +91,10 @@ This is a lite version of the rest of the indicators API. It’s a kind of wrapp
 
 The package is divided into several modules depending on the resource you want to retrieve:
 
-* [istacpy.indicators](docs/md/indicators.md): Systems, instances, granularities and subjects of indicators.
-* [istacpy.statisticalresources](docs/md/statisticalresources.md): Datasets and queries of cubes.
-* [istacpy.structuralresources](docs/md/structuralresources.md): Categories, schemes, classifications, families and concepts for normalize statistical resources.
-* [Error handling](docs/md/error_handling.md)
+* [istacpy.indicators](https://github.com/eDatos/istacpy/blob/master/docs/md/indicators.md): Systems, instances, granularities and subjects of indicators.
+* [istacpy.statisticalresources](https://github.com/eDatos/istacpy/blob/master/docs/md/statisticalresources.md): Datasets and queries of cubes.
+* [istacpy.structuralresources](https://github.com/eDatos/istacpy/blob/master/docs/md/structuralresources.md): Categories, schemes, classifications, families and concepts for normalize statistical resources.
+* [Error handling](https://github.com/eDatos/istacpy/blob/master/docs/md/error_handling.md)
 
 > **Base URL**
 >
