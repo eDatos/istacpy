@@ -10,3 +10,4 @@ coverage
 twine
 pandas
 wheel
+setuptools # Easily download, build, install, upgrade, and uninstall Python packages
